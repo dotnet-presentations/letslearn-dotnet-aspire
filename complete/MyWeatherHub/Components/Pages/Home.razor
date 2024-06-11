@@ -47,10 +47,16 @@
 	<Paginator State="@pagination"></Paginator>
 </div>
 
-@if (SelectedZone != null && Forecast != null)
+@if (IsLoading)
+{
+	<div class="spinner-border" role="status">
+		<span class="visually-hidden">Loading...</span>
+	</div>
+}
+else if (SelectedZone != null && Forecast != null)
 {
 
-	<h3>Weather for @SelectedZone.Name (@SelectedZone.Key)</h3>
+	<h3>Weather for @SelectedZone.Name<text>, </text> @SelectedZone.State (@SelectedZone.Key)</h3>
 
 	<div class="row row-cols-1 row-cols-md-4 g-4">
 		@foreach (var forecast in Forecast.Take(8))
@@ -69,7 +75,7 @@
 }
 else if (SelectedZone != null && !string.IsNullOrEmpty(Error))
 {
-	<div class="alert-danger">@Error<br />Choose another weather station</div>
+	<div class="alert-danger border border-1 border-danger p-3" style="width: 30em">@Error<br />Choose another weather station</div>
 }
 
 @code {
@@ -110,6 +116,8 @@ else if (SelectedZone != null && !string.IsNullOrEmpty(Error))
 
 	string Error { get; set; } = string.Empty;
 
+	bool IsLoading = false;
+
 	protected override async Task OnInitializedAsync()
 	{
 		AllZones = (await NwsManager.GetZonesAsync()).ToArray();
@@ -119,13 +127,19 @@ else if (SelectedZone != null && !string.IsNullOrEmpty(Error))
 	{
 
 		SelectedZone = zone;
+		IsLoading = true;
+		StateHasChanged();
+		await Task.Delay(50);
+
 		try
 		{
+			IsLoading = false;
 			Forecast = await NwsManager.GetForecastByZoneAsync(zone.Key);
 			Error = string.Empty;
 		}
 		catch (Exception ex)
 		{
+			IsLoading = false;
 			Logger.LogError(ex, "Error getting forecast for {0}({1})", zone.Name, zone.Key);
 			Forecast = null!;
 			Error = $"Unable to locate weather for {SelectedZone.Name}({SelectedZone.Key})";

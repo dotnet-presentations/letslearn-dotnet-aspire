@@ -50,8 +50,14 @@ app.MapGet("/zones", async (NwsManager manager) =>
 
 app.MapGet("/forecast/{zoneId}", async Task<Results<Ok<Forecast[]>, NotFound>> (NwsManager manager, string zoneId) =>
 {
-	var forecasts = await manager.GetForecastAsync(zoneId);
-	return TypedResults.Ok(forecasts);
+	try
+	{
+		var forecasts = await manager.GetForecastAsync(zoneId);
+		return TypedResults.Ok(forecasts);
+	} catch (HttpRequestException ex)
+	{
+		return TypedResults.NotFound();
+	}
 })
 .WithName("GetForecastByZone")
 .CacheOutput(policy =>
