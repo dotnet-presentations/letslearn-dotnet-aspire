@@ -1,0 +1,137 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.Components.QuickGrid
+@inject NwsManager NwsManager
+@inject ILogger<NwsManager> Logger
+@rendermode InteractiveServer
+
+<PageTitle>My Weather Hub</PageTitle>
+
+<HeadContent>
+	<style>
+
+		.quickgrid {
+			width: 100%;
+		}
+
+		.quickgrid td:has(span.selectedCell) {
+			background-color: yellow;
+		}
+	</style>
+</HeadContent>
+
+<h1>My Weather Hub</h1>
+
+<div style="width: 30em;">
+	<QuickGrid Items="zones" TGridItem="Zone" Pagination="pagination">
+		<TemplateColumn Title="Name" SortBy="NameSort" Sortable="true">
+			<ColumnOptions>
+				<div class="search-box">
+					<input type="search" autofocus @bind="NameFilter" @bind:event="oninput" placeholder="Name..." />
+				</div>
+			</ColumnOptions>
+			<ChildContent>
+				<span class="link-primary @(SelectedZone == context ? "selectedCell" : "")" style="cursor: pointer;" @onclick="@(() => SelectZone(context))">@context.Name</span>
+			</ChildContent>
+		</TemplateColumn>
+		<TemplateColumn Title="State">
+			<ColumnOptions>
+				<div class="search-box">
+					<input type="search" autofocus @bind="StateFilter" @bind:event="oninput" placeholder="State..." />
+				</div>
+			</ColumnOptions>
+			<ChildContent>
+				<span class="@(SelectedZone == context ? "selectedCell" : "")">@context.State</span>
+			</ChildContent>
+		</TemplateColumn>
+	</QuickGrid>
+	<Paginator State="@pagination"></Paginator>
+</div>
+
+@if (SelectedZone != null && Forecast != null)
+{
+
+	<h3>Weather for @SelectedZone.Name (@SelectedZone.Key)</h3>
+
+	<div class="row row-cols-1 row-cols-md-4 g-4">
+		@foreach (var forecast in Forecast.Take(8))
+		{
+
+			<div class="col">
+				<div class="card">
+					<div class="card-header">@forecast.Name</div>
+					<div class="card-body">@forecast.DetailedForecast</div>
+				</div>
+			</div>
+
+		}
+	</div>
+
+}
+else if (SelectedZone != null && !string.IsNullOrEmpty(Error))
+{
+	<div class="alert-danger">@Error<br />Choose another weather station</div>
+}
+
+@code {
+
+	IQueryable<Zone> zones
+	{
+		get
+		{
+
+			var results = AllZones
+				.AsQueryable();
+
+			results = string.IsNullOrEmpty(StateFilter) ? results.AsQueryable()
+					: results.Where(z => z.State == StateFilter.ToUpper()).AsQueryable();
+
+			results = string.IsNullOrEmpty(NameFilter) ? results
+					: results.Where(z => z.Name.Contains(NameFilter, StringComparison.InvariantCultureIgnoreCase));
+
+			return results;
+
+		}
+	}
+
+	Zone[] AllZones { get; set; } = [];
+
+	PaginationState pagination = new PaginationState { ItemsPerPage = 10 };
+
+	string NameFilter { get; set; } = string.Empty;
+
+	string StateFilter { get; set; } = string.Empty;
+
+	GridSort<Zone> NameSort = GridSort<Zone>
+			.ByAscending(f => f.Name);
+
+	Zone SelectedZone { get; set; } = null!;
+
+	IEnumerable<Forecast> Forecast { get; set; } = null!;
+
+	string Error { get; set; } = string.Empty;
+
+	protected override async Task OnInitializedAsync()
+	{
+		AllZones = (await NwsManager.GetZonesAsync()).ToArray();
+	}
+
+	private async Task SelectZone(Zone zone)
+	{
+
+		SelectedZone = zone;
+		try
+		{
+			Forecast = await NwsManager.GetForecastByZoneAsync(zone.Key);
+			Error = string.Empty;
+		}
+		catch (Exception ex)
+		{
+			Logger.LogError(ex, "Error getting forecast for {0}({1})", zone.Name, zone.Key);
+			Forecast = null!;
+			Error = $"Unable to locate weather for {SelectedZone.Name}({SelectedZone.Key})";
+		}
+
+	}
+
+
+}
