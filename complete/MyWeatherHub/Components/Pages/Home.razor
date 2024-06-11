@@ -20,8 +20,10 @@
 </HeadContent>
 
 <h1>My Weather Hub</h1>
+<h2>Live Weather reports from the US National Weather service</h2>
 
-<div style="width: 30em;">
+<div class="row">
+<div class="col-md-6">
 	<QuickGrid Items="zones" TGridItem="Zone" Pagination="pagination">
 		<TemplateColumn Title="Name" SortBy="NameSort" Sortable="true">
 			<ColumnOptions>
@@ -45,6 +47,14 @@
 		</TemplateColumn>
 	</QuickGrid>
 	<Paginator State="@pagination"></Paginator>
+</div>
+
+<div class="col-md-6" style="max-width:30em;">
+	<p>Click the name of a weather zone from the <a href="https://www.weather.gov/documentation/services-web-api" target="_blank">US National Weather Service</a> and the upcoming weather for that zone will appear below.</p>
+	<p>You can sort and filter the list of available weather forecast zones using the column headers of the grid.</p>
+		<p>Not all forecast zones will have a forecast available.  For reliable zones, try Philadelphia, Manhattan, District of Columbia, or Los Angeles County San Gabriel Valley</p>
+</div>
+
 </div>
 
 @if (IsLoading)
