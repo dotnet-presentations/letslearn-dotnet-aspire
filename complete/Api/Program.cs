@@ -13,13 +13,7 @@ builder.AddServiceDefaults();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddMemoryCache();
-
-builder.Services.AddHttpClient<NwsManager>(client =>
-{
-	client.BaseAddress = new Uri("https://api.weather.gov/");
-	client.DefaultRequestHeaders.Add("User-Agent", "Microsoft - .NET Aspire Demo");
-});
+builder.Services.AddNwsManager();
 
 var app = builder.Build();
 
@@ -34,36 +28,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseOutputCache();
-
-app.MapGet("/zones", async (NwsManager manager) =>
-{
-	var zones = await manager.GetZonesAsync();
-	return TypedResults.Ok(zones);
-})
-.WithName("GetZones")
-.CacheOutput(policy =>
-{
-	policy.Expire(TimeSpan.FromHours(1));
-})
-.WithOpenApi();
-
-app.MapGet("/forecast/{zoneId}", async Task<Results<Ok<Forecast[]>, NotFound>> (NwsManager manager, string zoneId) =>
-{
-	try
-	{
-		var forecasts = await manager.GetForecastByZoneAsync(zoneId);
-		return TypedResults.Ok(forecasts);
-	} catch (HttpRequestException ex)
-	{
-		return TypedResults.NotFound();
-	}
-})
-.WithName("GetForecastByZone")
-.CacheOutput(policy =>
-{
-	policy.Expire(TimeSpan.FromMinutes(15)).SetVaryByRouteValue("zoneId");
-})
-.WithOpenApi();
+// Map the endpoints for the API
+app.MapApiEndpoints();
 
 app.Run();
