@@ -52,7 +52,7 @@ app.MapGet("/forecast/{zoneId}", async Task<Results<Ok<Forecast[]>, NotFound>> (
 {
 	try
 	{
-		var forecasts = await manager.GetForecastAsync(zoneId);
+		var forecasts = await manager.GetForecastByZoneAsync(zoneId);
 		return TypedResults.Ok(forecasts);
 	} catch (HttpRequestException ex)
 	{

@@ -20,46 +20,63 @@
 </HeadContent>
 
 <h1>My Weather Hub</h1>
+<h2>Live Weather reports from the US National Weather service</h2>
 
-<div style="width: 30em;">
-	<QuickGrid Items="zones" TGridItem="Data.ZonesResponse.Feature" Pagination="pagination">
-		<TemplateColumn Title="Name" SortBy="NameSort" Sortable="true">
-			<ColumnOptions>
-				<div class="search-box">
-					<input type="search" autofocus @bind="NameFilter" @bind:event="oninput" placeholder="Name..." />
-				</div>
-			</ColumnOptions>
-			<ChildContent>
-				<span class="link-primary @(SelectedZone == context ? "selectedCell" : "")" style="cursor: pointer;" @onclick="@(() => SelectZone(context))">@context.properties.name</span>
-			</ChildContent>
-		</TemplateColumn>
-		<TemplateColumn Title="State">
-			<ColumnOptions>
-				<div class="search-box">
-					<input type="search" autofocus @bind="StateFilter" @bind:event="oninput" placeholder="State..." />
-				</div>
-			</ColumnOptions>
-			<ChildContent>
-				<span class="@(SelectedZone == context ? "selectedCell" : "")">@context.properties.state</span>
-			</ChildContent>
-		</TemplateColumn>
-	</QuickGrid>
-	<Paginator State="@pagination"></Paginator>
+<div class="row">
+	<div class="col-md-6">
+		<QuickGrid Items="zones" TGridItem="Zone" Pagination="pagination">
+			<TemplateColumn Title="Name" SortBy="NameSort" Sortable="true">
+				<ColumnOptions>
+					<div class="search-box">
+						<input type="search" autofocus @bind="NameFilter" @bind:event="oninput" placeholder="Name..." />
+					</div>
+				</ColumnOptions>
+				<ChildContent>
+					<span class="link-primary @(SelectedZone == context ? "selectedCell" : "")" style="cursor: pointer;" @onclick="@(() => SelectZone(context))">@context.Name</span>
+				</ChildContent>
+			</TemplateColumn>
+			<TemplateColumn Title="State">
+				<ColumnOptions>
+					<div class="search-box">
+						<input type="search" autofocus @bind="StateFilter" @bind:event="oninput" placeholder="State..." />
+					</div>
+				</ColumnOptions>
+				<ChildContent>
+					<span class="@(SelectedZone == context ? "selectedCell" : "")">@context.State</span>
+				</ChildContent>
+			</TemplateColumn>
+		</QuickGrid>
+		<Paginator State="@pagination"></Paginator>
+	</div>
+
+	<div class="col-md-6" style="max-width:30em;">
+		<p>Click the name of a weather zone from the <a href="https://www.weather.gov/documentation/services-web-api" target="_blank">US National Weather Service</a> and the upcoming weather for that zone will appear below.</p>
+		<p>You can sort and filter the list of available weather forecast zones using the column headers of the grid.</p>
+		<p>Not all forecast zones will have a forecast available.  For reliable zones, try Philadelphia, Manhattan, District of Columbia, or Los Angeles County San Gabriel Valley</p>
+		<p>For a zone that isn't reliably reporting, try Bristol Bay, AK (Alaska)</p>
+	</div>
+
 </div>
 
-@if (SelectedZone != null && Forecast != null)
+@if (IsLoading)
+{
+	<div class="spinner-border" role="status">
+		<span class="visually-hidden">Loading...</span>
+	</div>
+}
+else if (SelectedZone != null && Forecast != null)
 {
 
-	<h3>Weather for @SelectedZone.properties.name (@SelectedZone.properties.key)</h3>
+	<h3>Weather for @SelectedZone.Name<text>, </text> @SelectedZone.State (@SelectedZone.Key)</h3>
 
 	<div class="row row-cols-1 row-cols-md-4 g-4">
-		@foreach (var forecast in Forecast.properties.periods.Take(8))
+		@foreach (var forecast in Forecast.Take(8))
 		{
 
 			<div class="col">
 				<div class="card">
-					<div class="card-header">@forecast.name</div>
-					<div class="card-body">@forecast.detailedForecast</div>
+					<div class="card-header">@forecast.Name</div>
+					<div class="card-body">@forecast.DetailedForecast</div>
 				</div>
 			</div>
 
@@ -69,32 +86,31 @@
 }
 else if (SelectedZone != null && !string.IsNullOrEmpty(Error))
 {
-	<div class="alert-danger">@Error<br />Choose another weather station</div>
+	<div class="alert-danger border border-1 border-danger p-3" style="width: 30em">@Error<br />Choose another weather station</div>
 }
 
 @code {
 
-	IQueryable<Data.ZonesResponse.Feature> zones
+	IQueryable<Zone> zones
 	{
 		get
 		{
 
 			var results = AllZones
-				.Where(z => z.properties.observationStations.Any())
 				.AsQueryable();
 
 			results = string.IsNullOrEmpty(StateFilter) ? results.AsQueryable()
-					: results.Where(z => z.properties.state == StateFilter.ToUpper()).AsQueryable();
+					: results.Where(z => z.State == StateFilter.ToUpper()).AsQueryable();
 
 			results = string.IsNullOrEmpty(NameFilter) ? results
-					: results.Where(z => z.properties.name.Contains(NameFilter, StringComparison.InvariantCultureIgnoreCase));
+					: results.Where(z => z.Name.Contains(NameFilter, StringComparison.InvariantCultureIgnoreCase));
 
 			return results;
 
 		}
 	}
 
-	Data.ZonesResponse.Feature[] AllZones { get; set; } = [];
+	Zone[] AllZones { get; set; } = [];
 
 	PaginationState pagination = new PaginationState { ItemsPerPage = 10 };
 
@@ -102,34 +118,42 @@ else if (SelectedZone != null && !string.IsNullOrEmpty(Error))
 
 	string StateFilter { get; set; } = string.Empty;
 
-	GridSort<Data.ZonesResponse.Feature> NameSort = GridSort<Data.ZonesResponse.Feature>
-			.ByAscending(f => f.properties.name);
+	GridSort<Zone> NameSort = GridSort<Zone>
+			.ByAscending(f => f.Name);
 
-	Data.ZonesResponse.Feature SelectedZone { get; set; } = null!;
+	Zone SelectedZone { get; set; } = null!;
 
-	Data.ForecastResponse Forecast { get; set; } = null!;
+	IEnumerable<Forecast> Forecast { get; set; } = null!;
 
 	string Error { get; set; } = string.Empty;
 
+	bool IsLoading = false;
+
 	protected override async Task OnInitializedAsync()
 	{
-		AllZones = (await NwsManager.GetZonesAsync()).features;
+		AllZones = (await NwsManager.GetZonesAsync()).ToArray();
 	}
 
-	private async Task SelectZone(Data.ZonesResponse.Feature zone)
+	private async Task SelectZone(Zone zone)
 	{
 
 		SelectedZone = zone;
+		IsLoading = true;
+		StateHasChanged();
+		await Task.Delay(50);
+
 		try
 		{
-			Forecast = await NwsManager.GetForecastAsync(zone.properties.key);
+			IsLoading = false;
+			Forecast = await NwsManager.GetForecastByZoneAsync(zone.Key);
 			Error = string.Empty;
 		}
 		catch (Exception ex)
 		{
-			Logger.LogError(ex, "Error getting forecast for {0}({1})", zone.properties.name, zone.properties.key);
+			IsLoading = false;
+			Logger.LogError(ex, "Error getting forecast for {0}({1})", zone.Name, zone.Key);
 			Forecast = null!;
-			Error = $"Unable to locate weather for {SelectedZone.properties.name}({SelectedZone.properties.key})";
+			Error = $"Unable to locate weather for {SelectedZone.Name}({SelectedZone.Key})";
 		}
 
 	}

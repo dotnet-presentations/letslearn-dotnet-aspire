@@ -7,13 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-builder.Services.AddHttpClient<NwsManager>(client =>
-{
-	client.BaseAddress = new Uri("https://api.weather.gov/");
-	client.DefaultRequestHeaders.Add("User-Agent", "Microsoft - .NET Aspire Demo");
-});
-
-builder.Services.AddMemoryCache();
+builder.Services.AddNwsManager();
 
 var app = builder.Build();
 

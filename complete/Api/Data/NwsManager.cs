@@ -29,7 +29,7 @@ public class NwsManager(HttpClient httpClient, IMemoryCache cache)
 	}
 
 	int forecastCount = 0;
-	public async Task<Forecast[]> GetForecastAsync(string zoneId)
+	public async Task<Forecast[]> GetForecastByZoneAsync(string zoneId)
 	{
 
 		forecastCount++;

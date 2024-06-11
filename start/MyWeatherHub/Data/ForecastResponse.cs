@@ -19,5 +19,9 @@ public class ForecastResponse
         public int number { get; set; }
         public string name { get; set; }
         public string detailedForecast { get; set; }
-    }
+
+		public static explicit operator Forecast(Period period)
+			=> new Forecast(period.name, period.detailedForecast);
+
+	}
 }

@@ -12,6 +12,10 @@ public class ZonesResponse
 		public string id { get; set; }
 		public string type { get; set; }
 		public Properties properties { get; set; }
+
+		public static explicit operator Zone(Feature feature)
+			=> new Zone(feature.properties.key, feature.properties.name, feature.properties.state);
+
 	}
 
 	public class Properties
