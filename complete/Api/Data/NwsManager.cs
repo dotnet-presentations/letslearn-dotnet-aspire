@@ -45,7 +45,7 @@ namespace Api
 
         }
 
-        int forecastCount = 0;
+        static int forecastCount = 0;
         public async Task<Forecast[]> GetForecastByZoneAsync(string zoneId)
         {
 
