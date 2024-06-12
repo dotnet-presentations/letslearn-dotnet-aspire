@@ -4,38 +4,35 @@ namespace MyWeatherHub.Data;
 
 public class ZonesResponse
 {
-	public string type { get; set; }
-	public Feature[] features { get; set; }
+    public string? Type { get; set; }
+    public List<Feature>? Features { get; set; }
 
-	public class Feature
+    public class Feature
 	{
-		public string id { get; set; }
-		public string type { get; set; }
-		public Properties properties { get; set; }
+        public string? Id { get; set; }
+        public string? Type { get; set; }
+        public Properties? Properties { get; set; }
 
-		public static explicit operator Zone(Feature feature)
-			=> new Zone(feature.properties.key, feature.properties.name, feature.properties.state);
+        public static explicit operator Zone(Feature feature)
+			=> new Zone(feature?.Properties?.Key ?? string.Empty, feature?.Properties?.Name ?? string.Empty, feature?.Properties?.State ?? string.Empty);
 
 	}
 
 	public class Properties
 	{
-		public string geometry { get; set; }
-
-		[JsonPropertyName("@id")]
-		public string id { get; set; }
-
-		[JsonPropertyName("id")]
-		public string key { get; set; }
-		public string type { get; set; }
-		public string name { get; set; }
-		public string state { get; set; }
-		public DateTime effectiveDate { get; set; }
-		public DateTime expirationDate { get; set; }
-		public string[] cwa { get; set; }
-		public string[] forecastOffices { get; set; }
-		public string[] timeZone { get; set; }
-		public string[] observationStations { get; set; }
-		public string radarStation { get; set; }
-	}
+        [JsonPropertyName("@id")]
+        public string? Id { get; set; }
+        [JsonPropertyName("id")]
+        public string? Key { get; set; }
+        public string? Type { get; set; }
+        public string? Name { get; set; }
+        public DateTime? EffectiveDate { get; set; }
+        public DateTime? ExpirationDate { get; set; }
+        public string? State { get; set; }
+        public List<string>? Cwa { get; set; }
+        public List<string>? ForecastOffices { get; set; }
+        public List<string>? TimeZone { get; set; }
+        public List<string>? ObservationStations { get; set; }
+        public string? RadarStation { get; set; }
+    }
 }
