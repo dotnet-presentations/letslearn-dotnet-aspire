@@ -29,7 +29,7 @@ namespace MyWeatherHub.Data
                 entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
 
                 // Deserialize the zones.json file from the wwwroot folder
-                var zonesJson = File.Open("wwwroot/zones.json", FileMode.Open);
+                using var zonesJson = File.Open("wwwroot/zones.json", FileMode.Open);
                 if (zonesJson is null)
                     return [];
 

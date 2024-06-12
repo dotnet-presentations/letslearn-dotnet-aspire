@@ -2,27 +2,25 @@
 
 public class ForecastResponse
 {
-	public string id { get; set; }
-	public string type { get; set; }
-	public Properties properties { get; set; }
+    public string? Id { get; set; }
+    public string? Type { get; set; }
+    public ForecastProperties? Properties { get; set; }
 
-	public class Properties
-	{
-		public string geometry { get; set; }
-		public string zone { get; set; }
-		public DateTime updated { get; set; }
-		public Period[] periods { get; set; }
-	}
+    public class ForecastProperties
+    {
+        public string? Geometry { get; set; }
+        public string? Zone { get; set; }
+        public DateTime Updated { get; set; }
+        public List<Period>? Periods { get; set; }
+    }
 
-	public class Period
-	{
-		public int number { get; set; }
-		public string name { get; set; }
-		public string detailedForecast { get; set; }
+    public class Period
+    {
+        public int Number { get; set; }
+        public string? Name { get; set; }
+        public string? DetailedForecast { get; set; }
 
-		public static explicit operator Forecast(Period period)
-			=> new Forecast(period.name, period.detailedForecast);
-
-	}
-
+        public static explicit operator Forecast(Period period)
+            => new(period.Name ?? string.Empty, period.DetailedForecast ?? string.Empty);
+    }
 }
