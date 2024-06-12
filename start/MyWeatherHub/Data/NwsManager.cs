@@ -21,7 +21,7 @@ namespace MyWeatherHub.Data
 				entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
 
 				// Deserialize the zones.json file from the wwwroot folder
-				var zonesJson = File.Open("wwwroot/zones.json", FileMode.Open);
+				using var zonesJson = File.Open("wwwroot/zones.json", FileMode.Open);
 				var zones = await JsonSerializer.DeserializeAsync<ZonesResponse>(zonesJson);
 				return zones.features
 					.Where(f => f.properties.observationStations.Any())
