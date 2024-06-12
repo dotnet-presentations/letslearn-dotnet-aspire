@@ -1,7 +1,3 @@
-using Api;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddRedisOutputCache("cache");

@@ -1,7 +1,6 @@
 ﻿using Api.Data;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.Extensions.Caching.Memory;
-using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;
 
 namespace Api
@@ -74,7 +73,7 @@ namespace Microsoft.Extensions.DependencyInjection
 {
 
 
-	public static class NwsManagerExtensions
+    public static class NwsManagerExtensions
 	{
 
 		public static IServiceCollection AddNwsManager(this IServiceCollection services)
