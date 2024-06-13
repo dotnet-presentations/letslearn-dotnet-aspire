@@ -20,7 +20,7 @@ To address these issues, we will use the service discovery functionality provide
 	```csharp
 	var api = builder.AddProject<Projects.Api>("api");
 
-	var web = builder.AddProject<Projects.MyWeatherHub>("MyWeatherHub")
+	var web = builder.AddProject<Projects.MyWeatherHub>("myweatherhub")
 		.WithReference(api)
 		.WithExternalHttpEndpoints();
 	```

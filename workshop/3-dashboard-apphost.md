@@ -54,7 +54,7 @@ Before continuing, consider some common terminology used in .NET Aspire:
 	```csharp
 	var api = builder.AddProject<Projects.Api>("api");
 
-	var web = builder.AddProject<Projects.MyWeatherHub>("MyWeatherHub");
+	var web = builder.AddProject<Projects.MyWeatherHub>("myweatherhub");
 	```
 
 ## Run the application
