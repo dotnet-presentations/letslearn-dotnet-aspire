@@ -97,12 +97,12 @@ We haven't made any changes to the `Api` or `MyWeatherHub` projects, but we can 
 
 .NET Aspire components are flexible and customizable. By default, the Redis component uses a Redis container image from Docker Hub. However, you can use your own Redis container image by providing the image name and tag after the `AddRedis` method. For example, if you have a custom Redis container image such as [Garnet](https://github.com/microsoft/garnet), you can provide the image name and tag in the App Host as follows:
 
-	```csharp
-	var cache = builder.AddRedis("cache")
-		.WithImage("ghcr.io/microsoft/garnet")
-		.WithImageTag("latest")
-		.WithRedisCommander();
-	```
+```csharp
+var cache = builder.AddRedis("cache")
+	.WithImage("ghcr.io/microsoft/garnet")
+	.WithImageTag("latest")
+	.WithRedisCommander();
+```
 
 1. Run the application and you will now see Garnet running in the dashboard and in Docker Desktop.
 
