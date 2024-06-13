@@ -1,0 +1,40 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+    paths:
+    - '**.cs'
+    - '**.csproj'     
+  pull_request:
+    branches: [ "main" ]
+    paths:
+    - '**.cs'
+    - '**.csproj' 
+
+jobs:
+  build:
+
+    name: Build All Projects
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        project:
+        - start
+        - start-with-api
+        - complete
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+    - name: Build ${{ matrix.project }}
+      run: dotnet build "${{ matrix.project }}/MyWeatherHub.sln"
