@@ -11,6 +11,13 @@ Come learn all about [.NET Aspire](https://learn.microsoft.com/dotnet/aspire/), 
 - **Deployment**: manages injecting the right connection strings or network configurations and service discovery information to simplify the developer experience.
 - **So Much More**: .NET Aspire is packed full of features that developers will love and help you be more productive.
 
+Learn more about .NET Aspire with the following resources:
+* [Documenation](https://learn.microsoft.com/dotnet/aspire)
+* [Microsoft Learn Training Modules](https://learn.microsoft.com/training/browse/?expanded=dotnet&products=dotnet-aspire)
+* [.NET Aspire Videos](https://aka.ms/aspire/videos)
+* [eShop Reference Sample App](https://github.com/dotnet/eshop)
+* [.NET Aspire Samples](https://learn.microsoft.com/samples/browse/?expanded=dotnet&products=dotnet-aspire)
+
 
 ## Workshop
 
