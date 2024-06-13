@@ -11,12 +11,12 @@ Let's improve our application by adding a component to it. We will add a compone
 
 ## Add Redis Component to App Host
 
-There are several types of caching that we could integrate into our application including:
+There are two types of caching that we could integrate into our application including:
 
-- Output caching: A configurable, extensible caching method for storing entire HTTP responses for future requests.
-- Distributed caching: A cache shared by multiple app servers that allows you to cache specific pieces of data. A distributed cache is typically maintained as an external service to the app servers that access it and can improve the performance and scalability of an ASP.NET Core app.
+- **Output caching**: A configurable, extensible caching method for storing entire HTTP responses for future requests.
+- **Distributed caching**: A cache shared by multiple app servers that allows you to cache specific pieces of data. A distributed cache is typically maintained as an external service to the app servers that access it and can improve the performance and scalability of an ASP.NET Core app.
 
-We will integrate `Output caching` component to our app host. This component will help us to cache the response of our API in Redis cache. 
+We will integrate the _Output caching_ component to our app host. This component will help us to cache the response of our API in Redis cache. 
 
 To add the Redis component to our app host, we need to install the `Aspire.Hosting.Redis` NuGet package. This package provides the necessary components to configure the service in the App Host. Redis is provided through a container image in this workshop, and when we start the .NET Aspire App Host, it will automatically download the Redis container image and start the Redis server.
 
@@ -36,7 +36,7 @@ With the NuGet installed we can configure it.
 			.WithReference(cache);
 	```
 
-1. Additionally, we could configure Redis Commander, a Redis management tool. As part of the `Apire.Hosting.Redis` package,  Redis Commander is available in the same component. To add Redis Commander, add the following code under to the newly added Redis configuration.
+1. Additionally, we could configure [Redis Commander](https://joeferner.github.io/redis-commander/), a Redis management tool. As part of the `Aspire.Hosting.Redis` package,  Redis Commander is available in the same component. To add Redis Commander, add the following code under to the newly added Redis configuration.
 
 	```csharp
 	var cache = builder.AddRedis("cache")
@@ -45,13 +45,16 @@ With the NuGet installed we can configure it.
 
 ## Run the application
 
-We haven't made any changes to the `Api` or `MyWeatherHub` projects, but we can see the Redis cache start when we start the App Host. **Since Redis runs in a container you will need to ensure that Docker is running on your machine.**
+We haven't made any changes to the `Api` or `MyWeatherHub` projects, but we can see the Redis cache start when we start the App Host. 
+
+> [!IMPORTANT]
+> Since Redis runs in a container you will need to ensure that Docker is running on your machine.
 
 1. Start Docker Desktop or Podman
 1. Start the App Host project.
 1. You will see both the Redis container and Redis Commander container download and start in both the dashboard and in Docker Desktop.
 
-	![Redis running in dashboard and desktop](./media/redis-started.png))
+	![Redis running in dashboard and desktop](./media/redis-started.png)
 
 ## Integrate Output Caching in API
 
@@ -75,7 +78,8 @@ We haven't made any changes to the `Api` or `MyWeatherHub` projects, but we can 
 		options.AddBasePolicy(builder => builder.Cache());
 	});
 	```
-	Because we configured to use Redis cache in the `Program.cs` file, we don't need to add the default output caching policy.
+
+	Because we configured the application to use Redis cache in the `Program.cs` file, we no longer need to add the default output caching policy.
 
 
 ## Run the application
@@ -115,6 +119,6 @@ var cache = builder.AddRedis("cache")
 ## Summary
 In this section, we added a Redis component to the App Host and integrated output caching in the API. We saw how the response was cached in the Redis cache and how the second request was much faster than the first one. We also saw how to use Redis Commander to manage the Redis cache.
 
-There are many more components available that you can use to integrate with your services. You can find the list of available components [here](https://learn.microsoft.com/dotnet/aspire/fundamentals/components-overview?tabs=dotnet-cli#available-components).
+There are many more components available that you can use to integrate with your services. You can find the list of available components [in the .NET Aspire documentation](https://learn.microsoft.com/dotnet/aspire/fundamentals/components-overview?tabs=dotnet-cli#available-components).
 
 A natural next step would be to integrate a database or leverage Azure Redis Cache as a hosted solution. Components for these and more are available on NuGet.
