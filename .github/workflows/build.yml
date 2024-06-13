@@ -9,12 +9,14 @@ on:
     branches: [ "main" ]
     paths:
     - '**.cs'
-    - '**.csproj'     
+    - '**.csproj'
+    - '**.razor'
   pull_request:
     branches: [ "main" ]
     paths:
     - '**.cs'
-    - '**.csproj' 
+    - '**.csproj'
+    - '**.razor'
 
 jobs:
   build:
