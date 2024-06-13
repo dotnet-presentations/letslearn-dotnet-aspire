@@ -6,15 +6,13 @@ namespace MyWeatherHub.Data
 
     public class NwsManager(HttpClient httpClient, IMemoryCache cache)
     {
-
+        JsonSerializerOptions options = new() 
+        {
+            PropertyNameCaseInsensitive = true
+        };
+        
         public async Task<Zone[]?> GetZonesAsync()
         {
-
-            var options = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
-
             // To get the live zone data from NWS, uncomment the following code and comment out the return statement below
             //var response = await httpClient.GetAsync("https://api.weather.gov/zones?type=forecast");
             //response.EnsureSuccessStatusCode();
@@ -38,6 +36,7 @@ namespace MyWeatherHub.Data
                 return zones?.Features
                             ?.Where(f => f.Properties?.ObservationStations?.Count > 0)
                             .Select(f => (Zone)f)
+                            .Distinct()
                             .ToArray() ?? [];
             });
 
@@ -55,10 +54,6 @@ namespace MyWeatherHub.Data
 
             var response = await httpClient.GetAsync($"https://api.weather.gov/zones/forecast/{zoneId}/forecast");
             response.EnsureSuccessStatusCode(); 
-            var options = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
             var forecasts = await response.Content.ReadFromJsonAsync<ForecastResponse>(options);
             return forecasts?.Properties?.Periods?.Select(p => (Forecast)p).ToArray() ?? [];
         }
