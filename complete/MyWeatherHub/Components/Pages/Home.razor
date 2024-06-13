@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using Microsoft.AspNetCore.Components.QuickGrid
+@using System.Diagnostics
 @inject NwsManager NwsManager
 @inject ILogger<NwsManager> Logger
 @rendermode InteractiveServer
@@ -136,6 +137,9 @@ else if (SelectedZone != null && !string.IsNullOrEmpty(Error))
 
 	private async Task SelectZone(Zone zone)
 	{
+		// Workaround to create a new trace
+		// Blazor server keeps connection open so a new trace isn't created
+		Activity.Current = null;
 
 		SelectedZone = zone;
 		IsLoading = true;
