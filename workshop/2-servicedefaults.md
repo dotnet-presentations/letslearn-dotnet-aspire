@@ -64,3 +64,24 @@
 		- ![Visual Studio solution properties](./media/vs-multiproject.png)
 		- Click `Start` to start and debug both projects.
 	- Visual Studio Code: Run the `Api` and `MyWeatherHub` projects using the `Run and Debug` panel. We have provided a `launch.json` file with the necessary configurations to run both.
+
+1. Test the application by navigating to the following URLs:
+
+	- [https://localhost:7032/swagger/index.html](https://localhost:7032/swagger/index.html) - API
+	- [https://localhost:7274/](https://localhost:7274/) - MyWeatherHub
+
+1. You should see the Swagger UI for the API and the MyWeatherHub home page.
+1. You can also view the health checks for the API by navigating to [https://localhost:7032/health](https://localhost:7032/health).
+1. You can also view the health checks for the MyWeatherHub by navigating to [https://localhost:7274/health](https://localhost:7274/health).
+1. View the logs in the terminal to see the health checks and other telemetry data such as resiliency with Polly:
+
+	```cli
+	Polly: Information: Execution attempt. Source: '-standard//Standard-Retry', Operation Key: '', Result: '200', Handled: 'False', Attempt: '0', Execution Time: '13.0649'
+	```
+1. Click on 5 different cities and a "random" error will be thrown. You will see the Polly retry policy in action.
+
+	```cli
+	Polly: Warning: Execution attempt. Source: '-standard//Standard-Retry', Operation Key: '', Result: '500', Handled: 'True', Attempt: '0', Execution Time: '9732.8258'
+	Polly: Warning: Resilience event occurred. EventName: 'OnRetry', Source: '-standard//Standard-Retry', Operation Key: '', Result: '500'
+	System.Net.Http.HttpClient.NwsManager.ClientHandler: Information: Sending HTTP request GET http://localhost:5271/forecast/AKZ318
+	```
