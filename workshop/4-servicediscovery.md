@@ -70,10 +70,10 @@ Optionally, we can update the url to not use the `WeatherEndpoint` configuration
 1. Run the application by pressing `F5` or selecting the `Start Debugging` option.
 1. Open the `MyWeatheApp` by selecting the endpoint in the dashboard.
 1. Notice that the `MyWeatherHub` app still works and is now using service discovery to connect to the `Api` service.
-1. In the dashboard click on the `Details` for the `MyWeatherHub` project. THis will bring up all of the settings that .NET Aspire configured when running the app from the App Host
+1. In the dashboard click on the `Details` for the `MyWeatherHub` project. This will bring up all of the settings that .NET Aspire configured when running the app from the App Host
 1. Click on the eye icon to reveal the values and scroll to the bottom where you will see `services__api_http_0` and `services__api_https_0` configured with the correct values of the `Api` service.`
 
-	![Service discovery settings in the dashbaord](media/dashboard-servicediscovery.png)
+	![Service discovery settings in the dashboard](media/dashboard-servicediscovery.png)
 
 
 ## Conclusion
