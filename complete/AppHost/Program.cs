@@ -6,7 +6,7 @@ var cache = builder.AddRedis("cache")
 var api = builder.AddProject<Projects.Api>("api")
 	.WithReference(cache);
 
-var web = builder.AddProject<Projects.MyWeatherHub>("MyWeatherHub")
+var web = builder.AddProject<Projects.MyWeatherHub>("myweatherhub")
 	.WithReference(api);
 
 
