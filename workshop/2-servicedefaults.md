@@ -20,10 +20,10 @@
 	- Click `Next` > `Create`.
 
 	*Visual Studio*
-	![Visual Studio dialog to add a service defaults project](./media/vs-add-servicedefaults.png)]
+	![Visual Studio dialog to add a service defaults project](./media/vs-add-servicedefaults.png)
 
 	*Visual Studio Code*
-	![Visual Studio Code dialog to add a service defaults project](./media/vsc-add-servicedefaults.png)]
+	![Visual Studio Code dialog to add a service defaults project](./media/vsc-add-servicedefaults.png)
 
 
 ### Command Line
@@ -39,9 +39,9 @@
 1. Add a reference to the `ServiceDefaults` project in the `Api` and `MyWeatherHub` projects:
 
 	- Right-click on the `Api` project and select `Add` > `Reference`.
-	- Check the `ServiceDefaults` project and click `OK`.
-	- - Right-click on the `Api` project and select `Add` > `Reference`.
-	- Check the `MyWeatherHub` project and click `OK`.
+		- Check the `ServiceDefaults` project and click `OK`.
+	- Right-click on the `Api` project and select `Add` > `Reference`.
+		- Check the `MyWeatherHub` project and click `OK`.
 
 	> Pro Tip: In Visual Studio 2022, you can drag and drop the project onto another project to add a reference.
 
