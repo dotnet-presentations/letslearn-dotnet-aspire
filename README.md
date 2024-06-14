@@ -17,6 +17,7 @@ Learn more about .NET Aspire with the following resources:
 * [.NET Aspire Videos](https://aka.ms/aspire/videos)
 * [eShop Reference Sample App](https://github.com/dotnet/eshop)
 * [.NET Aspire Samples](https://learn.microsoft.com/samples/browse/?expanded=dotnet&products=dotnet-aspire)
+* [.NET Aspire FAQ](https://learn.microsoft.com/dotnet/aspire/reference/aspire-faq)
 
 
 ## Workshop
