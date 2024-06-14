@@ -33,62 +33,62 @@ The process for installing `azd` varies based on your operating system, but it i
 1. Execute the `azd init` command to initialize your project with `azd`, which will inspect the local directory structure and determine the type of app.
 
     ```console
-            azd init
+    azd init
     ```
 
     For more information on the `azd init` command, see [azd init](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference#azd-init).
 1. If this is the first time you've initialized the app, `azd` prompts you for the environment name:
 
     ```console
-        Initializing an app to run on Azure (azd init)
-        
-        ? Enter a new environment name: [? for help]
+    Initializing an app to run on Azure (azd init)
+    
+    ? Enter a new environment name: [? for help]
     ```
 
     Enter the desired environment name to continue. For more information on managing environments with `azd`, see [azd env](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference#azd-env).
 1. Select **Use code in the current directory** when `azd` prompts you with two app initialization options.
 
     ```console
-        ? How do you want to initialize your app?  [Use arrows to move, type to filter]
-        > Use code in the current directory
-          Select a template
+    ? How do you want to initialize your app?  [Use arrows to move, type to filter]
+    > Use code in the current directory
+      Select a template
     ```
 
 1. After scanning the directory, `azd` prompts you to confirm that it found the correct .NET Aspire _AppHost_ project. Select the **Confirm and continue initializing my app** option.
 
     ```console
-        Detected services:
-        
-          .NET (Aspire)
-          Detected in: D:\source\repos\letslearn-dotnet-aspire\complete\AppHost\AppHost.csproj
-        
-        azd will generate the files necessary to host your app on Azure using Azure Container Apps.
-        
-        ? Select an option  [Use arrows to move, type to filter]
-        > Confirm and continue initializing my app
-          Cancel and exit
+    Detected services:
+    
+      .NET (Aspire)
+      Detected in: D:\source\repos\letslearn-dotnet-aspire\complete\AppHost\AppHost.csproj
+    
+    azd will generate the files necessary to host your app on Azure using Azure Container Apps.
+    
+    ? Select an option  [Use arrows to move, type to filter]
+    > Confirm and continue initializing my app
+      Cancel and exit
     ```
 
 1. `azd` presents each of the projects in the .NET Aspire solution and prompts you to identify which to deploy with HTTP ingress open publicly to all internet traffic. Select only the `myweatherhub` (using the ↓ and Space keys), since you want the API to be private to the Azure Container Apps environment and _not_ available publicly.
 
     ```console
-        ? Select an option Confirm and continue initializing my app
-        By default, a service can only be reached from inside the Azure Container Apps environment it is running in. Selecting a service here will also allow it to be reached from the Internet.
-        ? Select which services to expose to the Internet  [Use arrows to move, space to select, <right> to all, <left> to none, type to filter]
-          [ ]  apiservice
-        > [x]  myweatherhub
+    ? Select an option Confirm and continue initializing my app
+    By default, a service can only be reached from inside the Azure Container Apps environment it is running in. Selecting a service here will also allow it to be reached from the Internet.
+    ? Select which services to expose to the Internet  [Use arrows to move, space to select, <right> to all, <left> to none, type to filter]
+      [ ]  apiservice
+    > [x]  myweatherhub
     ```
 
 1. Finally, specify the the environment name, which is used to name provisioned resources in Azure and managing different environments such as `dev` and `prod`.
 
     ```console
-        Generating files to run your app on Azure:
-        
-          (✓) Done: Generating ./azure.yaml
-          (✓) Done: Generating ./next-steps.md
-        
-        SUCCESS: Your app is ready for the cloud!
-        You can provision and deploy your app to Azure by running the azd up command in this directory. For more information on configuring your app, see ./next-steps.md
+    Generating files to run your app on Azure:
+    
+      (✓) Done: Generating ./azure.yaml
+      (✓) Done: Generating ./next-steps.md
+    
+    SUCCESS: Your app is ready for the cloud!
+    You can provision and deploy your app to Azure by running the azd up command in this directory. For more information on configuring your app, see ./next-steps.md
     ```
 
 `azd` generates a number of files and places them into the working directory. These files are:
@@ -106,49 +106,49 @@ Once `azd` is initialized, the provisioning and deployment process can be execut
 
 ```console
 
-    By default, a service can only be reached from inside the Azure Container Apps environment it is running in. Selecting a service here will also allow it to be reached from the Internet.
-    ? Select which services to expose to the Internet webfrontend
-    ? Select an Azure Subscription to use:  1. <YOUR SUBSCRIPTION>
-    ? Select an Azure location to use: 1. <YOUR LOCATION>
-    
-    Packaging services (azd package)
-    
-    
-    SUCCESS: Your application was packaged for Azure in less than a second.
-    
-    Provisioning Azure resources (azd provision)
-    Provisioning Azure resources can take some time.
-    
-    Subscription: <YOUR SUBSCRIPTION>
-    Location: <YOUR LOCATION>
-    
-      You can view detailed progress in the Azure Portal:
-    <LINK TO DEPLOYMENT>
-    
-      (✓) Done: Resource group: <YOUR RESOURCE GROUP>
-      (✓) Done: Container Registry: <ID>
-      (✓) Done: Log Analytics workspace: <ID>
-      (✓) Done: Container Apps Environment: <ID>
-      (✓) Done: Container App: <ID>
-    
-    SUCCESS: Your application was provisioned in Azure in 1 minute 13 seconds.
-    You can view the resources created under the resource group <YOUR RESOURCE GROUP> in Azure Portal:
-    <LINK TO RESOURCE GROUP OVERVIEW>
-    
-    Deploying services (azd deploy)
-    
-      (✓) Done: Deploying service apiservice
-      - Endpoint: <YOUR UNIQUE apiservice APP>.azurecontainerapps.io/
-    
-      (✓) Done: Deploying service webfrontend
-      - Endpoint: <YOUR UNIQUE webfrontend APP>.azurecontainerapps.io/
-    
-    
-    SUCCESS: Your application was deployed to Azure in 1 minute 39 seconds.
-    You can view the resources created under the resource group <YOUR RESOURCE GROUP> in Azure Portal:
-    <LINK TO RESOURCE GROUP OVERVIEW>
-    
-    SUCCESS: Your up workflow to provision and deploy to Azure completed in 3 minutes 50 seconds.
+By default, a service can only be reached from inside the Azure Container Apps environment it is running in. Selecting a service here will also allow it to be reached from the Internet.
+? Select which services to expose to the Internet webfrontend
+? Select an Azure Subscription to use:  1. <YOUR SUBSCRIPTION>
+? Select an Azure location to use: 1. <YOUR LOCATION>
+
+Packaging services (azd package)
+
+
+SUCCESS: Your application was packaged for Azure in less than a second.
+
+Provisioning Azure resources (azd provision)
+Provisioning Azure resources can take some time.
+
+Subscription: <YOUR SUBSCRIPTION>
+Location: <YOUR LOCATION>
+
+  You can view detailed progress in the Azure Portal:
+<LINK TO DEPLOYMENT>
+
+  (✓) Done: Resource group: <YOUR RESOURCE GROUP>
+  (✓) Done: Container Registry: <ID>
+  (✓) Done: Log Analytics workspace: <ID>
+  (✓) Done: Container Apps Environment: <ID>
+  (✓) Done: Container App: <ID>
+
+SUCCESS: Your application was provisioned in Azure in 1 minute 13 seconds.
+You can view the resources created under the resource group <YOUR RESOURCE GROUP> in Azure Portal:
+<LINK TO RESOURCE GROUP OVERVIEW>
+
+Deploying services (azd deploy)
+
+  (✓) Done: Deploying service apiservice
+  - Endpoint: <YOUR UNIQUE apiservice APP>.azurecontainerapps.io/
+
+  (✓) Done: Deploying service webfrontend
+  - Endpoint: <YOUR UNIQUE webfrontend APP>.azurecontainerapps.io/
+
+
+SUCCESS: Your application was deployed to Azure in 1 minute 39 seconds.
+You can view the resources created under the resource group <YOUR RESOURCE GROUP> in Azure Portal:
+<LINK TO RESOURCE GROUP OVERVIEW>
+
+SUCCESS: Your up workflow to provision and deploy to Azure completed in 3 minutes 50 seconds.
 ```
 
 First, the projects will be packaged into containers during the `azd package` phase, followed by the `azd provision` phase during which all of the Azure resources the app will need are provisioned.
@@ -162,5 +162,5 @@ At this point the app has been deployed and configured, and you can open the Azu
 Run the following Azure CLI command to delete the resource group when you no longer need the Azure resources you created. Deleting the resource group also deletes the resources contained inside of it.
 
 ```console
-    az group delete --name <your-resource-group-name>
+az group delete --name <your-resource-group-name>
 ```
