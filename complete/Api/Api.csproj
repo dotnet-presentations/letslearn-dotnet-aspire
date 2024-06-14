@@ -4,10 +4,6 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RuntimeIdentifiers>linux-x64</RuntimeIdentifiers>
-    <EnableSdkContainerDebugging>True</EnableSdkContainerDebugging>
-    <UserSecretsId>7b8931a0-bda7-4546-b99d-dc41f97af10e</UserSecretsId>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,11 +12,6 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ContainerEnvironmentVariable Include="ASPNETCORE_HTTPS_PORTS">
-      <Value>8081</Value>
-    </ContainerEnvironmentVariable>
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ServiceDefaults\ServiceDefaults.csproj" />
