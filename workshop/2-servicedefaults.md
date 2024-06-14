@@ -75,12 +75,12 @@
 1. You can also view the health checks for the MyWeatherHub by navigating to [https://localhost:7274/health](https://localhost:7274/health).
 1. View the logs in the terminal to see the health checks and other telemetry data such as resiliency with Polly:
 
-	```cli
+	```bash
 	Polly: Information: Execution attempt. Source: '-standard//Standard-Retry', Operation Key: '', Result: '200', Handled: 'False', Attempt: '0', Execution Time: '13.0649'
 	```
 1. Click on 5 different cities and a "random" error will be thrown. You will see the Polly retry policy in action.
 
-	```cli
+	```bash
 	Polly: Warning: Execution attempt. Source: '-standard//Standard-Retry', Operation Key: '', Result: '500', Handled: 'True', Attempt: '0', Execution Time: '9732.8258'
 	Polly: Warning: Resilience event occurred. EventName: 'OnRetry', Source: '-standard//Standard-Retry', Operation Key: '', Result: '500'
 	System.Net.Http.HttpClient.NwsManager.ClientHandler: Information: Sending HTTP request GET http://localhost:5271/forecast/AKZ318

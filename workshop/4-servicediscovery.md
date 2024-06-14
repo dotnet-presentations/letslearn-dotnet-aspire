@@ -34,13 +34,13 @@ When we added ServiceDefaults to the projects we automatically enrolled them in 
 
 Some services expose multiple, named endpoints. Named endpoints can be resolved by specifying the endpoint name in the host portion of the HTTP request URI, following the format `scheme://_endpointName.serviceName`. For example, if a service named "basket" exposes an endpoint named "dashboard", then the URI `scheme+http://_dashboard.basket` can be used to specify this endpoint, for example:
 
-	```csharp
-	builder.Services.AddHttpClient<BasketServiceClient>(
-		static client => client.BaseAddress = new("https+http://basket"));
+```csharp
+builder.Services.AddHttpClient<BasketServiceClient>(
+	static client => client.BaseAddress = new("https+http://basket"));
 
-	builder.Services.AddHttpClient<BasketServiceDashboardClient>(
-		static client => client.BaseAddress = new("https+http://_dashboard.basket"));
-	```
+builder.Services.AddHttpClient<BasketServiceDashboardClient>(
+	static client => client.BaseAddress = new("https+http://_dashboard.basket"));
+```
 
 In the above example, the `BasketServiceClient` will use the default endpoint of the `basket` service, while the `BasketServiceDashboardClient` will use the `dashboard` endpoint of the `basket` service. Now, let's update the `MyWeatherHub` project to use service discovery to connect to the `Api` service.
 
