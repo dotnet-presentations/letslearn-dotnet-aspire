@@ -7,7 +7,8 @@ var api = builder.AddProject<Projects.Api>("api")
 	.WithReference(cache);
 
 var web = builder.AddProject<Projects.MyWeatherHub>("myweatherhub")
-	.WithReference(api);
+	.WithReference(api)
+	.WithExternalHttpEndpoints();
 
 
 builder.Build().Run();
