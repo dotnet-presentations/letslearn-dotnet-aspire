@@ -13,7 +13,7 @@ Come learn all about [.NET Aspire](https://learn.microsoft.com/dotnet/aspire/), 
 
 Learn more about .NET Aspire with the following resources:
 * [Documenation](https://learn.microsoft.com/dotnet/aspire)
-* [Microsoft Learn Training Modules](https://learn.microsoft.com/training/browse/?expanded=dotnet&products=dotnet-aspire)
+* [Microsoft Learn Training Path](https://learn.microsoft.com/en-us/training/paths/dotnet-aspire/)
 * [.NET Aspire Videos](https://aka.ms/aspire/videos)
 * [eShop Reference Sample App](https://github.com/dotnet/eshop)
 * [.NET Aspire Samples](https://learn.microsoft.com/samples/browse/?expanded=dotnet&products=dotnet-aspire)
