@@ -37,9 +37,6 @@ The starting project for this workshop is located in the `start-with-api` folder
 
 This workshop is designed to be done in a 2 hour time frame. 
 
-## Longer Workshop
- If you are looking for a longer workshop, a 4 hour version of this workshop is available in the `start` folder. This starts with a single frontend project that is the start of the project and can be broken and separated into the API and frontend projects. The workshop walkthrough is currently in progress.
-
 ## Demo data
 
 The data and service used for this tutorial comes from the United States National Weather Service (NWS) at https://weather.gov  We are using their OpenAPI specification to query weather forecasts.  The OpenAPI specification is [available online](https://www.weather.gov/documentation/services-web-api).  We are using only 2 methods of this API, and simplified our code to just use those methods instead of creating the entire OpenAPI client for the NWS API.
