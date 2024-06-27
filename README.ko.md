@@ -2,7 +2,7 @@
 
 # Let's Learn .NET Aspire
 
-[.NET Aspire](https://learn.microsoft.com/dotnet/aspire/)는 관측이 용이하고, 프로덕션에 배포할 준비가 된 분산혀 애플리케이션을 구축하기 위한 새로운 클라우드 네이티브 스택입니다. .NET Aspire는 애플리케이션의 크기와 규모에 관계없이 추가하여 더 나은 애플리케이션을 더 빠르게 구축할 수 있도록 도와줍니다.
+[.NET Aspire](https://learn.microsoft.com/dotnet/aspire/)는 관측이 용이하고, 프로덕션에 배포할 준비가 된 분산형 애플리케이션을 구축하기 위한 새로운 클라우드 네이티브 스택입니다. .NET Aspire는 애플리케이션의 크기와 규모에 관계없이 추가하여 더 나은 애플리케이션을 더 빠르게 구축할 수 있도록 도와줍니다.
 
 .NET Aspire는 앱 개발을 다음과 같이 간소화합니다:
 
@@ -26,14 +26,14 @@
 
 이 .NET Aspire 워크샵은 [Let's Learn .NET](https://aka.ms/letslearndotnet) 시리즈의 일부입니다. 이 워크샵은 .NET Aspire에 대해 배우고 이를 사용하여 클라우드-레디 애플리케이션을 구축하는 방법을 배우도록 설계되었습니다. 이 워크샵은 6개의 모듈로 나누어져 있습니다:
 
-1. [설치 및 설정](./workshop/1-setup.md)
-2. [서비스 기본값](./workhsop/2-sevicedefaults.md)
-3. [개발자 대시보드 및 오케스트레이션](./workshop/3-dashboard-apphost.md)
-4. [서비스 검색(디스커버리)](./workshop/4-servicediscovery.md)
-5. [컴포넌트](./workshop/5-components.md)
-6. [배포](./workshop/6-deployment.md)
+1. [설치 및 설정](./workshop/localisation/ko/1-setup.md)
+2. [서비스 기본값](./workhsop/localisation/ko/2-sevicedefaults.md)
+3. [개발자 대시보드 및 오케스트레이션](./workshop/localisation/ko/3-dashboard-apphost.md)
+4. [서비스 검색(디스커버리)](./workshop/localisation/ko/4-servicediscovery.md)
+5. [컴포넌트](./workshop/localisation/ko/5-components.md)
+6. [배포](./workshop/localisation/ko/6-deployment.md)
 
-이 워크샵을 위한 전체 슬라이드 데크는 [여기](./workshop/AspireWorkshop.pptx)에서 제공합니다.
+이 워크샵을 위한 전체 슬라이드 데크는 [여기](./workshop/localisation/ko/AspireWorkshop.pptx)에서 제공합니다.
 
 이 워크샵의 시작 프로젝트는 `start-with-api` 폴더에 있습니다. 이 프로젝트는 National Weather Service API를 사용하여 날씨 데이터를 가져오고 Blazor로 작동하는 웹 프론트엔드를 통해 날씨 데이터를 표시하는 간단한 날씨 API입니다.
 
