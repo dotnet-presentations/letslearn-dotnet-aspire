@@ -1,35 +1,39 @@
-# Machine Setup 
+> 이 문서는 [Azure OpenAI](https://learn.microsoft.com/azure/ai-services/openai/overview)를 이용해 초벌 번역 후 검수를 진행했습니다. 따라서 번역 품질이 기대와 다를 수 있습니다. 문서 번역에 대해 제안할 내용이 있을 경우, [이슈](./issue)에 남겨주시면 확인후 반영하겠습니다.
 
-This workshop will be using the following tools:
+# 머신 설정
+
+이 워크숍에서는 다음 도구들을 사용합니다:
 
 - [.NET 8 SDK](https://dot.net/download)
 - [.NET Aspire Workload](https://learn.microsoft.com/dotnet/aspire/fundamentals/setup-tooling?tabs=dotnet-cli%2Cunix#install-net-aspire)
-- [Docker Desktop](https://docs.docker.com/engine/install/) or [Podman](https://podman.io/getting-started/installation)
-- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or [Visual Studio Code](https://code.visualstudio.com/) with [C# DevKit](https://code.visualstudio.com/docs/csharp/get-started)
+- [Docker Desktop](https://docs.docker.com/engine/install/) 또는 [Podman](https://podman.io/getting-started/installation)
+- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) 또는 [Visual Studio Code](https://code.visualstudio.com/)와 [C# DevKit](https://code.visualstudio.com/docs/csharp/get-started)
 
-For the best experience, we recommend using Visual Studio 2022 with the .NET Aspire workload. However, you can use Visual Studio Code with the C# Dev Kit and .NET Aspire workload. Below are setup guides for each platform.
+최고의 경험을 위해서는 .NET Aspire 워크로드가 포함된 Visual Studio 2022를 사용하는 것을 권장합니다. 하지만, C# Dev Kit과 .NET Aspire 워크로드가 포함된 Visual Studio Code를 사용할 수도 있습니다. 각 플랫폼에 대한 설정 가이드는 아래에 있습니다.
 
-## Windows with Visual Studio
-- Install [Visual Studio 2022 version 17.10 or newer](https://visualstudio.microsoft.com/vs/).
-  - Select the following workloads:
-    - `ASP.NET and web development` workload.
-    - `.NET Aspire SDK` component in `Individual components`.
+## Windows 환경에서 Visual Studio 사용하기
 
-## Mac, Linux, & Windows without Visual Studio
-- Install the latest [.NET 8 SDK](https://dot.net/download?cid=eshop)
-- Install the [.NET Aspire workload](https://learn.microsoft.com/dotnet/aspire/fundamentals/setup-tooling?tabs=dotnet-cli%2Cunix#install-net-aspire) with the following commands:
+- [Visual Studio 2022 버전 17.10 이상](https://visualstudio.microsoft.com/vs/)을 설치합니다.
+  - 다음 워크로드를 선택합니다:
+    - `ASP.NET 및 웹 개발` 워크로드.
+    - `개별 구성 요소`의 `.NET Aspire SDK` 구성 요소.
+
+## Mac, Linux, Windows 환경에서 Visual Studio 없이 사용하기
+
+- 최신 [.NET 8 SDK](https://dot.net/download?cid=eshop)를 설치합니다.
+- 다음 명령어를 사용하여 [.NET Aspire 워크로드](https://learn.microsoft.com/dotnet/aspire/fundamentals/setup-tooling?tabs=dotnet-cli%2Cunix#install-net-aspire)를 설치합니다:
 
 ```powershell
 dotnet workload update
 dotnet workload install aspire
 ```
 
-> Note: These commands may require `sudo`
+> 참고: 이 때 `sudo` 명령어를 사용해야 할 수도 있습니다.
 
-- Install [Visual Studio Code with C# Dev Kit](https://code.visualstudio.com/docs/csharp/get-started)
+- [C# Dev Kit을 포함한 Visual Studio Code](https://code.visualstudio.com/docs/csharp/get-started)를 설치합니다.
 
-> Note: When running on Mac with Apple Silicon (M series processor), Rosetta 2 for grpc-tools. 
+> 참고: Apple Silicon (M 시리즈 프로세서)을 사용하는 Mac에서 실행할 때는 grpc-tools를 위해 Rosetta 2가 필요합니다.
 
+## 설치 테스트
 
-## Test Installation
-To test your installation, see the [Build your first .NET Aspire project](https://learn.microsoft.com/dotnet/aspire/get-started/build-your-first-aspire-app) for more information.
+설치를 테스트해 보려면, [첫 .NET Aspire 프로젝트 빌드하기](https://learn.microsoft.com/dotnet/aspire/get-started/build-your-first-aspire-app)에서 자세한 정보를 참조하세요.
