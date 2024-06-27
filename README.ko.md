@@ -41,4 +41,4 @@
 
 ## 데모 데이터
 
-이 튜토리얼에서 사용한 데이터와 서비스는 [기상청](https://www.weather.go.kr/)에서 제공하는 [기상청 API 허브](https://apihub.kma.go.kr/)의 것입니다. 우리는 그들의 API 명세를 사용하여 날씨 예보를 쿼리합니다. API 사양은 [온라인에서 이용 가능](https://apihub.kma.go.kr/apiList.do?seqApi=10)합니다. 우리는 이 API의 두 가지 방법만 사용하고, 전체 NWS API 클라이언트를 작성하는 대신 이 방법들만 사용하도록 코드를 단순화했습니다.
+이 튜토리얼에서 사용한 데이터와 서비스는 [기상청](https://www.weather.go.kr/)에서 제공합니다. 기상청에서 제공하는 API 명세를 사용하여 날씨 예보를 쿼리합니다. API 사양은 [온라인에서 이용 가능](https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15084084)합니다. 우리는 이 API의 몇가지 엔드포인트만 사용하고, 전체 NWS API 클라이언트를 작성하는 대신 이 방법들만 사용하도록 코드를 단순화했습니다.
