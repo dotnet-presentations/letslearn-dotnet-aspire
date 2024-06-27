@@ -12,13 +12,19 @@ Come learn all about [.NET Aspire](https://learn.microsoft.com/dotnet/aspire/), 
 - **So Much More**: .NET Aspire is packed full of features that developers will love and help you be more productive.
 
 Learn more about .NET Aspire with the following resources:
-* [Documenation](https://learn.microsoft.com/dotnet/aspire)
-* [Microsoft Learn Training Path](https://learn.microsoft.com/en-us/training/paths/dotnet-aspire/)
-* [.NET Aspire Videos](https://aka.ms/aspire/videos)
-* [eShop Reference Sample App](https://github.com/dotnet/eshop)
-* [.NET Aspire Samples](https://learn.microsoft.com/samples/browse/?expanded=dotnet&products=dotnet-aspire)
-* [.NET Aspire FAQ](https://learn.microsoft.com/dotnet/aspire/reference/aspire-faq)
+- [Documenation](https://learn.microsoft.com/dotnet/aspire)
+- [Microsoft Learn Training Path](https://learn.microsoft.com/en-us/training/paths/dotnet-aspire/)
+- [.NET Aspire Videos](https://aka.ms/aspire/videos)
+- [eShop Reference Sample App](https://github.com/dotnet/eshop)
+- [.NET Aspire Samples](https://learn.microsoft.com/samples/browse/?expanded=dotnet&products=dotnet-aspire)
+- [.NET Aspire FAQ](https://learn.microsoft.com/dotnet/aspire/reference/aspire-faq)
 
+## Localization
+
+This workshop materials are available in the following languages:
+
+- [English](./README.md)
+- [한국어](./README.ko.md)
 
 ## Workshop
 
