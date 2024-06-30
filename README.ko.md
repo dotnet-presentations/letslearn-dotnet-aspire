@@ -27,7 +27,7 @@
 이 .NET Aspire 워크샵은 [Let's Learn .NET](https://aka.ms/letslearndotnet) 시리즈의 일부입니다. 이 워크샵은 .NET Aspire에 대해 배우고 이를 사용하여 클라우드-레디 애플리케이션을 구축하는 방법을 배우도록 설계되었습니다. 이 워크샵은 6개의 모듈로 나누어져 있습니다:
 
 1. [설치 및 설정](./workshop/localisation/ko/1-setup.md)
-2. [서비스 기본값](./workhsop/localisation/ko/2-sevicedefaults.md)
+2. [서비스 기본값](./workshop/localisation/ko/2-sevicedefaults.md)
 3. [개발자 대시보드 및 오케스트레이션](./workshop/localisation/ko/3-dashboard-apphost.md)
 4. [서비스 검색(디스커버리)](./workshop/localisation/ko/4-servicediscovery.md)
 5. [컴포넌트](./workshop/localisation/ko/5-components.md)
