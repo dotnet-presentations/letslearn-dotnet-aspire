@@ -1,35 +1,38 @@
-# Machine Setup 
+# Configuración del sistema
 
-This workshop will be using the following tools:
+Este taller utilizará las siguientes herramientas:
 
 - [.NET 8 SDK](https://dot.net/download)
-- [.NET Aspire Workload](https://learn.microsoft.com/dotnet/aspire/fundamentals/setup-tooling?tabs=dotnet-cli%2Cunix#install-net-aspire)
-- [Docker Desktop](https://docs.docker.com/engine/install/) or [Podman](https://podman.io/getting-started/installation)
-- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or [Visual Studio Code](https://code.visualstudio.com/) with [C# DevKit](https://code.visualstudio.com/docs/csharp/get-started)
+- [Carga de trabajo de .NET Aspire](https://learn.microsoft.com/dotnet/aspire/fundamentals/setup-tooling?tabs=dotnet-cli%2Cunix#install-net-aspire)
+- [Docker Desktop](https://docs.docker.com/engine/install/) o [Podman](https://podman.io/getting-started/installation)
+- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) o [Visual Studio Code](https://code.visualstudio.com/) con [C# DevKit](https://code.visualstudio.com/docs/csharp/get-started)
 
-For the best experience, we recommend using Visual Studio 2022 with the .NET Aspire workload. However, you can use Visual Studio Code with the C# Dev Kit and .NET Aspire workload. Below are setup guides for each platform.
+Para obtener la mejor experiencia, recomendamos utilizar Visual Studio 2022 con la carga de trabajo de .NET Aspire. Sin embargo, también puedes utilizar Visual Studio Code con el C# Dev Kit y la carga de trabajo de .NET Aspire. A continuación, se muestran las guías de configuración para cada plataforma.
 
-## Windows with Visual Studio
-- Install [Visual Studio 2022 version 17.10 or newer](https://visualstudio.microsoft.com/vs/).
-  - Select the following workloads:
-    - `ASP.NET and web development` workload.
-    - `.NET Aspire SDK` component in `Individual components`.
+## Windows con Visual Studio
 
-## Mac, Linux, & Windows without Visual Studio
-- Install the latest [.NET 8 SDK](https://dot.net/download?cid=eshop)
-- Install the [.NET Aspire workload](https://learn.microsoft.com/dotnet/aspire/fundamentals/setup-tooling?tabs=dotnet-cli%2Cunix#install-net-aspire) with the following commands:
+- Instala [Visual Studio 2022 versión 17.10 o posterior](https://visualstudio.microsoft.com/vs/).
+  - Selecciona las siguientes cargas de trabajo:
+    - Carga de trabajo de `ASP.NET y desarrollo web`.
+    - Componente `.NET Aspire SDK` en `Componentes individuales`.
+
+## Mac, Linux y Windows sin Visual Studio
+
+- Instala la última versión del [.NET 8 SDK](https://dot.net/download?cid=eshop)
+- Instala la carga de trabajo de [.NET Aspire](https://learn.microsoft.com/dotnet/aspire/fundamentals/setup-tooling?tabs=dotnet-cli%2Cunix#install-net-aspire) con los siguientes comandos:
 
 ```powershell
 dotnet workload update
 dotnet workload install aspire
 ```
 
-> Note: These commands may require `sudo`
+> Nota: Es posible que estos comandos requieran `sudo`.
 
-- Install [Visual Studio Code with C# Dev Kit](https://code.visualstudio.com/docs/csharp/get-started)
+- Instala [Visual Studio Code con C# Dev Kit](https://code.visualstudio.com/docs/csharp/get-started)
 
-> Note: When running on Mac with Apple Silicon (M series processor), Rosetta 2 for grpc-tools. 
+> Nota: Cuando se ejecuta en Mac con Apple Silicon (procesador de la serie M), se requiere Rosetta 2 para grpc-tools.
 
+## Prueba de la instalación
 
-## Test Installation
-To test your installation, see the [Build your first .NET Aspire project](https://learn.microsoft.com/dotnet/aspire/get-started/build-your-first-aspire-app) for more information.
+Para probar tu instalación, consulta el [Crear tu primer proyecto de .NET Aspire](https://learn.microsoft.com/dotnet/aspire/get-started/build-your-first-aspire-app) para obtener más información.
+

@@ -1,87 +1,90 @@
-# Service Defaults aka Smart Defaults
+# Valores predeterminados del servicio, también conocidos como valores predeterminados inteligentes
 
-## Introduction
-.NET Aspire provides a set of smart defaults for services that are commonly used in .NET applications. These defaults are designed to help you get started quickly and provide a consistent experience across different types of applications. This includes:
+## Introducción
 
-- Telemetry: Metrics, Tracing, Logging
-- Resiliency
-- Health Checks
-- Service Discovery
+.NET Aspire proporciona un conjunto de valores predeterminados inteligentes para los servicios que se utilizan comúnmente en las aplicaciones .NET. Estos valores predeterminados están diseñados para ayudarte a comenzar rápidamente y proporcionar una experiencia consistente en diferentes tipos de aplicaciones. Esto incluye:
 
-## Create Service Defaults Project
+- Telemetría: Métricas, trazas, registro
+- Resiliencia
+- Comprobaciones de estado
+- Descubrimiento de servicios
 
-### Visual Studio & Visual Studio Code
+## Crear proyecto de valores predeterminados del servicio
 
-1. Add a new project to the solution called `ServiceDefaults`:
+### Visual Studio y Visual Studio Code
 
-	- Right-click on the solution and select `Add` > `New Project`.
-	- Select the `.NET Aspire Service Defaults` project template.
-	- Name the project `ServiceDefaults`.
-	- Click `Next` > `Create`.
+1. Agrega un nuevo proyecto a la solución llamado `ServiceDefaults`:
+
+	- Haz clic derecho en la solución y selecciona `Agregar` > `Nuevo proyecto`.
+	- Selecciona la plantilla de proyecto `.NET Aspire Service Defaults`.
+	- Nombra el proyecto `ServiceDefaults`.
+	- Haz clic en `Siguiente` > `Crear`.
 
 	*Visual Studio*
-	![Visual Studio dialog to add a service defaults project](./media/vs-add-servicedefaults.png)
+	![Cuadro de diálogo de Visual Studio para agregar un proyecto de valores predeterminados del servicio](./media/vs-add-servicedefaults.png)
 
 	*Visual Studio Code*
-	![Visual Studio Code dialog to add a service defaults project](./media/vsc-add-servicedefaults.png)
+	![Cuadro de diálogo de Visual Studio Code para agregar un proyecto de valores predeterminados del servicio](./media/vsc-add-servicedefaults.png)
 
 
-### Command Line
+### Línea de comandos
 
-1. Create a new project using the `dotnet new aspire-servicedefaults` command:
+1. Crea un nuevo proyecto utilizando el comando `dotnet new aspire-servicedefaults`:
 
 	```bash
 	dotnet new aspire-servicedefaults -n ServiceDefaults
 	```
 
-## Configure Service Defaults
+## Configurar los valores predeterminados del servicio
 
-1. Add a reference to the `ServiceDefaults` project in the `Api` and `MyWeatherHub` projects:
+1. Agrega una referencia al proyecto `ServiceDefaults` en los proyectos `Api` y `MyWeatherHub`:
 
-	- Right-click on the `Api` project and select `Add` > `Reference`.
-		- Check the `ServiceDefaults` project and click `OK`.
-	- Right-click on the `Api` project and select `Add` > `Reference`.
-		- Check the `MyWeatherHub` project and click `OK`.
+	- Haz clic derecho en el proyecto `Api` y selecciona `Agregar` > `Referencia`.
+		- Marca el proyecto `ServiceDefaults` y haz clic en `Aceptar`.
+	- Haz clic derecho en el proyecto `Api` y selecciona `Agregar` > `Referencia`.
+		- Marca el proyecto `MyWeatherHub` y haz clic en `Aceptar`.
 
-	> Pro Tip: In Visual Studio 2022, you can drag and drop the project onto another project to add a reference.
+	> Consejo: En Visual Studio 2022, puedes arrastrar y soltar el proyecto sobre otro proyecto para agregar una referencia.
 
-1. In both the `Api` and `MyWeatherHub` projects, update their `Program.cs` files, adding the following line immediately after their `var builder = WebApplication.CreateBuilder(args);` line:
-	
+1. En los proyectos `Api` y `MyWeatherHub`, actualiza los archivos `Program.cs`, agregando la siguiente línea inmediatamente después de la línea `var builder = WebApplication.CreateBuilder(args);`:
+
 	```csharp
 	builder.AddServiceDefaults();
 	```
-1. In both the `Api` and `MyWeatherHub` projects, update their `Program.cs` files,adding the following line immediately after their `var app = builder.Build();` line:
+
+1. En los proyectos `Api` y `MyWeatherHub`, actualiza los archivos `Program.cs`, agregando la siguiente línea inmediatamente después de la línea `var app = builder.Build();`:
 
 	```csharp
 	app.MapDefaultEndpoints();
 	```
 
-## Run the application
+## Ejecutar la aplicación
 
-1. Run the application using a multip-project launch configuration in Visual Studio or Visual Studio Code.
+1. Ejecuta la aplicación utilizando una configuración de multiproyecto en Visual Studio o Visual Studio Code.
 
-	- Visual Studio: Right click on the `MyWeatherHub` solution and go to properties. Select the `Api` and `MyWeatherHub` as startup projects, select `OK`. 
-		- ![Visual Studio solution properties](./media/vs-multiproject.png)
-		- Click `Start` to start and debug both projects.
-	- Visual Studio Code: Run the `Api` and `MyWeatherHub` projects using the `Run and Debug` panel. We have provided a `launch.json` file with the necessary configurations to run both.
+	- Visual Studio: Haz clic derecho en la solución `MyWeatherHub` y ve a propiedades. Selecciona `Api` y `MyWeatherHub` como proyectos de inicio, selecciona `Aceptar`. 
+		- ![Propiedades de la solución de Visual Studio](./media/vs-multiproject.png)
+		- Haz clic en `Iniciar` para iniciar y depurar ambos proyectos.
+	- Visual Studio Code: Ejecuta los proyectos `Api` y `MyWeatherHub` utilizando el panel `Ejecutar y depurar`. Hemos proporcionado un archivo `launch.json` con las configuraciones necesarias para ejecutar ambos.
 
-1. Test the application by navigating to the following URLs:
+1. Prueba la aplicación navegando a las siguientes URL:
 
 	- [https://localhost:7032/swagger/index.html](https://localhost:7032/swagger/index.html) - API
 	- [https://localhost:7274/](https://localhost:7274/) - MyWeatherHub
 
-1. You should see the Swagger UI for the API and the MyWeatherHub home page.
-1. You can also view the health checks for the API by navigating to [https://localhost:7032/health](https://localhost:7032/health).
-1. You can also view the health checks for the MyWeatherHub by navigating to [https://localhost:7274/health](https://localhost:7274/health).
-1. View the logs in the terminal to see the health checks and other telemetry data such as resiliency with Polly:
+1. Deberías ver la interfaz de usuario de Swagger para la API y la página de inicio de MyWeatherHub.
+1. También puedes ver las comprobaciones de estado de la API navegando a [https://localhost:7032/health](https://localhost:7032/health).
+1. También puedes ver las comprobaciones de estado de MyWeatherHub navegando a [https://localhost:7274/health](https://localhost:7274/health).
+1. Visualiza los registros en la terminal para ver las comprobaciones de estado y otros datos de telemetría, como la resiliencia con Polly:
 
 	```bash
-	Polly: Information: Execution attempt. Source: '-standard//Standard-Retry', Operation Key: '', Result: '200', Handled: 'False', Attempt: '0', Execution Time: '13.0649'
+	Polly: Información: Intento de ejecución. Origen: '-standard//Standard-Retry', Clave de operación: '', Resultado: '200', Manejado: 'False', Intento: '0', Tiempo de ejecución: '13.0649'
 	```
-1. Click on 5 different cities and a "random" error will be thrown. You will see the Polly retry policy in action.
+
+1. Haz clic en 5 ciudades diferentes y se lanzará un error "aleatorio". Verás la política de re-intento en acción.
 
 	```bash
-	Polly: Warning: Execution attempt. Source: '-standard//Standard-Retry', Operation Key: '', Result: '500', Handled: 'True', Attempt: '0', Execution Time: '9732.8258'
-	Polly: Warning: Resilience event occurred. EventName: 'OnRetry', Source: '-standard//Standard-Retry', Operation Key: '', Result: '500'
-	System.Net.Http.HttpClient.NwsManager.ClientHandler: Information: Sending HTTP request GET http://localhost:5271/forecast/AKZ318
+	Polly: Advertencia: Intento de ejecución. Origen: '-standard//Standard-Retry', Clave de operación: '', Resultado: '500', Manejado: 'True', Intento: '0', Tiempo de ejecución: '9732.8258'
+	Polly: Advertencia: Se produjo un evento de resiliencia. Nombre del evento: 'OnRetry', Origen: '-standard//Standard-Retry', Clave de operación: '', Resultado: '500'
+	System.Net.Http.HttpClient.NwsManager.ClientHandler: Información: Enviando solicitud HTTP GET http://localhost:5271/forecast/AKZ318
 	```
