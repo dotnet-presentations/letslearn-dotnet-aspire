@@ -28,5 +28,13 @@
             }
         }
     },
+    "mounts": [
+        {
+            "type": "volume",
+            "source": "x509stores",
+            "target": "/home/vscode/.dotnet/corefx/cryptography/x509stores"
+        }
+    ],
+    "onCreateCommand": "bash .devcontainer/setup-dotnet-dev-cert.sh",
     "postCreateCommand": "find **/*.sln -exec dotnet restore {} \\;"
 }
