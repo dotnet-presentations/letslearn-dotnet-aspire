@@ -1,48 +1,48 @@
-﻿# Let's Learn .NET Aspire
+﻿# Aprendamos .NET Aspire
 
-Come learn all about [.NET Aspire](https://learn.microsoft.com/dotnet/aspire/), a new cloud ready stack for building observable, production ready, distributed applications.​ .NET Aspire can be added to any application regardless of the size and scale to help you build better applications faster.​
+Ven y aprende todo sobre [.NET Aspire](https://learn.microsoft.com/dotnet/aspire/), una nueva pila de tecnología lista para la nube para construir aplicaciones distribuidas, observables y listas para producción. .NET Aspire se puede agregar a cualquier aplicación, independientemente de su tamaño y escala, para ayudarte a construir aplicaciones mejores y más rápidas.
 
-.NET Aspire streamlines app development with:
+.NET Aspire simplifica el desarrollo de aplicaciones con:
 
-- **Orchestration**: Built-in orchestration with a simple, yet powerful, workflow engine.Use C# and familiar APIs without a line of YAML. Easily add popular cloud services, connect them to your projects, and run locally with a single click. 
-- **Service Discovery**: Automatic injection the right connection strings or network configurations and service discovery information to simplify the developer experience.
-- **Components**: Built-in components for common cloud services like databases, queues, and storage. Integrated with logging, health checks, telemetry, and more.
-- **Dashboard**: See live OpenTelemetry data with no configuration required. Launched by default on run, .NET Aspire's developer dashboard shows logs, environment variables, distributed traces, metrics and more to quickly verify app behavior.
-- **Deployment**: manages injecting the right connection strings or network configurations and service discovery information to simplify the developer experience.
-- **So Much More**: .NET Aspire is packed full of features that developers will love and help you be more productive.
+- **Orquestación**: Orquestación incorporada con un motor de flujo de trabajo simple pero potente. Utiliza C# y API familiares sin necesidad de YAML. Agrega fácilmente servicios en la nube populares, conecta a tus proyectos y ejecútalos localmente con un solo clic.
+- **Descubrimiento de servicios**: Inyección automática de las cadenas de conexión correctas o configuraciones de red y la información de descubrimiento de servicios para simplificar la experiencia del desarrollador.
+- **Componentes**: Componentes incorporados para servicios en la nube comunes como bases de datos, colas y almacenamiento. Integrados con registro, comprobaciones de salud, telemetría y más.
+- **Panel de control**: Visualiza datos en vivo de OpenTelemetry sin necesidad de configuración. El panel de control para desarrolladores de .NET Aspire muestra registros, variables de entorno, trazas distribuidas, métricas y más para verificar rápidamente el comportamiento de la aplicación.
+- **Despliegue**: Gestiona la inyección de las cadenas de conexión correctas o configuraciones de red y la información de descubrimiento de servicios para simplificar la experiencia del desarrollador.
+- **Y mucho más**: .NET Aspire está repleto de características que a los desarrolladores les encantarán y que te ayudarán a ser más productivo.
 
-Learn more about .NET Aspire with the following resources:
-- [Documenation](https://learn.microsoft.com/dotnet/aspire)
-- [Microsoft Learn Training Path](https://learn.microsoft.com/en-us/training/paths/dotnet-aspire/)
-- [.NET Aspire Videos](https://aka.ms/aspire/videos)
-- [eShop Reference Sample App](https://github.com/dotnet/eshop)
-- [.NET Aspire Samples](https://learn.microsoft.com/samples/browse/?expanded=dotnet&products=dotnet-aspire)
-- [.NET Aspire FAQ](https://learn.microsoft.com/dotnet/aspire/reference/aspire-faq)
+Obtén más información sobre .NET Aspire con los siguientes recursos:
+- [Documentación](https://learn.microsoft.com/dotnet/aspire)
+- [Ruta de aprendizaje de Microsoft Learn](https://learn.microsoft.com/training/paths/dotnet-aspire/)
+- [Videos de .NET Aspire](https://aka.ms/aspire/videos)
+- [Aplicación de muestra de referencia eShop](https://github.com/dotnet/eshop)
+- [Ejemplos de .NET Aspire](https://learn.microsoft.com/samples/browse/?expanded=dotnet&products=dotnet-aspire)
+- [Preguntas frecuentes de .NET Aspire](https://learn.microsoft.com/dotnet/aspire/reference/aspire-faq)
 
-## Localization
+## Localización
 
-This workshop materials are available in the following languages:
+Estos materiales del taller de .NET Aspire están disponibles en los siguientes idiomas:
 
-- [English](./README.md)
+- [Inglés](./README.md)
 - [한국어](./README.ko.md)
 
-## Workshop
+## Taller
 
-This .NET Aspire workshop is part of the [Let's Learn .NET](https://aka.ms/letslearndotnet) series.  This workshop is designed to help you learn about .NET Aspire and how to use it to build cloud ready applications.  This workshop is broken down into 6 modules:
+Este taller de .NET Aspire forma parte de la serie [Aprendamos .NET](https://aka.ms/letslearndotnet). Este taller está diseñado para ayudarte a aprender sobre .NET Aspire y cómo utilizarlo para construir aplicaciones listas para la nube. El taller se divide en 6 módulos:
 
-1. [Setup & Installation](./workshop/1-setup.md)
-1. [Service Defaults](./workhsop/2-sevicedefaults.md)
-1. [Developer Dashboard & Orchestration](./workshop/3-dashboard-apphost.md)
-1. [Service Discovery](./workshop/4-servicediscovery.md)
-1. [Components](./workshop/5-components.md)
-1. [Deployment](./workshop/6-deployment.md)
+1. [Configuración e instalación](./workshop/localisation/es/1-setup.md)
+1. [Valores predeterminados de servicio](./workshop/localisation/es/2-sevicedefaults.md)
+1. [Panel de control del desarrollador y orquestación](./workshop/localisation/es/3-dashboard-apphost.md)
+1. [Descubrimiento de servicios](./workshop/localisation/es/4-servicediscovery.md)
+1. [Componentes](./workshop/localisation/es/5-components.md)
+1. [Despliegue](./workshop/localisation/es/6-deployment.md)
 
-A full slide deck is available for this workshop [here](./workshop/AspireWorkshop.pptx).
+Un conjunto completo de diapositivas está disponible para este taller [aquí](./workshop/localisation/es/AspireWorkshop.pptx).
 
-The starting project for this workshop is located in the `start-with-api` folder.  This project is a simple weather API that uses the National Weather Service API to get weather data and a web frontend to display the weather data powered by Blazor.
+El proyecto inicial para este taller se encuentra en la carpeta `start-with-api`. Este proyecto es una API de clima simple que utiliza la API del Servicio Meteorológico Nacional para obtener datos meteorológicos y un frontend web para mostrar los datos meteorológicos impulsado por Blazor.
 
-This workshop is designed to be done in a 2 hour time frame. 
+Este taller está diseñado para completarse en un marco de tiempo de 2 horas.
 
-## Demo data
+## Datos de demostración
 
-The data and service used for this tutorial comes from the United States National Weather Service (NWS) at https://weather.gov  We are using their OpenAPI specification to query weather forecasts.  The OpenAPI specification is [available online](https://www.weather.gov/documentation/services-web-api).  We are using only 2 methods of this API, and simplified our code to just use those methods instead of creating the entire OpenAPI client for the NWS API.
+Los datos y servicios utilizados en este tutorial provienen del Servicio Meteorológico Nacional de los Estados Unidos (NWS) en https://weather.gov. Estamos utilizando su especificación de OpenAPI para consultar pronósticos del clima. La especificación de OpenAPI está [disponible en línea](https://www.weather.gov/documentation/services-web-api). Estamos utilizando solo 2 métodos de esta API y hemos simplificado nuestro código para utilizar solo esos métodos en lugar de crear el cliente completo de OpenAPI para la API de NWS.
