@@ -23,10 +23,10 @@
     - `Next` > `Create`을 클릭합니다.
 
     *비주얼 스튜디오*
-    ![앱 호스트 프로젝트 추가를 위한 비주얼 스튜디오 대화 상자](./media/vs-add-apphost.png)
+    ![앱 호스트 프로젝트 추가를 위한 비주얼 스튜디오 대화 상자](./../../media/vs-add-apphost.png)
 
     *비주얼 스튜디오 코드*
-    ![앱 호스트 프로젝트 추가를 위한 비주얼 스튜디오 코드 대화 상자](./media/vsc-add-apphost.png)
+    ![앱 호스트 프로젝트 추가를 위한 비주얼 스튜디오 코드 대화 상자](./../../media/vsc-add-apphost.png)
 
 ### 명령줄(커맨드라인)
 
@@ -79,18 +79,18 @@
 1. 비주얼 스튜디오 코드 또는 비주얼 스튜디오의 `Run and Debug` 패널을 사용하여 App Host를 실행합니다.
 1. .NET Aspire 대시보드가 기본 브라우저에서 열리고 애플리케이션의 리소스 및 종속성이 표시됩니다.
 
-    ![.NET Aspire 대시보드](./media/dashboard.png)
+    ![.NET Aspire 대시보드](./../../media/dashboard.png)
 
 1. `MyWeatherHub`의 엔드포인트 [https://localhost:7274](https://localhost:7274)를 클릭하여 날씨 대시보드를 엽니다.
 1. `Api` 및 `MyWeatherHub` 프로젝트가 동일한 프로세스에서 작동하고 있으며 구성 설정을 사용하여 이전과 동일하게 서로 통신할 수 있음을 확인합니다.
 1. `View Logs` 버튼을 클릭하여 `Api` 및 `MyWeatherHub` 프로젝트의 로그를 확인합니다.
 1. `Traces` 탭을 선택하고 API를 호출하는 트레이스에서 `View`를 선택합니다.
 
-    ![.NET Aspire 대시보드](./media/dashboard-trace.png)]
+    ![.NET Aspire 대시보드](./../../media/dashboard-trace.png)]
 
 1. `Metrics` 탭을 탐색하여 `Api` 및 `MyWeatherHub` 프로젝트의 메트릭을 확인합니다.
 
-    ![.NET Aspire 대시보드](./media/dashboard-metrics.png)
+    ![.NET Aspire 대시보드](./../../media/dashboard-metrics.png)
 
 ## 오류 생성하기
 
@@ -99,5 +99,5 @@
 1. `MyWeatherApp` 웹사이트에서 여러 다른 도시를 클릭하여 오류를 생성합니다. 일반적으로 5개의 다른 도시를 클릭하면 오류가 발생합니다.
 1. 오류를 생성한 후 대시보드의 `Structured` 탭이 자동으로 업데이트가 되며 오류를 표시합니다.
 
-    ![.NET Aspire 대시보드](./media/dashboard-error.png)
+    ![.NET Aspire 대시보드](./../../media/dashboard-error.png)
 1. `Traces` 또는 `Details`를 클릭하여 오류 메시지와 스택 트레이스를 확인합니다.

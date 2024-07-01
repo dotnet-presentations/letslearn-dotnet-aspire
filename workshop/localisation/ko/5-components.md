@@ -57,7 +57,7 @@ NuGet을 설치하면 이를 구성할 수 있습니다.
 1. AppHost 프로젝트를 시작합니다.
 1. 대시보드와 Docker Desktop에서 Redis 컨테이너와 Redis Commander 컨테이너를 다운로드한 후 시작하는 것을 볼 수 있습니다.
 
-    ![대시보드와 데스크탑에서 실행 중인 Redis](./media/redis-started.png)
+    ![대시보드와 데스크탑에서 실행 중인 Redis](./../../media/redis-started.png)
 
 ## API에 아웃풋 캐싱 통합
 
@@ -90,14 +90,14 @@ NuGet을 설치하면 이를 구성할 수 있습니다.
 1. AppHost 프로젝트를 시작하고 대시보드에서 `MyWeatherHub` 프로젝트를 엽니다.
 1. 도시를 클릭한 다음 다시 클릭합니다. 응답이 캐시되고 `Traces` 탭에서 두 번째 요청이 첫 번째 요청보다 훨씬 빠른 것을 확인할 수 있습니다.
 
-    ![출력 캐싱 작동](./media/output-caching.png)
+    ![출력 캐싱 작동](./../../media/output-caching.png)
 
 1. Redis Commander에서 캐시된 응답도 볼 수 있습니다. 대시보드에서 `Redis Commander` 엔드포인트를 클릭하여 Redis Commander를 엽니다. 통계 아래에서 연결 및 처리된 명령을 볼 수 있습니다.
 
-    ![Redis Commander](./media/redis-commander.png)
+    ![Redis Commander](./../../media/redis-commander.png)
 1. 또한, `Console` 탭에서 Redis 캐시와 Redis Commander에 대한 로그를 볼 수 있습니다.
 
-    ![Redis 로그](./media/redis-logs.png)
+    ![Redis 로그](./../../media/redis-logs.png)
 
 ## 사용자 정의 Redis 컨테이너
 
@@ -112,10 +112,10 @@ var cache = builder.AddRedis("cache")
 
 1. 애플리케이션을 실행하면 이제 대시보드와 Docker Desktop에서 Garnet이 동작하는 것을 볼 수 있습니다.
 
-    ![대시보드와 데스크탑에서 실행 중인 Garnet](./media/garnet-started.png)
+    ![대시보드와 데스크탑에서 실행 중인 Garnet](./../../media/garnet-started.png)
 1. 또한, `콘솔` 탭에서 Garnet의 로그를 볼 수 있습니다.
 
-    ![Garnet 로그](./media/garnet-logs.png)
+    ![Garnet 로그](./../../media/garnet-logs.png)
 
 ## 요약
 

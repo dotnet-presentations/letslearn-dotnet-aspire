@@ -23,10 +23,10 @@
     - `Next` > `Create`을 클릭합니다.
 
     *비주얼 스튜디오*
-    ![서비스 기본값 프로젝트 추가를 위한 비주얼 스튜디오 대화 상자](./media/vs-add-servicedefaults.png)
+    ![서비스 기본값 프로젝트 추가를 위한 비주얼 스튜디오 대화 상자](./../../media/vs-add-servicedefaults.png)
 
     *비주얼 스튜디오 코드*
-    ![서비스 기본값 프로젝트 추가를 위한 비주얼 스튜디오 코드 대화 상자](./media/vsc-add-servicedefaults.png)
+    ![서비스 기본값 프로젝트 추가를 위한 비주얼 스튜디오 코드 대화 상자](./../../media/vsc-add-servicedefaults.png)
 
 ### 명령줄(커맨드라인)
 
@@ -64,7 +64,7 @@
 1. 비주얼 스튜디오 또는 비주얼 스튜디오 코드에서 멀티 프로젝트 실행 구성을 사용하여 애플리케이션을 실행합니다.
 
     - 비주얼 스튜디오: `MyWeatherHub` 솔루션을 마우스 오른쪽 버튼으로 클릭하고 속성으로 이동합니다. `Api` 및 `MyWeatherHub`를 시작 프로젝트로 선택하고 `OK`를 선택합니다.
-        - ![비주얼 스튜디오 솔루션 속성](./media/vs-multiproject.png)
+        - ![비주얼 스튜디오 솔루션 속성](./../../media/vs-multiproject.png)
         - 두 프로젝트를 시작하고 디버그하려면 `Start`를 클릭합니다.
     - 비주얼 스튜디오 코드: `Run and Debug` 패널을 사용하여 `Api` 및 `MyWeatherHub` 프로젝트를 실행합니다. 두 프로젝트를 실행하는 데 필요한 설정이 포함된 `launch.json` 파일을 제공했습니다.
 
