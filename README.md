@@ -31,7 +31,7 @@ This workshop materials are available in the following languages:
 This .NET Aspire workshop is part of the [Let's Learn .NET](https://aka.ms/letslearndotnet) series.  This workshop is designed to help you learn about .NET Aspire and how to use it to build cloud ready applications.  This workshop is broken down into 6 modules:
 
 1. [Setup & Installation](./workshop/1-setup.md)
-1. [Service Defaults](./workhsop/2-sevicedefaults.md)
+1. [Service Defaults](./workshop/2-sevicedefaults.md)
 1. [Developer Dashboard & Orchestration](./workshop/3-dashboard-apphost.md)
 1. [Service Discovery](./workshop/4-servicediscovery.md)
 1. [Components](./workshop/5-components.md)
