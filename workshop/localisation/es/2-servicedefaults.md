@@ -21,10 +21,10 @@
 	- Haz clic en `Siguiente` > `Crear`.
 
 	*Visual Studio*
-	![Cuadro de diálogo de Visual Studio para agregar un proyecto de valores predeterminados del servicio](./media/vs-add-servicedefaults.png)
+	![Cuadro de diálogo de Visual Studio para agregar un proyecto de valores predeterminados del servicio](./../../media/vs-add-servicedefaults.png)
 
 	*Visual Studio Code*
-	![Cuadro de diálogo de Visual Studio Code para agregar un proyecto de valores predeterminados del servicio](./media/vsc-add-servicedefaults.png)
+	![Cuadro de diálogo de Visual Studio Code para agregar un proyecto de valores predeterminados del servicio](./../../media/vsc-add-servicedefaults.png)
 
 
 ### Línea de comandos
@@ -63,7 +63,7 @@
 1. Ejecuta la aplicación utilizando una configuración de multiproyecto en Visual Studio o Visual Studio Code.
 
 	- Visual Studio: Haz clic derecho en la solución `MyWeatherHub` y ve a propiedades. Selecciona `Api` y `MyWeatherHub` como proyectos de inicio, selecciona `Aceptar`. 
-		- ![Propiedades de la solución de Visual Studio](./media/vs-multiproject.png)
+		- ![Propiedades de la solución de Visual Studio](./../../media/vs-multiproject.png)
 		- Haz clic en `Iniciar` para iniciar y depurar ambos proyectos.
 	- Visual Studio Code: Ejecuta los proyectos `Api` y `MyWeatherHub` utilizando el panel `Ejecutar y depurar`. Hemos proporcionado un archivo `launch.json` con las configuraciones necesarias para ejecutar ambos.
 
