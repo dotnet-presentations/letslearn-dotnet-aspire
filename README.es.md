@@ -31,7 +31,7 @@ Estos materiales del taller de .NET Aspire están disponibles en los siguientes 
 Este taller de .NET Aspire forma parte de la serie [Aprendamos .NET](https://aka.ms/letslearndotnet). Este taller está diseñado para ayudarte a aprender sobre .NET Aspire y cómo utilizarlo para construir aplicaciones listas para la nube. El taller se divide en 6 módulos:
 
 1. [Configuración e instalación](./workshop/localisation/es/1-setup.md)
-1. [Valores predeterminados de servicio](./workshop/localisation/es/2-sevicedefaults.md)
+1. [Valores predeterminados de servicio](./workshop/localisation/es/2-servicedefaults.md)
 1. [Panel de control del desarrollador y orquestación](./workshop/localisation/es/3-dashboard-apphost.md)
 1. [Descubrimiento de servicios](./workshop/localisation/es/4-servicediscovery.md)
 1. [Componentes](./workshop/localisation/es/5-components.md)
