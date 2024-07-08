@@ -63,7 +63,7 @@ We haven't made any changes to the `Api` or `MyWeatherHub` projects, but we can 
 1. Add the following code under the `var builder = WebApplication.CreateBuilder(args);` at the top of the file:
 
 	```csharp
-	var cache = builder.AddRedisOutputCache("cache");
+	builder.AddRedisOutputCache("cache");
 	```
 
 	> Note that we are using the "cache" name to reference the Redis cache that we configured in the App Host.

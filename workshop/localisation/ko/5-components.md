@@ -66,7 +66,7 @@ NuGet을 설치하면 이를 구성할 수 있습니다.
 1. 파일 상단의 `var builder = WebApplication.CreateBuilder(args);` 아래에 다음 코드를 추가합니다:
 
     ```csharp
-    var cache = builder.AddRedisOutputCache("cache");
+    builder.AddRedisOutputCache("cache");
     ```
 
     > 우리는 AppHost 프로젝트에서 구성한 Redis 캐시를 참조하기 위해 "cache" 이름을 사용하고 있습니다.
