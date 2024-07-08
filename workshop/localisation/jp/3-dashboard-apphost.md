@@ -21,10 +21,10 @@
 	- `次へ` > `作成` をクリックします。
 
 	*Visual Studio*
-	![アプリホスト プロジェクトを追加するための Visual Studio ダイアログ](./media/vs-add-apphost.png)
+	![アプリホスト プロジェクトを追加するための Visual Studio ダイアログ](./../../media/vs-add-apphost.png)
 
 	*Visual Studio Code*
-	![アプリホスト プロジェクトを追加するための Visual Studio Code ダイアログ](./media/vsc-add-apphost.png)
+	![アプリホスト プロジェクトを追加するための Visual Studio Code ダイアログ](./../../media/vsc-add-apphost.png)
 
 
 ### コマンドライン
@@ -76,18 +76,18 @@
 1. Visual Studio Code または Visual Studio の `Run and Debug` パネルを使用して App Host を実行します。
 1. デフォルトのブラウザで .NET Aspire ダッシュボードが開き、アプリケーションのリソースと依存関係が表示されます。
 
-	![.NET Aspire ダッシュボード](./media/dashboard.png)
+	![.NET Aspire ダッシュボード](./../../media/dashboard.png)
 
 1. `MyWeatherHub` のエンドポイントである [https://localhost:7274](https://localhost:7274) をクリックし、天気ダッシュボードを開きます。
 1. `Api` および `MyWeatherHub` プロジェクトが同じプロセス内で実行されており、設定を使用して以前と同じように通信できることに注意してください。
 1. `View Logs` ボタンをクリックして、`Api` および `MyWeatherHub` プロジェクトのログを表示します。
 1. `Traces` タブを選択し、API が呼び出されているトレースの `View` を選択します。
 
-	![.NET Aspire ダッシュボード](./media/dashboard-trace.png)]
+	![.NET Aspire ダッシュボード](./../../media/dashboard-trace.png)]
 
 1. `Metrics` タブを探索して、`Api` および `MyWeatherHub` プロジェクトのメトリクスを確認します。
 
-	![.NET Aspire ダッシュボード](./media/dashboard-metrics.png)
+	![.NET Aspire ダッシュボード](./../../media/dashboard-metrics.png)
 
 ## エラーの作成
 1. ダッシュボードで `Structured` タブを開きます。
@@ -95,5 +95,5 @@
 1. `MyWeatherApp` ウェブサイトで異なるいくつかの都市をクリックしてエラーを生成します。通常、5つの異なる都市をクリックするとエラーが発生します。
 1. エラーを生成した後、ダッシュボードの `Structured` タブが自動的に更新され、エラーが表示されることを確認します。
 
-	![.NET Aspire ダッシュボード](./media/dashboard-error.png)
+	![.NET Aspire ダッシュボード](./../../media/dashboard-error.png)
 1. `Trace` または `Details` をクリックして、エラーメッセージとスタックトレースを確認します。

@@ -72,7 +72,7 @@ builder.Services.AddHttpClient<BasketServiceDashboardClient>(
 1. ダッシュボードで `MyWeatherHub` プロジェクトの `詳細` をクリックします。これにより、App Host からアプリを実行する際に .NET Aspire が構成したすべての設定が表示されます。
 1. 目のアイコンをクリックして値を表示し、`services__api_http_0` および `services__api_https_0` が `Api` サービスの正しい値で構成されていることを確認します。
 
-	![ダッシュボードのサービスディスカバリ設定](media/dashboard-servicediscovery.png)
+	![ダッシュボードのサービスディスカバリ設定](./../../media/dashboard-servicediscovery.png)
 
 
 ## 結論

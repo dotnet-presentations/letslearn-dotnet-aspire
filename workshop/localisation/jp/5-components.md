@@ -53,7 +53,7 @@ NuGet をインストールしたら、それを構成できます。
 1. App Host プロジェクトを起動します。
 1. ダッシュボードと Docker Desktop の両方で、Redis コンテナと Redis Commander コンテナのダウンロードと開始を確認できます。
 
-	![ダッシュボードとデスクトップで実行中の Redis](./media/redis-started.png)
+	![ダッシュボードとデスクトップで実行中の Redis](./../../media/redis-started.png)
 
 ## API における出力キャッシングの統合
 
@@ -86,13 +86,13 @@ NuGet をインストールしたら、それを構成できます。
 1. App Host プロジェクトを開始し、ダッシュボードから `MyWeatherHub` プロジェクトを開きます。
 1. 都市をクリックし、再度クリックします。レスポンスがキャッシュされていることがわかり、`Traces` タブで 2 回目のリクエストが 1 回目よりもはるかに速いことが確認できます。
 
-	![アクション中の出力キャッシング](./media/output-caching.png)
+	![アクション中の出力キャッシング](./../../media/output-caching.png)
 
 1. Redis Commander でキャッシュされたレスポンスも確認できます。ダッシュボードで `Redis Commander` エンドポイントをクリックして Redis Commander を開きます。`stats` の下に接続と処理されたコマンドが表示されます。
-	![Redis Commander](./media/redis-commander.png)
+	![Redis Commander](./../../media/redis-commander.png)
 1. さらに、`Console` タブで Redis キャッシュと Redis Commander のログを確認できます。
 
-	![Redis logs](./media/redis-logs.png)
+	![Redis logs](./../../media/redis-logs.png)
 
 
 ## カスタム Redis コンテナー
@@ -108,10 +108,10 @@ var cache = builder.AddRedis("cache")
 
 1. アプリケーションを実行すると、ダッシュボードと Docker Desktop で Garnet が実行されているのが確認できます。
 
-	![ダッシュボードとデスクトップで実行中の Garnet](./media/garnet-started.png)
+	![ダッシュボードとデスクトップで実行中の Garnet](./../../media/garnet-started.png)
 1. `Console` タブで Garnet のログも確認できます。
 
-	![Garnet のログ](./media/garnet-logs.png)
+	![Garnet のログ](./../../media/garnet-logs.png)
 
 
 ## まとめ

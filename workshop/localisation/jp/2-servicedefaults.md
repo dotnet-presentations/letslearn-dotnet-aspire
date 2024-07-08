@@ -21,10 +21,10 @@
 	- `次へ` > `作成` をクリックします。
 
 	*Visual Studio*
-	![Visual Studio での service defaults プロジェクトの追加ダイアログ](./media/vs-add-servicedefaults.png)
+	![Visual Studio での service defaults プロジェクトの追加ダイアログ](./../../media/vs-add-servicedefaults.png)
 
 	*Visual Studio Code*
-	![Visual Studio Code での service defaults プロジェクトの追加ダイアログ](./media/vsc-add-servicedefaults.png)
+	![Visual Studio Code での service defaults プロジェクトの追加ダイアログ](./../../media/vsc-add-servicedefaults.png)
 
 
 ### コマンドライン
@@ -61,7 +61,7 @@
 
 1. Visual Studio または Visual Studio Code でマルチプロジェクト起動構成を使用してアプリケーションを実行します。
 	- Visual Studio: `MyWeatherHub` ソリューションを右クリックしてプロパティに移動し、`Api` と `MyWeatherHub` をスタートアッププロジェクトとして選択し、`OK` をクリックします。
-		- ![Visual Studio ソリューション プロパティ](./media/vs-multiproject.png)
+		- ![Visual Studio ソリューション プロパティ](./../../media/vs-multiproject.png)
 		- `開始` をクリックして、両方のプロジェクトを開始およびデバッグします。
 	- Visual Studio Code: `Run and Debug` パネルを使用して `Api` および `MyWeatherHub` プロジェクトを実行します。必要な構成が含まれている `launch.json` ファイルを提供しています。
 

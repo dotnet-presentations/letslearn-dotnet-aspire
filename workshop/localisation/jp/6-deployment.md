@@ -1,43 +1,42 @@
-# Deploy a .NET Aspire app to Azure Container Apps
+# Azure Container Apps への .NET Aspire アプリのデプロイ
 
-.NET Aspire apps are designed to run in containerized environments. Azure Container Apps is a fully managed environment that enables you to run microservices and containerized applications on a serverless platform. This article will walk you through creating a new .NET Aspire solution and deploying it to Microsoft Azure Container Apps using Visual Studio and the Azure Developer CLI (`azd`).
+.NET Aspire アプリは、コンテナ化された環境で実行するように設計されています。Azure Container Apps は、サーバーレス プラットフォームでマイクロサービスやコンテナ化されたアプリケーションを実行するための完全に管理された環境を提供します。この記事では、新しい .NET Aspire ソリューションを作成し、Visual Studio と Azure Developer CLI (`azd`) を使用して Microsoft Azure Container Apps にデプロイする手順を説明します。
 
-In this example, we'll assume you're deploying the MyWeatherHub app from the previous sections. You can use the code you've built, or you can use the code in the **complete** directory. However, the steps are the same for any .NET Aspire app.
+この例では、前のセクションで作成した MyWeatherHub アプリをデプロイすることを前提としています。自分で構築したコードを使用するか、 **complete** ディレクトリのコードを使用することができます。ただし、手順はどの .NET Aspire アプリでも同じです。
 
-## Deploy the app with Visual Studio
+## Visual Studio を使用してアプリをデプロイ
 
-1. In the solution explorer, right-click on the **AppHost** project and select **Publish** to open the **Publish** dialog.
+1. ソリューションエクスプローラーで **AppHost** プロジェクトを右クリックし、**Publish** を選択して **Publish** ダイアログを開きます。
 
   > [!TIP]
-  > Publishing .NET Aspire requires the current version of the `azd` CLI. This should be installed with the .NET Aspire workload, but if you get a notification that the CLI is not installed or up to date, you can follow the directions in the next part of this tutorial to install it.
+  > .NET Aspire の公開には、最新バージョンの `azd` CLI が必要です。これは .NET Aspire ワークロードと一緒にインストールされるはずですが、CLI がインストールされていないもしくは、最新でないという通知が表示された場合は、このチュートリアルの次の部分の指示に従ってインストールできます。
 
-1. Select **Azure Container Apps for .NET Aspire** as the publishing target.
-    ![A screenshot of the publishing dialog workflow.](media/vs-deploy.png)
-1. On the **AzDev Environment** step, select your desired **Subscription** and **Location** values and then enter an **Environment name** such as _aspire-weather_. The environment name determines the naming of Azure Container Apps environment resources.
-1. Select **Finish** to create the environment, then **Close** to exit the dialog workflow and view the deployment environment summary.
-1. Select **Publish** to provision and deploy the resources on Azure.
-
+1. 発行対象として **Azure Container Apps for .NET Aspire** を選択します。
+    ![発行ダイアログのワークフローのスクリーンショット](./../../media/vs-deploy.png)
+1. **AzDev Environment** ステップで、希望する **Subscription** と **Location** の値を選択し、**Environment name** に aspire-weather などの名前を入力します。環境名は Azure Container Apps 環境リソースの名前付けを決定します。
+1. **Finish** を選択して環境を作成し、**Close** を選択してダイアログ ワークフローを終了し、デプロイメント環境の概要を表示します。
+1. **Publish** を選択して、Azure 上のリソースをプロビジョニングしてデプロイします。
     > [!TIP]
-    > This process may take several minutes to complete. Visual Studio provides status updates on the deployment progress in the output logs and you can learn a lot about how publishing works by watching these updates! You'll see that the process involves creating a resource group, an Azure Container Registry, a Log Analytics workspace, and an Azure Container Apps environment. The app is then deployed to the Azure Container Apps environment.
+    > このプロセスは完了までに数分かかる場合があります。Visual Studio はデプロイメントの進行状況を出力ログで提供し、これらの更新を見ながら公開の仕組みについて多くのことを学ぶことができます。このプロセスには、リソースグループ、Azure Container Registry、Log Analytics ワークスペース、および Azure Container Apps 環境の作成が含まれます。アプリはその後、Azure Container Apps 環境にデプロイされます。
 
-1. When the publish completes, Visual Studio displays the resource URLs at the bottom of the environment screen. Use these links to view the various deployed resources. Select the **webfrontend** URL to open a browser to the deployed app.
-    ![A screenshot of the completed publishing process and deployed resources.](media/vs-publish-complete.png)
+1. 公開が完了すると、Visual Studio は環境画面の下部にリソース URL を表示します。これらのリンクを使用して、デプロイされたさまざまなリソースを表示します。**webfrontend URL** を選択して、デプロイされたアプリをブラウザで開きます。
+    ![公開プロセスとデプロイされたリソースのスクリーンショット](./../../media/vs-publish-complete.png)
 
-## Install the Azure Developer CLI
+## Azure Developer CLI のインストール
 
-The process for installing `azd` varies based on your operating system, but it is widely available via `winget`, `brew`, `apt`, or directly via `curl`. To install `azd`, see [Install Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd).
+`azd` のインストール手順はオペレーティングシステムによって異なりますが、`winget`、`brew`、`apt`、または直接 `curl` を介して広く利用できます。`azd` をインストールするには、[Azure Developer CLI のインストール](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd) を参照してください。
 
-### Initialize the template
+### テンプレートの初期化
 
-1. Open a new terminal window and `cd` into the root of your .NET Aspire project.
-1. Execute the `azd init` command to initialize your project with `azd`, which will inspect the local directory structure and determine the type of app.
+1. 新しいターミナルウィンドウを開き、.NET Aspire プロジェクトのルートに `cd` します。
+1. `azd init` コマンドを実行してプロジェクトを `azd` で初期化し、ローカルディレクトリ構造を検査してアプリの種類を判断します。
 
     ```console
     azd init
     ```
 
-    For more information on the `azd init` command, see [azd init](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference#azd-init).
-1. If this is the first time you've initialized the app, `azd` prompts you for the environment name:
+    `azd init` コマンドの詳細については、[azd init](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference#azd-init) を参照してください。
+1. アプリを初めて初期化する場合、`azd` は環境名を尋ねます。
 
     ```console
     Initializing an app to run on Azure (azd init)
@@ -45,8 +44,8 @@ The process for installing `azd` varies based on your operating system, but it i
     ? Enter a new environment name: [? for help]
     ```
 
-    Enter the desired environment name to continue. For more information on managing environments with `azd`, see [azd env](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference#azd-env).
-1. Select **Use code in the current directory** when `azd` prompts you with two app initialization options.
+    続行するために希望する環境名を入力します。`azd` を使用して環境を管理する方法の詳細については、[azd env](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference#azd-env) を参照してください。
+1. `azd` が 2 つのアプリ初期化オプションを提示したときに、**現在のディレクトリのコードを使用** を選択します。
 
     ```console
     ? How do you want to initialize your app?  [Use arrows to move, type to filter]
@@ -54,7 +53,7 @@ The process for installing `azd` varies based on your operating system, but it i
       Select a template
     ```
 
-1. After scanning the directory, `azd` prompts you to confirm that it found the correct .NET Aspire _AppHost_ project. Select the **Confirm and continue initializing my app** option.
+1. ディレクトリをスキャンした後、`azd` は検出された .NET Aspire AppHost プロジェクトを確認するように求めます。**Confirm and continue initializing my app** オプションを選択します。
 
     ```console
     Detected services:
@@ -69,7 +68,7 @@ The process for installing `azd` varies based on your operating system, but it i
       Cancel and exit
     ```
 
-1. `azd` presents each of the projects in the .NET Aspire solution and prompts you to identify which to deploy with HTTP ingress open publicly to all internet traffic. Select only the `myweatherhub` (using the ↓ and Space keys), since you want the API to be private to the Azure Container Apps environment and _not_ available publicly.
+1. `azd` は、.NET Aspire ソリューション内の各プロジェクトを提示し、どのプロジェクトを HTTP イングレスがパブリックに公開されるようにデプロイするかを尋ねます。API を Azure Container Apps 環境にプライベートに保ち、パブリックに公開しないため、`myweatherhub` のみを選択します (↓ と Space キーを使用します) 。
 
     ```console
     ? Select an option Confirm and continue initializing my app
@@ -79,7 +78,7 @@ The process for installing `azd` varies based on your operating system, but it i
     > [x]  myweatherhub
     ```
 
-1. Finally, specify the the environment name, which is used to name provisioned resources in Azure and managing different environments such as `dev` and `prod`.
+1. 最後に、プロビジョニングされた Azure リソースの名前付けや `dev` や `prod` などの異なる環境の管理に使用される環境名を指定します。
 
     ```console
     Generating files to run your app on Azure:
@@ -91,18 +90,18 @@ The process for installing `azd` varies based on your operating system, but it i
     You can provision and deploy your app to Azure by running the azd up command in this directory. For more information on configuring your app, see ./next-steps.md
     ```
 
-`azd` generates a number of files and places them into the working directory. These files are:
+`azd` は、作業ディレクトリにいくつかのファイルを生成して配置します。これらのファイルは次のとおりです：
 
-- _azure.yaml_: Describes the services of the app, such as .NET Aspire AppHost project, and maps them to Azure resources.
-- _.azure/config.json_: Configuration file that informs `azd` what the current active environment is.
-- _.azure/aspireazddev/.env_: Contains environment specific overrides.
-- _.azure/aspireazddev/config.json_: Configuration file that informs `azd` which services should have a public endpoint in this environment.
+- _azure.yaml_: .NET Aspire AppHost プロジェクトなどのアプリのサービスを説明し、それらを Azure リソースにマッピングします。
+- _.azure/config.json_:  azd に現在のアクティブな 環境 を通知する構成ファイル。
+- _.azure/aspireazddev/.env_: 環境固有のオーバーライドを含みます。
+- _.azure/aspireazddev/config.json_: この環境でパブリック エンドポイントを持つべきサービスを `azd` に通知する構成ファイル。
 
-[](https://learn.microsoft.com/dotnet/aspire/deployment/azure/aca-deployment?tabs=visual-studio%2Cinstall-az-windows%2Cpowershell&pivots=azure-azd#deploy-the-app)
+[.NET Aspire アプリの Azure Container Apps へのデプロイ](https://learn.microsoft.com/dotnet/aspire/deployment/azure/aca-deployment?tabs=visual-studio%2Cinstall-az-windows%2Cpowershell&pivots=azure-azd#deploy-the-app)
 
-### Deploy the app
+### アプリのデプロイ
 
-Once `azd` is initialized, the provisioning and deployment process can be executed as a single command, [azd up](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference#azd-up).
+`azd` が初期化されたら、プロビジョニングとデプロイメントプロセスは単一のコマンド [azd up](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference#azd-up) で実行できます。
 
 ```console
 
@@ -151,15 +150,15 @@ You can view the resources created under the resource group <YOUR RESOURCE GROUP
 SUCCESS: Your up workflow to provision and deploy to Azure completed in 3 minutes 50 seconds.
 ```
 
-First, the projects will be packaged into containers during the `azd package` phase, followed by the `azd provision` phase during which all of the Azure resources the app will need are provisioned.
+まず、プロジェクトは `azd package` フェーズ中にコンテナにパッケージ化され、次に `azd provision` フェーズでアプリが必要とするすべての Azure リソースがプロビジョニングされます。
 
-Once `provision` is complete, `azd deploy` will take place. During this phase, the projects are pushed as containers into an Azure Container Registry instance, and then used to create new revisions of Azure Container Apps in which the code will be hosted.
+`provision` が完了すると、`azd deploy` が行われます。このフェーズでは、プロジェクトはコンテナとして Azure Container Registry インスタンスにプッシュされ、その後コードをホストするために新しい Azure Container Apps のリビジョンが作成されます。
 
-At this point the app has been deployed and configured, and you can open the Azure portal and explore the resources.
+この時点でアプリがデプロイされ構成されており、Azure ポータルを開いてリソースを探索することができます。
 
-## Clean up resources
+## リソースのクリーンアップ
 
-Run the following Azure CLI command to delete the resource group when you no longer need the Azure resources you created. Deleting the resource group also deletes the resources contained inside of it.
+作成した Azure リソースが不要になったときに、次の Azure CLI コマンドを実行してリソースグループを削除します。リソースグループを削除すると、その中に含まれるリソースも削除されます。
 
 ```console
 az group delete --name <your-resource-group-name>

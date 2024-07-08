@@ -24,14 +24,14 @@
 この .NET Aspire ワークショップは、[Let's Learn .NET](https://aka.ms/letslearndotnet) シリーズの一部です。このワークショップは、.NET Aspire について学び、クラウドレディなアプリケーションの構築に使用する方法を学ぶために設計されています。
 このワークショップは、以下の 6 つのモジュールに分かれています:
 
-1. [Setup & Installation](./workshop/1-setup.md)
-1. [Service Defaults](./workshop/2-sevicedefaults.md)
-1. [Developer Dashboard & Orchestration](./workshop/3-dashboard-apphost.md)
-1. [Service Discovery](./workshop/4-servicediscovery.md)
-1. [Components](./workshop/5-components.md)
-1. [Deployment](./workshop/6-deployment.md)
+1. [セットアップ](./workshop/localisation/jp/1-setup.md)
+1. [Service Defaults](./workshop/localisation/jp/2-servicedefaults.md)
+1. [ダッシュボードとオーケストレーター](./workshop/localisation/jp/3-dashboard-apphost.md)
+1. [サービス ディスカバリ](./workshop/localisation/jp/4-servicediscovery.md)
+1. [.NET Aspire コンポーネント](./workshop/localisation/jp/5-components.md)
+1. [デプロイメント](./workshop/localisation/jp/6-deployment.md)
 
-このワークショップの完全なスライドは[こちら](./workshop/AspireWorkshop.pptx)から利用できます。
+このワークショップの完全なスライドは[こちら](./workshop/localisation/jp/AspireWorkshop.pptx)から利用できます。
 
 このワークショップの開始プロジェクトは、`start-with-api` フォルダに格納されています。このプロジェクトは、National Weather Service API を使用して、天気データを取得し、Blazor によって提供される Web フロントエンドで天気データを表示するシンプルな天気 API です。
 
@@ -40,4 +40,3 @@
 ## デモ データ
 
 このチュートリアルで使用するデータとサービスは、アメリカ国立気象局 (NWS) の https://weather.gov から提供されています。NWS の OpenAPI 仕様を使用して天気予報をクエリします。OpenAPI 仕様は [こちら](https://www.weather.gov/documentation/services-web-api) から入手できます。私たちはこの API の 2 つのメソッドのみを使用しており、NWS API の全体的な OpenAPI クライアントを作成するのではなく、そのメソッドだけを使用するようにコードを簡略化しています。
-
