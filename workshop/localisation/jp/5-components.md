@@ -62,7 +62,7 @@ NuGet をインストールしたら、それを構成できます。
 1. ファイルの先頭にある `var builder = WebApplication.CreateBuilder(args);` の下に次のコードを追加します：
 
 	```csharp
-	var cache = builder.AddRedisOutputCache("cache");
+	builder.AddRedisOutputCache("cache");
 	```
 
 	> "cache" という名前を使用して、アプホストで構成した Redis キャッシュを参照しています。
