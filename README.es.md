@@ -25,19 +25,20 @@ Estos materiales del taller de .NET Aspire están disponibles en los siguientes 
 
 - [Inglés](./README.md)
 - [한국어](./README.ko.md)
+- [Português (PT-BR)](./README.pt-br.md)
 
 ## Taller
 
 Este taller de .NET Aspire forma parte de la serie [Aprendamos .NET](https://aka.ms/letslearndotnet). Este taller está diseñado para ayudarte a aprender sobre .NET Aspire y cómo utilizarlo para construir aplicaciones listas para la nube. El taller se divide en 6 módulos:
 
-1. [Configuración e instalación](./workshop/localisation/es/1-setup.md)
-1. [Valores predeterminados de servicio](./workshop/localisation/es/2-servicedefaults.md)
-1. [Panel de control del desarrollador y orquestación](./workshop/localisation/es/3-dashboard-apphost.md)
-1. [Descubrimiento de servicios](./workshop/localisation/es/4-servicediscovery.md)
-1. [Componentes](./workshop/localisation/es/5-components.md)
-1. [Despliegue](./workshop/localisation/es/6-deployment.md)
+1. [Configuración e instalación](./workshop/localization/es/1-setup.md)
+1. [Valores predeterminados de servicio](./workshop/localization/es/2-servicedefaults.md)
+1. [Panel de control del desarrollador y orquestación](./workshop/localization/es/3-dashboard-apphost.md)
+1. [Descubrimiento de servicios](./workshop/localization/es/4-servicediscovery.md)
+1. [Componentes](./workshop/localization/es/5-components.md)
+1. [Despliegue](./workshop/localization/es/6-deployment.md)
 
-Un conjunto completo de diapositivas está disponible para este taller [aquí](./workshop/localisation/es/AspireWorkshop.pptx).
+Un conjunto completo de diapositivas está disponible para este taller [aquí](./workshop/localization/es/AspireWorkshop.pptx).
 
 El proyecto inicial para este taller se encuentra en la carpeta `start-with-api`. Este proyecto es una API de clima simple que utiliza la API del Servicio Meteorológico Nacional para obtener datos meteorológicos y un frontend web para mostrar los datos meteorológicos impulsado por Blazor.
 
