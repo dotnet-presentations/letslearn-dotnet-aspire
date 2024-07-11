@@ -1,43 +1,42 @@
-# Deploy a .NET Aspire app to Azure Container Apps
+# Implante um aplicativo .NET Aspire no Azure Container Apps
 
-.NET Aspire apps are designed to run in containerized environments. Azure Container Apps is a fully managed environment that enables you to run microservices and containerized applications on a serverless platform. This article will walk you through creating a new .NET Aspire solution and deploying it to Microsoft Azure Container Apps using Visual Studio and the Azure Developer CLI (`azd`).
+Os aplicativos .NET Aspire são projetados para serem executados em ambientes conteinerizados. O Azure Container Apps é um ambiente totalmente gerenciado que permite executar microsserviços e aplicativos conteinerizados em uma plataforma sem servidor. Este artigo irá guiá-lo na criação de uma nova solução .NET Aspire e na implantação dela no Microsoft Azure Container Apps usando o Visual Studio e o Azure Developer CLI (`azd`).
 
-In this example, we'll assume you're deploying the MyWeatherHub app from the previous sections. You can use the code you've built, or you can use the code in the **complete** directory. However, the steps are the same for any .NET Aspire app.
+Neste exemplo, assumiremos que você está implantando o aplicativo MyWeatherHub das seções anteriores. Você pode usar o código que construiu, ou pode usar o código no diretório **complete**. No entanto, os passos são os mesmos para qualquer aplicativo .NET Aspire.
 
-## Deploy the app with Visual Studio
+## Implante o aplicativo com o Visual Studio
 
-1. In the solution explorer, right-click on the **AppHost** project and select **Publish** to open the **Publish** dialog.
+1. No solution explorer, clique com o botão direito do mouse no projeto **AppHost** e selecione **Publish** para abrir a caixa de diálogo **Publish**.
 
   > [!TIP]
-  > Publishing .NET Aspire requires the current version of the `azd` CLI. This should be installed with the .NET Aspire workload, but if you get a notification that the CLI is not installed or up to date, you can follow the directions in the next part of this tutorial to install it.
+  > Publicar o .NET Aspire requer a versão atual do CLI `azd`. Isso deve ser instalado com o .NET Aspire, mas se você receber uma notificação de que o CLI não está instalado ou atualizado, você pode seguir as instruções na próxima parte deste tutorial para instalá-lo.
 
-1. Select **Azure Container Apps for .NET Aspire** as the publishing target.
-    ![A screenshot of the publishing dialog workflow.](media/vs-deploy.png)
-1. On the **AzDev Environment** step, select your desired **Subscription** and **Location** values and then enter an **Environment name** such as _aspire-weather_. The environment name determines the naming of Azure Container Apps environment resources.
-1. Select **Finish** to create the environment, then **Close** to exit the dialog workflow and view the deployment environment summary.
-1. Select **Publish** to provision and deploy the resources on Azure.
-
+1. Selecione **Azure Container Apps for .NET Aspire** como o destino de publicação.
+    ![Uma captura de tela da caixa de diálogo de publicação.](./../../media/vs-deploy.png)
+1. Na etapa **AzDev Environment**, selecione os valores de **Subscription** e **Location** desejados e, em seguida, insira um **nome do Ambiente (environment)** como _aspire-weather_. O nome do ambiente determina a nomeação dos recursos do ambiente Azure Container Apps.
+1. Selecione **Finish** para criar o ambiente, depois **Close** para sair da caixa de diálogo e visualizar o resumo do ambiente de implantação.
+1. Selecione **Publish** para provisionar e implantar os recursos no Azure.
     > [!TIP]
-    > This process may take several minutes to complete. Visual Studio provides status updates on the deployment progress in the output logs and you can learn a lot about how publishing works by watching these updates! You'll see that the process involves creating a resource group, an Azure Container Registry, a Log Analytics workspace, and an Azure Container Apps environment. The app is then deployed to the Azure Container Apps environment.
+    > Este processo pode levar vários minutos para ser concluído. O Visual Studio fornece atualizações de status sobre o progresso da implantação nos logs de saída e você pode aprender muito sobre como a publicação funciona observando essas atualizações! Você verá que o processo envolve a criação de um grupo de recursos, um Registro de Contêineres Azure, um espaço de trabalho do Log Analytics e um ambiente Azure Container Apps. O aplicativo é então implantado no ambiente Azure Container Apps.
 
-1. When the publish completes, Visual Studio displays the resource URLs at the bottom of the environment screen. Use these links to view the various deployed resources. Select the **webfrontend** URL to open a browser to the deployed app.
-    ![A screenshot of the completed publishing process and deployed resources.](media/vs-publish-complete.png)
+1. Quando a publicação for concluída, o Visual Studio exibirá as URLs dos recursos na parte inferior da tela do ambiente. Use esses links para visualizar os vários recursos implantados. Selecione a URL **webfrontend** para abrir um navegador para o aplicativo implantado.
+    ![Uma captura de tela do processo de publicação concluído e dos recursos implantados.](./../../media/vs-publish-complete.png)
 
-## Install the Azure Developer CLI
+## Instale o Azure Developer CLI
 
-The process for installing `azd` varies based on your operating system, but it is widely available via `winget`, `brew`, `apt`, or directly via `curl`. To install `azd`, see [Install Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd).
+O processo para instalar o `azd` varia com base no seu sistema operacional, mas está amplamente disponível via `winget`, `brew`, `apt`, ou diretamente via `curl`. Para instalar o `azd`, consulte [Instalar o Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd).
 
-### Initialize the template
+### Inicialize o modelo (template) do aplicativo
 
-1. Open a new terminal window and `cd` into the root of your .NET Aspire project.
-1. Execute the `azd init` command to initialize your project with `azd`, which will inspect the local directory structure and determine the type of app.
+1. Abra uma nova janela do terminal e `cd` na raiz do seu projeto .NET Aspire.
+1. Execute o comando `azd init` para inicializar seu projeto com `azd`, que irá inspecionar a estrutura de diretórios local e determinar o tipo de aplicativo.
 
     ```console
     azd init
     ```
 
-    For more information on the `azd init` command, see [azd init](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference#azd-init).
-1. If this is the first time you've initialized the app, `azd` prompts you for the environment name:
+    Para mais informações sobre o comando `azd init`, consulte [azd init](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference#azd-init).
+1. Se esta for a primeira vez que você inicializou o aplicativo, o `azd` solicitará o nome do ambiente:
 
     ```console
     Initializing an app to run on Azure (azd init)
@@ -45,8 +44,8 @@ The process for installing `azd` varies based on your operating system, but it i
     ? Enter a new environment name: [? for help]
     ```
 
-    Enter the desired environment name to continue. For more information on managing environments with `azd`, see [azd env](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference#azd-env).
-1. Select **Use code in the current directory** when `azd` prompts you with two app initialization options.
+    Insira o nome do ambiente desejado para continuar. Para mais informações sobre o gerenciamento de ambientes com `azd`, consulte [azd env](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference#azd-env).
+1. Selecione **Use code in the current directory** quando o `azd` solicitar com duas opções de inicialização do aplicativo.
 
     ```console
     ? How do you want to initialize your app?  [Use arrows to move, type to filter]
@@ -54,7 +53,7 @@ The process for installing `azd` varies based on your operating system, but it i
       Select a template
     ```
 
-1. After scanning the directory, `azd` prompts you to confirm that it found the correct .NET Aspire _AppHost_ project. Select the **Confirm and continue initializing my app** option.
+1. Após escanear o diretório, o `azd` solicita que você confirme que encontrou o projeto _AppHost_ .NET Aspire correto. Selecione a opção **Confirmar e continuar inicializando meu aplicativo**.
 
     ```console
     Detected services:
@@ -69,7 +68,7 @@ The process for installing `azd` varies based on your operating system, but it i
       Cancel and exit
     ```
 
-1. `azd` presents each of the projects in the .NET Aspire solution and prompts you to identify which to deploy with HTTP ingress open publicly to all internet traffic. Select only the `myweatherhub` (using the ↓ and Space keys), since you want the API to be private to the Azure Container Apps environment and _not_ available publicly.
+1. `azd` apresenta cada um dos projetos na solução .NET Aspire e solicita que você identifique qual deles implantar com ingresso HTTP aberto publicamente para todo o tráfego da internet. Selecione apenas o `myweatherhub` (usando as teclas ↓ e Espaço), já que você deseja que a API seja privada ao ambiente Azure Container Apps e _não_ disponível publicamente.
 
     ```console
     ? Select an option Confirm and continue initializing my app
@@ -79,7 +78,7 @@ The process for installing `azd` varies based on your operating system, but it i
     > [x]  myweatherhub
     ```
 
-1. Finally, specify the the environment name, which is used to name provisioned resources in Azure and managing different environments such as `dev` and `prod`.
+1. Finalmente, especifique o nome do ambiente, que é usado para nomear os recursos provisionados no Azure e gerenciar diferentes ambientes, como `dev` e `prod`.
 
     ```console
     Generating files to run your app on Azure:
@@ -91,18 +90,18 @@ The process for installing `azd` varies based on your operating system, but it i
     You can provision and deploy your app to Azure by running the azd up command in this directory. For more information on configuring your app, see ./next-steps.md
     ```
 
-`azd` generates a number of files and places them into the working directory. These files are:
+`azd` gera vários arquivos e os coloca no diretório de trabalho. Esses arquivos são:
 
-- _azure.yaml_: Describes the services of the app, such as .NET Aspire AppHost project, and maps them to Azure resources.
-- _.azure/config.json_: Configuration file that informs `azd` what the current active environment is.
-- _.azure/aspireazddev/.env_: Contains environment specific overrides.
-- _.azure/aspireazddev/config.json_: Configuration file that informs `azd` which services should have a public endpoint in this environment.
+- _azure.yaml_: Descreve os serviços do aplicativo, como o projeto .NET Aspire AppHost, e os mapeia para recursos do Azure.
+- _.azure/config.json_: Arquivo de configuração que informa ao `azd` qual é o ambiente ativo atual.
+- _.azure/aspireazddev/.env_: Contém substituições específicas do ambiente.
+- _.azure/aspireazddev/config.json_: Arquivo de configuração que informa ao `azd` quais serviços devem ter um ponto de extremidade público neste ambiente.
 
-[](https://learn.microsoft.com/dotnet/aspire/deployment/azure/aca-deployment?tabs=visual-studio%2Cinstall-az-windows%2Cpowershell&pivots=azure-azd#deploy-the-app)
+[Deploy a .NET Aspire project to Azure Container Apps](https://learn.microsoft.com/dotnet/aspire/deployment/azure/aca-deployment)
 
-### Deploy the app
+### Implante o aplicativo
 
-Once `azd` is initialized, the provisioning and deployment process can be executed as a single command, [azd up](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference#azd-up).
+Uma vez que o `azd` é inicializado, o processo de provisionamento e implantação pode ser executado como um único comando, [azd up](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference#azd-up).
 
 ```console
 
@@ -151,16 +150,16 @@ You can view the resources created under the resource group <YOUR RESOURCE GROUP
 SUCCESS: Your up workflow to provision and deploy to Azure completed in 3 minutes 50 seconds.
 ```
 
-First, the projects will be packaged into containers during the `azd package` phase, followed by the `azd provision` phase during which all of the Azure resources the app will need are provisioned.
+Primeiro, os projetos serão empacotados em contêineres durante a fase `azd package`, seguida pela fase `azd provision` durante a qual todos os recursos do Azure necessários para o aplicativo serão provisionados.
 
-Once `provision` is complete, `azd deploy` will take place. During this phase, the projects are pushed as containers into an Azure Container Registry instance, and then used to create new revisions of Azure Container Apps in which the code will be hosted.
+Uma vez que o `provision` esteja completo, ocorrerá o `azd deploy`. Durante esta fase, os projetos são enviados como contêineres para uma instância do Azure Container Registry e, em seguida, usados para criar novas revisões de Azure Container Apps nos quais o código será hospedado.
 
-At this point the app has been deployed and configured, and you can open the Azure portal and explore the resources.
+Neste ponto, o aplicativo foi implantado e configurado, e você pode abrir o Portal Azure e explorar os recursos.
 
-## Clean up resources
+## Limpar recursos
 
-Run the following Azure CLI command to delete the resource group when you no longer need the Azure resources you created. Deleting the resource group also deletes the resources contained inside of it.
+Execute o seguinte comando do Azure CLI para deletar o grupo de recursos quando você não precisar mais dos recursos do Azure que criou. Deletar o grupo de recursos também deleta os recursos contidos dentro dele.
 
 ```console
-az group delete --name <your-resource-group-name>
+az group delete --name <nome-do-seu-grupo-de-recursos>
 ```

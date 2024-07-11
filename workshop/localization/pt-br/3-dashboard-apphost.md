@@ -4,10 +4,10 @@
 
 Antes de continuar, considere alguns termos comuns usados no .NET Aspire:
 
-* *Modelo de aplicativo*(App model): Uma coleção de recursos que compõem sua aplicação distribuída (DistributedApplication). Para uma definição mais formal, veja Definir o modelo de aplicativo.
-* *Projeto do host da aplicação/Orquestrador*(App host/Orchestrator project): O projeto .NET que orquestra o modelo de aplicativo, nomeado com o sufixo *.AppHost (por convenção).
-* *Recurso*(Resource): Um recurso representa uma parte de uma aplicação, seja um projeto .NET, contêiner, ou executável, ou algum outro recurso como um banco de dados, cache, ou serviço na nuvem (como um serviço de armazenamento).
-* *Referência*(Reference): Uma referência define uma conexão entre recursos, expressa como uma dependência usando a API WithReference. Para mais informações, veja Recursos de referência.
+* *Modelo de aplicativo* (App model): Uma coleção de recursos que compõem sua aplicação distribuída (DistributedApplication). Para uma definição mais formal, veja Definir o modelo de aplicativo.
+* *Projeto do host da aplicação/Orquestrador* (App host/Orchestrator project): O projeto .NET que orquestra o modelo de aplicativo, nomeado com o sufixo *.AppHost (por convenção).
+* *Recurso* (Resource): Um recurso representa uma parte de uma aplicação, seja um projeto .NET, contêiner, ou executável, ou algum outro recurso como um banco de dados, cache, ou serviço na nuvem (como um serviço de armazenamento).
+* *Referência* (Reference): Uma referência define uma conexão entre recursos, expressa como uma dependência usando a API WithReference. Para mais informações, veja Recursos de referência.
 
 ## Crie um Projeto do Host da Aplicação
 

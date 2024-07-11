@@ -1,124 +1,125 @@
-# .NET Aspire Components
+# Componentes .NET Aspire
 
-.NET Aspire components are a curated suite of NuGet packages specifically selected to facilitate the integration of cloud-native applications with prominent services and platforms, including but not limited to Redis and PostgreSQL. Each component furnishes essential cloud-native functionalities through either automatic provisioning or standardized configuration patterns. .NET Aspire components can be used without an app host (orchestrator) project, but they're designed to work best with the .NET Aspire app host.
+Os componentes .NET Aspire são um conjunto selecionado de pacotes NuGet especificamente escolhidos para facilitar a integração de aplicações nativas da nuvem com serviços e plataformas proeminentes, incluindo, mas não se limitando a, Redis e PostgreSQL. Cada componente fornece funcionalidades essenciais nativas da nuvem por meio de provisionamento automático ou padrões de configuração padronizados. Os componentes .NET Aspire podem ser usados sem um projeto de host de aplicativo (orquestrador), mas são projetados para funcionar melhor com o host de aplicativos .NET Aspire.
 
-.NET Aspire components should not be confused with .NET Aspire hosting packages, as they serve different purposes. Hosting packages are used to model and configure various resources in a .NET Aspire app, while components are used to map configuration to various client libraries.
+Os componentes .NET Aspire não devem ser confundidos com os pacotes de hospedagem .NET Aspire, pois servem a propósitos diferentes. Os pacotes de hospedagem são usados para modelar e configurar vários recursos em um aplicativo .NET Aspire, enquanto os componentes são usados para mapear a configuração para várias bibliotecas de clientes.
 
-There is an ever growing list [.NET Aspire Components](https://learn.microsoft.com/dotnet/aspire/fundamentals/components-overview?tabs=dotnet-cli#available-components) created and shipped by Microsoft and the community. .NET Aspire is flexible and anyone can create their own component to integrate with their own services.
+Existe uma lista sempre crescente de [Componentes .NET Aspire](https://learn.microsoft.com/dotnet/aspire/fundamentals/components-overview?tabs=dotnet-cli#available-components) criados e distribuídos pela Microsoft e pela comunidade. .NET Aspire é flexível e qualquer um pode criar seu próprio componente para integrar com seus próprios serviços.
 
+Vamos melhorar nossa aplicação adicionando um componente a ela. Vamos adicionar um componente que nos ajudará a conectar a um cache Redis para melhorar o desempenho da nossa API.
 
-Let's improve our application by adding a component to it. We will add a component that will help us to connect to a Redis cache to improve our API performance.
+## Adicione o componente Redis ao Host de Aplicativo
 
-## Add Redis Component to App Host
+Existem dois tipos de cache que poderíamos integrar à nossa aplicação, incluindo:
 
-There are two types of caching that we could integrate into our application including:
+- **Cache de saída** (Output caching): Um método de cache configurável e extensível para armazenar respostas HTTP completas para solicitações futuras.
+- **Cache distribuído** (Distributed caching): Um cache compartilhado por vários servidores de aplicativos que permite armazenar peças específicas de dados. Um cache distribuído é normalmente mantido como um serviço externo aos servidores de aplicativos que o acessam e pode melhorar o desempenho e a escalabilidade de um aplicativo ASP.NET Core.
 
-- **Output caching**: A configurable, extensible caching method for storing entire HTTP responses for future requests.
-- **Distributed caching**: A cache shared by multiple app servers that allows you to cache specific pieces of data. A distributed cache is typically maintained as an external service to the app servers that access it and can improve the performance and scalability of an ASP.NET Core app.
+Vamos integrar o componente _Output caching_ ao nosso host de aplicativo. Este componente nos ajudará a armazenar em cache a resposta da nossa API no cache Redis.
 
-We will integrate the _Output caching_ component to our app host. This component will help us to cache the response of our API in Redis cache. 
+Para adicionar o componente Redis ao nosso host de aplicativo, precisamos instalar o pacote NuGet `Aspire.Hosting.Redis`. Este pacote fornece os componentes necessários para configurar o serviço no Host de Aplicativo. O Redis é fornecido por meio de uma imagem de contêiner neste workshop, e quando iniciamos o Host de Aplicativo .NET Aspire, ele automaticamente baixa a imagem do contêiner Redis e inicia o servidor Redis.
 
-To add the Redis component to our app host, we need to install the `Aspire.Hosting.Redis` NuGet package. This package provides the necessary components to configure the service in the App Host. Redis is provided through a container image in this workshop, and when we start the .NET Aspire App Host, it will automatically download the Redis container image and start the Redis server.
+Com o NuGet instalado, podemos configurá-lo.
 
-With the NuGet installed we can configure it.
+1. Abra o arquivo `Program.cs` no projeto `AppHost`.
+1. Adicione o seguinte código abaixo de `var builder = DistributedApplication.CreateBuilder(args);`
 
-1. Open the `Program.cs` file in the `AppHost` project.
-1. Add the following code under `var builder = DistributedApplication.CreateBuilder(args);`
-
-	```csharp
+    ```csharp
 	var cache = builder.AddRedis("cache")
-	```
-	Here, we have configured the Redis cache with the name `cache`. This name is used to identify the cache in the `Api` or `MyWeatherHub`.
-1. Update the `api` in the App Host with a reference to the cache.
+    ```
 
-	```csharp
-	var api = builder.AddProject<Projects.Api>("api")
-			.WithReference(cache);
-	```
+	Aqui, configuramos o cache Redis com o nome `cache`. Este nome é usado para identificar o cache na `Api` ou `MyWeatherHub`.
 
-1. Additionally, we could configure [Redis Commander](https://joeferner.github.io/redis-commander/), a Redis management tool. As part of the `Aspire.Hosting.Redis` package,  Redis Commander is available in the same component. To add Redis Commander, add the following code under to the newly added Redis configuration.
+1. Atualize a `api` no Host de Aplicativo com uma referência ao cache.
 
-	```csharp
-	var cache = builder.AddRedis("cache")
-			.WithRedisCommander();
-	```
+    ```csharp
+    var api = builder.AddProject<Projects.Api>("api")
+            .WithReference(cache);
+    ```
 
-## Run the application
+1. Além disso, poderíamos configurar o [Redis Commander](https://joeferner.github.io/redis-commander/), uma ferramenta de gerenciamento Redis. Como parte do pacote `Aspire.Hosting.Redis`, o Redis Commander está disponível no mesmo componente. Para adicionar o Redis Commander, adicione o seguinte código abaixo da nova configuração do Redis adicionada.
 
-We haven't made any changes to the `Api` or `MyWeatherHub` projects, but we can see the Redis cache start when we start the App Host. 
+    ```csharp
+    var cache = builder.AddRedis("cache")
+            .WithRedisCommander();
+    ```
+
+## Execute a aplicação
+
+Não fizemos nenhuma alteração nos projetos `Api` ou `MyWeatherHub`, mas podemos ver o cache Redis iniciar quando iniciamos o Host de Aplicativo.
 
 > [!IMPORTANT]
-> Since Redis runs in a container you will need to ensure that Docker is running on your machine.
+> Como o Redis é executado em um contêiner, você precisará garantir que o Docker esteja rodando em sua máquina.
 
-1. Start Docker Desktop or Podman
-1. Start the App Host project.
-1. You will see both the Redis container and Redis Commander container download and start in both the dashboard and in Docker Desktop.
+1. Inicie o Docker Desktop ou Podman.
+1. Inicie o projeto Host (App Host) de Aplicativo.
+1. Você verá tanto o contêiner do Redis quanto o contêiner do Redis Commander sendo baixados e iniciados tanto no dashboard quanto no Docker Desktop.
 
-	![Redis running in dashboard and desktop](./media/redis-started.png)
+    ![Redis rodando no dashboard e no desktop](./../../media/redis-started.png)
 
-## Integrate Output Caching in API
+## Integre o Cache de Saída (Output Caching) na API
 
-1. Install the `Aspire.StackExchange.Redis.OutputCaching` NuGet package in the `Api` project to get access to the Redis APIs.
-1. Open the `Program.cs` file in the `Api` project.
-1. Add the following code under the `var builder = WebApplication.CreateBuilder(args);` at the top of the file:
+1. Instale o pacote NuGet `Aspire.StackExchange.Redis.OutputCaching` no projeto `Api` para obter acesso às APIs Redis.
+1. Abra o arquivo `Program.cs` no projeto `Api`.
+1. Adicione o seguinte código abaixo de `var builder = WebApplication.CreateBuilder(args);` no topo do arquivo:
 
-	```csharp
-	builder.AddRedisOutputCache("cache");
-	```
+    ```csharp
+    builder.AddRedisOutputCache("cache");
+    ```
 
-	> Note that we are using the "cache" name to reference the Redis cache that we configured in the App Host.
-1. The `NwsManager` has already been configured to use Output caching, but with a memory cache. We will update it to use the Redis cache. Open the `NwsManager.cs` file in the `Data` folder.
-1. In the `NwsManagerExtensions` class you will find a `AddNwsManager` method.
-1. **DELETE** the following code:
+    > Observe que estamos usando o nome "cache" para referenciar o cache Redis que configuramos no Host de Aplicativo.
 
-	```csharp
-	// Add default output caching
-	services.AddOutputCache(options =>
-	{
-		options.AddBasePolicy(builder => builder.Cache());
-	});
-	```
+1. O `NwsManager` já foi configurado para usar o cache de saída, mas com um cache de memória. Vamos atualizá-lo para usar o cache Redis. Abra o arquivo `NwsManager.cs` na pasta `Data`.
+1. Na classe `NwsManagerExtensions`, você encontrará um método `AddNwsManager`.
+1. **DELETE** o seguinte código:
 
-	Because we configured the application to use Redis cache in the `Program.cs` file, we no longer need to add the default output caching policy.
+    ```csharp
+    // Adicionar cache de saída padrão
+    services.AddOutputCache(options =>
+    {
+        options.AddBasePolicy(builder => builder.Cache());
+    });
+    ```
 
+    Como configuramos a aplicação para usar o cache Redis no arquivo `Program.cs`, não precisamos mais adicionar a política de cache de saída padrão.
 
-## Run the application
-1. Start the App Host project and open the `MyWeatherHub` project from the dashboard
-1. Click on a city and then click on it again. You will see that the response is cached and the second request is much faster than the first one under the `Traces` tab.
+## Execute a aplicação e teste o cache de saída
 
-	![Output caching in action](./media/output-caching.png)
+1. Inicie o projeto Host de Aplicativo e abra o projeto `MyWeatherHub` a partir do dashboard
+1. Clique em uma cidade e depois clique novamente. Você verá que a resposta é armazenada em cache e a segunda solicitação é muito mais rápida que a primeira na aba `Traces`.
 
+    ![Cache de saída em ação](./../../media/output-caching.png)
 
-1. You can also see the cached response in the Redis Commander. Open the Redis Commander by clicking on the `Redis Commander` endpoint in the dashboard. Under stats you will see connections and commands processed.
+1. Você também pode ver a resposta armazenada em cache no Redis Commander. Abra o Redis Commander clicando no endpoint `Redis Commander` no dashboard. Nas estatísticas, você verá conexões e comandos processados.
 
-	![Redis Commander](./media/redis-commander.png)
-1. In addition, you can see logs for the Redis cache and Redis Commander in the `Console` tab.
+    ![Redis Commander](./../../media/redis-commander.png)
 
-	![Redis logs](./media/redis-logs.png)
+1. Além disso, você pode ver os logs do cache Redis e do Redis Commander na aba `Console`.
+    ![Logs do Redis](./../../media/redis-logs.png)
 
+## Contêineres Redis Personalizados
 
-## Custom Redis Containers
-
-.NET Aspire components are flexible and customizable. By default, the Redis component uses a Redis container image from Docker Hub. However, you can use your own Redis container image by providing the image name and tag after the `AddRedis` method. For example, if you have a custom Redis container image such as [Garnet](https://github.com/microsoft/garnet), you can provide the image name and tag in the App Host as follows:
+Os componentes .NET Aspire são flexíveis e personalizáveis. Por padrão, o componente Redis usa uma imagem de contêiner Redis do Docker Hub. No entanto, você pode usar sua própria imagem de contêiner Redis fornecendo o nome da imagem e a tag após o método `AddRedis`. Por exemplo, se você tem uma imagem de contêiner Redis personalizada, como [Garnet](https://github.com/microsoft/garnet), você pode fornecer o nome da imagem e a tag no Host de Aplicativo da seguinte forma:
 
 ```csharp
 var cache = builder.AddRedis("cache")
-	.WithImage("ghcr.io/microsoft/garnet")
-	.WithImageTag("latest")
-	.WithRedisCommander();
+    .WithImage("ghcr.io/microsoft/garnet")
+    .WithImageTag("latest")
+    .WithRedisCommander();
 ```
 
-1. Run the application and you will now see Garnet running in the dashboard and in Docker Desktop.
+1. Execute a aplicação e agora você verá o Garnet rodando no dashboard e no Docker Desktop.
 
-	![Garnet running in dashboard and desktop](./media/garnet-started.png)
-1. You can also see the logs for Garnet in the `Console` tab.
+	![Garnet rodando no dashboard e no Docker Desktop.](./../../media/garnet-started.png)
 
-	![Garnet logs](./media/garnet-logs.png)
+1. Você também pode ver os logs do Garnet na aba `Console`.
 
+	![Logs do Garnet](./../../media/garnet-logs.png)
 
-## Summary
-In this section, we added a Redis component to the App Host and integrated output caching in the API. We saw how the response was cached in the Redis cache and how the second request was much faster than the first one. We also saw how to use Redis Commander to manage the Redis cache.
+## Resumo
 
-There are many more components available that you can use to integrate with your services. You can find the list of available components [in the .NET Aspire documentation](https://learn.microsoft.com/dotnet/aspire/fundamentals/components-overview?tabs=dotnet-cli#available-components).
+Nesta seção, adicionamos um componente Redis ao Host de Aplicativo e integramos o cache de saída na API. Vimos como a resposta foi armazenada em cache no cache Redis e como a segunda solicitação foi muito mais rápida que a primeira. Também vimos como usar o Redis Commander para gerenciar o cache Redis.
 
-A natural next step would be to integrate a database or leverage Azure Redis Cache as a hosted solution. Components for these and more are available on NuGet.
+Existem muitos mais componentes disponíveis que você pode usar para integrar com seus serviços. Você pode encontrar a lista de componentes disponíveis na documentação do .NET Aspire.
+
+Um próximo passo natural seria integrar um banco de dados ou aproveitar o Azure Redis Cache como uma solução hospedada. Componentes para estes e mais estão disponíveis no NuGet.
