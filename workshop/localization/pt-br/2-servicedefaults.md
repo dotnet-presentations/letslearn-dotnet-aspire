@@ -1,84 +1,82 @@
-# Service Defaults aka Smart Defaults
+# Padrões de Serviço (Service Defaults/Smart Defaults)
 
-## Introduction
-.NET Aspire provides a set of smart defaults for services that are commonly used in .NET applications. These defaults are designed to help you get started quickly and provide a consistent experience across different types of applications. This includes:
+## Introdução
+.NET Aspire fornece um conjunto de padrões inteligentes para serviços que são comumente usados em aplicações .NET. Esses padrões são projetados para ajudá-lo a começar rapidamente e fornecer uma experiência consistente em diferentes tipos de aplicações. Isso inclui:
 
-- Telemetry: Metrics, Tracing, Logging
-- Resiliency
-- Health Checks
-- Service Discovery
+- Telemetria: Métricas, Rastreamento, Log
+- Resiliência
+- Verificações de Saúde do Ambiente (Health Checks)
+- Descoberta de Serviço (Service Discovery)
 
-## Create Service Defaults Project
+## Crie um Projeto de Padrões de Serviço
 
 ### Visual Studio & Visual Studio Code
 
-1. Add a new project to the solution called `ServiceDefaults`:
+1. Adicione um novo projeto à solução chamado `ServiceDefaults`:
 
-	- Right-click on the solution and select `Add` > `New Project`.
-	- Select the `.NET Aspire Service Defaults` project template.
-	- Name the project `ServiceDefaults`.
-	- Click `Next` > `Create`.
+	- Clique com o botão direito na solução e selecione `Add` > `New Project`.
+	- Selecione o modelo de projeto `.NET Aspire Service Defaults`.
+	- Nomeie o projeto como `ServiceDefaults`.
+	- Clique em `Next` > `Create`.
 
 	*Visual Studio*
-	![Visual Studio dialog to add a service defaults project](./media/vs-add-servicedefaults.png)
+	![Janela do Visual Studio para adicionar um projeto de padrões de serviço](./../../media/vs-add-servicedefaults.png)
 
 	*Visual Studio Code*
-	![Visual Studio Code dialog to add a service defaults project](./media/vsc-add-servicedefaults.png)
+	![Janela do Visual Studio Code para adicionar um projeto de padrões de serviço](./../../media/vsc-add-servicedefaults.png)
 
+### Linha de Comando
 
-### Command Line
-
-1. Create a new project using the `dotnet new aspire-servicedefaults` command:
+1. Crie um novo projeto usando o comando `dotnet new aspire-servicedefaults`:
 
 	```bash
 	dotnet new aspire-servicedefaults -n ServiceDefaults
 	```
 
-## Configure Service Defaults
+## Configure o Padrões de Serviço
 
-1. Add a reference to the `ServiceDefaults` project in the `Api` and `MyWeatherHub` projects:
+1. Adicione uma referência ao projeto `ServiceDefaults` nos projetos `Api` e `MyWeatherHub`:
 
-	- Right-click on the `Api` project and select `Add` > `Reference`.
-		- Check the `ServiceDefaults` project and click `OK`.
-	- Right-click on the `Api` project and select `Add` > `Reference`.
-		- Check the `MyWeatherHub` project and click `OK`.
+	- Clique com o botão direito no projeto `Api` e selecione `Add` > `Reference`.
+		- Selecione o projeto `ServiceDefaults` e clique em `OK`.
+	- Clique com o botão direito no projeto `Api` e selecione `Add` > `Reference`.
+		- Selecione o projeto `MyWeatherHub` e clique em `OK`.
 
-	> Pro Tip: In Visual Studio 2022, you can drag and drop the project onto another project to add a reference.
+	> Dica: No Visual Studio 2022, você pode arrastar e soltar o projeto em outro projeto para adicionar uma referência.
+1. Nos projetos `Api` e `MyWeatherHub`, atualize seus arquivos `Program.cs`, adicionando a seguinte linha imediatamente após a linha `var builder = WebApplication.CreateBuilder(args);`:
 
-1. In both the `Api` and `MyWeatherHub` projects, update their `Program.cs` files, adding the following line immediately after their `var builder = WebApplication.CreateBuilder(args);` line:
-	
 	```csharp
 	builder.AddServiceDefaults();
 	```
-1. In both the `Api` and `MyWeatherHub` projects, update their `Program.cs` files,adding the following line immediately after their `var app = builder.Build();` line:
+1. Nos projetos `Api` e `MyWeatherHub`, atualize seus arquivos `Program.cs`, adicionando a seguinte linha imediatamente após a linha `var app = builder.Build();`:
 
 	```csharp
 	app.MapDefaultEndpoints();
 	```
 
-## Run the application
+## Execute a aplicação
 
-1. Run the application using a multip-project launch configuration in Visual Studio or Visual Studio Code.
+1. Execute a aplicação usando uma configuração de execução multiprojeto no Visual Studio ou Visual Studio Code.
 
-	- Visual Studio: Right click on the `MyWeatherHub` solution and go to properties. Select the `Api` and `MyWeatherHub` as startup projects, select `OK`. 
-		- ![Visual Studio solution properties](./media/vs-multiproject.png)
-		- Click `Start` to start and debug both projects.
-	- Visual Studio Code: Run the `Api` and `MyWeatherHub` projects using the `Run and Debug` panel. We have provided a `launch.json` file with the necessary configurations to run both.
+	- Visual Studio: Clique com o botão direito na solução `MyWeatherHub` e vá para propriedades. Selecione `Api` e `MyWeatherHub` como "startup projects", selecione `OK`.
+		- ![Propriedades da solução do Visual Studio](./../../media/vs-multiproject.png)
+		- Clique em `Start` para começar e depurar ambos os projetos.
+	- Visual Studio Code: Execute os projetos `Api` e `MyWeatherHub` usando o painel `Run and Debug`. Fornecemos um arquivo `launch.json` com as configurações necessárias para executar ambos.
 
-1. Test the application by navigating to the following URLs:
+1. Teste a aplicação navegando para os seguintes URLs:
 
 	- [https://localhost:7032/swagger/index.html](https://localhost:7032/swagger/index.html) - API
 	- [https://localhost:7274/](https://localhost:7274/) - MyWeatherHub
 
-1. You should see the Swagger UI for the API and the MyWeatherHub home page.
-1. You can also view the health checks for the API by navigating to [https://localhost:7032/health](https://localhost:7032/health).
-1. You can also view the health checks for the MyWeatherHub by navigating to [https://localhost:7274/health](https://localhost:7274/health).
-1. View the logs in the terminal to see the health checks and other telemetry data such as resiliency with Polly:
+1. Você deve conseguir accessar a API e a página inicial do MyWeatherHub no Swagger.
+1. Você também pode accessar as verificações de saúde (health checks) da API navegando para [https://localhost:7032/health](https://localhost:7032/health).
+1. Você também pode visualizar as verificações de saúde (health checks) do MyWeatherHub navegando para [https://localhost:7274/health](https://localhost:7274/health).
+1. Veja os logs no terminal para ver as verificações de saúde (health checks) e outros dados de telemetria, como resiliência com Polly:
 
 	```bash
 	Polly: Information: Execution attempt. Source: '-standard//Standard-Retry', Operation Key: '', Result: '200', Handled: 'False', Attempt: '0', Execution Time: '13.0649'
 	```
-1. Click on 5 different cities and a "random" error will be thrown. You will see the Polly retry policy in action.
+1. Clique em 5 cidades diferentes e um erro "aleatório" será lançado. Você verá a política de nova tentativa do Polly em ação.
 
 	```bash
 	Polly: Warning: Execution attempt. Source: '-standard//Standard-Retry', Operation Key: '', Result: '500', Handled: 'True', Attempt: '0', Execution Time: '9732.8258'

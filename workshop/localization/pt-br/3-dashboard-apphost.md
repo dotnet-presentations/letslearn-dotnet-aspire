@@ -1,67 +1,63 @@
-# Dashboard & Orchestration with .NET Aspire App Host
+# Painel de Controle & Orquestração com .NET Aspire App Host
 
-.NET Aspire provides APIs for expressing resources and dependencies within your distributed application. In addition to these APIs, there's tooling that enables some compelling scenarios. The orchestrator is intended for local development purposes.
+.NET Aspire fornece APIs para apresentar recursos e dependências dentro da sua aplicação distribuída. Além dessas APIs, há ferramentas que possibilitam alguns cenários interessantes. O orquestrador é destinado para fins de desenvolvimento local.
 
-Before continuing, consider some common terminology used in .NET Aspire:
+Antes de continuar, considere alguns termos comuns usados no .NET Aspire:
 
-* *App model*: A collection of resources that make up your distributed application (DistributedApplication). For a more formal definition, see Define the app model.
-* *App host/Orchestrator project*: The .NET project that orchestrates the app model, named with the *.AppHost suffix (by convention).
-* *Resource*: A resource represents a part of an application whether it be a .NET project, container, or executable, or some other resource like a database, cache, or cloud service (such as a storage service).
-* *Reference*: A reference defines a connection between resources, expressed as a dependency using the WithReference API. For more information, see Reference resources.
+* *Modelo de aplicativo*(App model): Uma coleção de recursos que compõem sua aplicação distribuída (DistributedApplication). Para uma definição mais formal, veja Definir o modelo de aplicativo.
+* *Projeto do host da aplicação/Orquestrador*(App host/Orchestrator project): O projeto .NET que orquestra o modelo de aplicativo, nomeado com o sufixo *.AppHost (por convenção).
+* *Recurso*(Resource): Um recurso representa uma parte de uma aplicação, seja um projeto .NET, contêiner, ou executável, ou algum outro recurso como um banco de dados, cache, ou serviço na nuvem (como um serviço de armazenamento).
+* *Referência*(Reference): Uma referência define uma conexão entre recursos, expressa como uma dependência usando a API WithReference. Para mais informações, veja Recursos de referência.
 
-
-## Create App Host Project
+## Crie um Projeto do Host da Aplicação
 
 ### Visual Studio & Visual Studio Code
 
-1. Add a new project to the solution called `AppHost`:
+1. Adicione um novo projeto à solução chamado `AppHost`:
 
-	- Right-click on the solution and select `Add` > `New Project`.
-	- Select the `.NET Aspire App Host` project template.
-	- Name the project `AppHost`.
-	- Click `Next` > `Create`.
+    - Clique com o botão direito na solução e selecione `Add` > `New Project`.
+    - Selecione o modelo de projeto `.NET Aspire App Host`.
+    - Nomeie o projeto como `AppHost`.
+    - Clique em `Next` > `Create`.
 
-	*Visual Studio*
-	![Visual Studio dialog to add a app host project](./media/vs-add-apphost.png)
+    *Visual Studio*
+    ![Janela do Visual Studio para adicionar um projeto de host de aplicativo](./../../media/vs-add-apphost.png)
 
-	*Visual Studio Code*
-	![Visual Studio Code dialog to add a app host project](./media/vsc-add-apphost.png)
+    *Visual Studio Code*
+    ![Janela do Visual Studio Code para adicionar um projeto de host de aplicativo](./../../media/vsc-add-apphost.png)
 
+### Linha de Comando
 
-### Command Line
-
-1. Create a new project using the `dotnet new aspire-apphost` command:
+1. Crie um novo projeto usando o comando `dotnet new aspire-apphost`:
 
 	```bash
 	dotnet new aspire-apphost -n AppHost
-	```
+    ```
 
-## Configure Service Defaults
+## Configure Padrões de Serviço (Service Defaults)
 
-1. Add a reference to the `Api` and `MyWeatherHub` projects in the new `AppHost` project:
+1. Adicione as referências dos projetos `Api` e `MyWeatherHub` no novo projeto `AppHost`:
+    - Clique com o botão direito no projeto `AppHost` e selecione `Add` > `Reference`.
+        - Marque os projetos `Api` e `MyWeatherHub` e clique em `OK`.
 
-	- Right-click on the `AppHost` project and select `Add` > `Reference`.
-		- Check the `Api` and `MyWeatherHub` projects and click `OK`.
+    > Dica: No Visual Studio 2022, você pode arrastar e soltar o projeto em outro projeto para adicionar uma referência.
+1. Quando essas referências são adicionadas, os seradores de código automaticamente geram o código necessário para referenciar os projetos no Host da Aplicação.
 
-	> Pro Tip: In Visual Studio 2022, you can drag and drop the project onto another project to add a reference.
-1. When these references are add Source Generators automatically generate the necessary code to reference the projects in the App Host.
+## Orquestre a aplicação
 
+1. No projeto `AppHost`, atualize o arquivo `Program.cs`, adicionando a seguinte linha imediatamente após a linha `var builder = DistributedApplication.CreateBuilder(args);`:
 
-## Orchestrate the Application
-
-1. In the `AppHost` project, update the `Program.cs` file, adding the following line immediately after the `var builder = DistributedApplication.CreateBuilder(args);` line:
-
-	```csharp
+    ```csharp
 	var api = builder.AddProject<Projects.Api>("api");
 
 	var web = builder.AddProject<Projects.MyWeatherHub>("myweatherhub");
-	```
+    ```
 
-## Run the application
+## Execute a aplicação
 
-1. Set the `AppHost` project as the startup project in Visual Studio by right clicking on the `AppHost` and clicking `Set Defaul Project`.
-1. If you are using Visual Studio Code open the `launch.json` and replace all of the contents with the following:
-	```json
+1. Defina o projeto `AppHost` como o projeto de inicialização no Visual Studio clicando com o botão direito no `AppHost` e clicando em `Set Defaul Project`.
+1. Se você estiver usando o Visual Studio Code, abra o `launch.json` e substitua todo o conteúdo pelo seguinte:
+    ```json
 	{
         "version": "0.2.0",
         "configurations": [
@@ -73,28 +69,28 @@ Before continuing, consider some common terminology used in .NET Aspire:
             }
         ]
     }
-	```
-1. Run the App Host using the `Run and Debug` panel in Visual Studio Code or Visual Studio.
-1. The .NET Aspire Dashboard will open in your default browser and display the resources and dependencies of your application.
+    ```
+1. Execute o Host da Aplicação usando o painel `Run and Debug` no Visual Studio Code ou Visual Studio.
+1. O Painel do .NET Aspire será aberto no seu navegador padrão e exibirá os recursos e dependências da sua aplicação.
 
-	![.NET Aspire Dashboard](./media/dashboard.png)
+    ![Painel do .NET Aspire](./../../media/dashboard.png)
+1. Abra o painel da aplicação Weather clicando no Endpoint para o `MyWeatherHub` que será [https://localhost:7274](https://localhost:7274).
+1. Observe que os projetos `Api` e `MyWeatherHub` estão rodando no mesmo processo e podem se comunicar entre si da mesma forma que antes usando configurações.
+1. Clique no botão `View Logs` para ver os logs dos projetos `Api` e `MyWeatherHub`.
+1. Selecione a aba `Traces` e selecione `View` em um log trace onde a API está sendo chamada.
 
-1. Open the weather dashboard by clicking one the Endpoint for the `MyWeatherHub` which will be [https://localhost:7274](https://localhost:7274).
-1. Notice that the `Api` and `MyWeatherHub` projects are running in the same process and can communicate with each other the same was as before using configuration settings.
-1. Click on the `View Logs` button to see the logs from the `Api` and `MyWeatherHub` projects.
-1. Select the `Traces` tab and slect the `View` on a trace where the API is being called.
+    ![Painel do .NET Aspire](./../../media/dashboard-trace.png)]
 
-	![.NET Aspire Dashboard](./media/dashboard-trace.png)]
+1. Explore a aba `Metrics` para ver as métricas para os projetos `Api` e `MyWeatherHub`.
 
-1. Explore the `Metrics` tab to see the metrics for the `Api` and `MyWeatherHub` projects.
+    ![Painel do .NET Aspire](./../../media/dashboard-metrics.png)
 
-	![.NET Aspire Dashboard](./media/dashboard-metrics.png)
+## Crie um erro
 
-## Create an error
-1. Open the `Structured` tab on the dashboard.
-1. Set the `Level` to `Error` and notice that no errors appear
-1. On the `MyWeatherApp` website click on several different cities to generate errors. Usually 5 different cities will generate an error.
-1. After generating the errors, the `Structured` tab will automatically update on the dashboard and notice that the errors are displayed.
+1. Abra a aba `Structured` no painel.
+1. Defina o `Level` para `Error` e observe que nenhum erro aparece.
+1. No site `MyWeatherApp`, clique em várias cidades diferentes para gerar erros. Geralmente, 5 cidades diferentes gerarão um erro.
+1. Após gerar os erros, a aba `Structured` será atualizada automaticamente no painel e observe que os erros são exibidos.
 
-	![.NET Aspire Dashboard](./media/dashboard-error.png)
-1. Click on the `Trace` or the `Details` to see the error message and stack trace.
+    ![Painel do .NET Aspire](./../../media/dashboard-error.png)
+1. Clique em `Trace` ou `Details` para ver a mensagem de erro e o log (stack trace).
