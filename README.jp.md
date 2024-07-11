@@ -24,14 +24,14 @@
 この .NET Aspire ワークショップは、[Let's Learn .NET](https://aka.ms/letslearndotnet) シリーズの一部です。このワークショップは、.NET Aspire について学び、クラウドレディなアプリケーションの構築に使用する方法を学ぶために設計されています。
 このワークショップは、以下の 6 つのモジュールに分かれています:
 
-1. [セットアップ](./workshop/localisation/jp/1-setup.md)
-1. [Service Defaults](./workshop/localisation/jp/2-servicedefaults.md)
-1. [ダッシュボードとオーケストレーター](./workshop/localisation/jp/3-dashboard-apphost.md)
-1. [サービス ディスカバリ](./workshop/localisation/jp/4-servicediscovery.md)
-1. [.NET Aspire コンポーネント](./workshop/localisation/jp/5-components.md)
-1. [デプロイメント](./workshop/localisation/jp/6-deployment.md)
+1. [セットアップ](./workshop/localization/jp/1-setup.md)
+1. [Service Defaults](./workshop/localization/jp/2-servicedefaults.md)
+1. [ダッシュボードとオーケストレーター](./workshop/localization/jp/3-dashboard-apphost.md)
+1. [サービス ディスカバリ](./workshop/localization/jp/4-servicediscovery.md)
+1. [.NET Aspire コンポーネント](./workshop/localization/jp/5-components.md)
+1. [デプロイメント](./workshop/localization/jp/6-deployment.md)
 
-このワークショップの完全なスライドは[こちら](./workshop/localisation/jp/AspireWorkshop.pptx)から利用できます。
+このワークショップの完全なスライドは[こちら](./workshop/localization/jp/AspireWorkshop.pptx)から利用できます。
 
 このワークショップの開始プロジェクトは、`start-with-api` フォルダに格納されています。このプロジェクトは、National Weather Service API を使用して、天気データを取得し、Blazor によって提供される Web フロントエンドで天気データを表示するシンプルな天気 API です。
 
