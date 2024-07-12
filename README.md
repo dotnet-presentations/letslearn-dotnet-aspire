@@ -27,6 +27,7 @@ This workshop materials are available in the following languages:
 - [한국어](./README.ko.md)
 - [日本語](./README.jp.md)
 - [Español](./README.es.md)
+- [Français](./README.fr.md)
 - [Português (PT-BR)](./README.pt-br.md)
 
 ## Workshop
