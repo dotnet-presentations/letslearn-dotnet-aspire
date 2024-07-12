@@ -51,7 +51,7 @@ Cet atelier .NET Aspire fait partie de la série [Let's Learn .NET](https://aka.
 1. [Composants .NET Aspire](./workshop/localization/fr/5-components.md)
 1. [Déploiement](./workshop/localization/fr/6-deployment.md)
 
-Un diaporama (slide deck) complet est disponible pour cet atelier [ici](./workshop/localization/fr/AspireWorkshop%20-%20francais.pptx).
+Un diaporama (slide deck) complet est disponible pour cet atelier [ici](./workshop/localization/fr/AspireWorkshop.pptx).
 
 Le projet de départ de cet atelier se trouve dans le dossier `start-with-api`. Ce projet est une API météo simple qui utilise l'API du National Weather Service pour obtenir des données météorologiques et une interface Web pour afficher les données météorologiques alimentées par Blazor.
 
