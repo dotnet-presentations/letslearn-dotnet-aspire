@@ -27,7 +27,18 @@ This workshop materials are available in the following languages:
 - [한국어](./README.ko.md)
 - [日本語](./README.jp.md)
 - [Español](./README.es.md)
+- [Français](./README.fr.md)
 - [Português (PT-BR)](./README.pt-br.md)
+
+You can also watch the Let's Learn .NET Aspire live stream events for the following languages:
+
+- [English](https://www.youtube.com/watch?v=8i3FaHChh20)
+- [한국어](https://www.youtube.com/watch?v=rTpNgMaVM6g)
+- [日本語](https://www.youtube.com/watch?v=Cm7mqHZJIgc)
+- [Español](https://www.youtube.com/watch?v=dd1Mc5bQZSo)
+- [Français](https://www.youtube.com/watch?v=jJiqqVPDN4w)
+- [Português (PT-BR)](https://www.youtube.com/watch?v=PUCU9ZOOgQ8)
+- [Tiếng Việt](https://www.youtube.com/watch?v=48CWnYfTZhk)
 
 ## Workshop
 
