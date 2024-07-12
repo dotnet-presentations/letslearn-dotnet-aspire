@@ -30,6 +30,16 @@ This workshop materials are available in the following languages:
 - [Français](./README.fr.md)
 - [Português (PT-BR)](./README.pt-br.md)
 
+You can also watch the Let's Learn .NET Aspire live stream events for the following languages:
+
+- [English](https://www.youtube.com/watch?v=8i3FaHChh20)
+- [한국어](https://www.youtube.com/watch?v=rTpNgMaVM6g)
+- [日本語](https://www.youtube.com/watch?v=Cm7mqHZJIgc)
+- [Español](https://www.youtube.com/watch?v=dd1Mc5bQZSo)
+- [Français](https://www.youtube.com/watch?v=jJiqqVPDN4w)
+- [Português (PT-BR)](https://www.youtube.com/watch?v=PUCU9ZOOgQ8)
+- [Tiếng Việt](https://www.youtube.com/watch?v=48CWnYfTZhk)
+
 ## Workshop
 
 This .NET Aspire workshop is part of the [Let's Learn .NET](https://aka.ms/letslearndotnet) series.  This workshop is designed to help you learn about .NET Aspire and how to use it to build cloud ready applications.  This workshop is broken down into 6 modules:
