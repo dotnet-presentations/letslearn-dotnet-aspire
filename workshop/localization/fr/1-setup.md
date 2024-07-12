@@ -1,4 +1,4 @@
-# Configuration de la machine
+# Configuration et installation
 
 Cet atelier utilisera les outils suivants:
 
