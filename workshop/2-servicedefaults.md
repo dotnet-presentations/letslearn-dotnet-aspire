@@ -58,7 +58,7 @@
 
 ## Run the application
 
-1. Run the application using a multip-project launch configuration in Visual Studio or Visual Studio Code.
+1. Run the application using a multiple-project launch configuration in Visual Studio or Visual Studio Code.
 
 	- Visual Studio: Right click on the `MyWeatherHub` solution and go to properties. Select the `Api` and `MyWeatherHub` as startup projects, select `OK`. 
 		- ![Visual Studio solution properties](./media/vs-multiproject.png)
