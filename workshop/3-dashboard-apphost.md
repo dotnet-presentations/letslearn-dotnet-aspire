@@ -44,7 +44,7 @@ Before continuing, consider some common terminology used in .NET Aspire:
 		- Check the `Api` and `MyWeatherHub` projects and click `OK`.
 
 	> Pro Tip: In Visual Studio 2022, you can drag and drop the project onto another project to add a reference.
-1. When these references are add Source Generators automatically generate the necessary code to reference the projects in the App Host.
+1. When these references are added Source Generators automatically generate the necessary code to reference the projects in the App Host.
 
 ## Orchestrate the Application
 
@@ -58,7 +58,7 @@ Before continuing, consider some common terminology used in .NET Aspire:
 
 ## Run the application
 
-1. Set the `AppHost` project as the startup project in Visual Studio by right clicking on the `AppHost` and clicking `Set Defaul Project`.
+1. Set the `AppHost` project as the startup project in Visual Studio by right clicking on the `AppHost` and clicking `Set Default Project`.
 1. If you are using Visual Studio Code open the `launch.json` and replace all of the contents with the following:
 	```json
 	{
