@@ -36,7 +36,7 @@ Before continuing, consider some common terminology used in .NET Aspire:
 	dotnet new aspire-apphost -n AppHost
 	```
 
-## Configure Service Defaults
+## Add Project References
 
 1. Add a reference to the `Api` and `MyWeatherHub` projects in the new `AppHost` project:
 
@@ -45,7 +45,6 @@ Before continuing, consider some common terminology used in .NET Aspire:
 
 	> Pro Tip: In Visual Studio 2022, you can drag and drop the project onto another project to add a reference.
 1. When these references are add Source Generators automatically generate the necessary code to reference the projects in the App Host.
-
 
 ## Orchestrate the Application
 
@@ -91,6 +90,7 @@ Before continuing, consider some common terminology used in .NET Aspire:
 	![.NET Aspire Dashboard](./media/dashboard-metrics.png)
 
 ## Create an error
+
 1. Open the `Structured` tab on the dashboard.
 1. Set the `Level` to `Error` and notice that no errors appear
 1. On the `MyWeatherApp` website click on several different cities to generate errors. Usually 5 different cities will generate an error.
