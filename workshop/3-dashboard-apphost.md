@@ -4,10 +4,10 @@
 
 Before continuing, consider some common terminology used in .NET Aspire:
 
-* *App model*: A collection of resources that make up your distributed application (DistributedApplication). For a more formal definition, see Define the app model.
-* *App host/Orchestrator project*: The .NET project that orchestrates the app model, named with the *.AppHost suffix (by convention).
-* *Resource*: A resource represents a part of an application whether it be a .NET project, container, or executable, or some other resource like a database, cache, or cloud service (such as a storage service).
-* *Reference*: A reference defines a connection between resources, expressed as a dependency using the WithReference API. For more information, see Reference resources.
+* *App model*: A collection of resources that make up your distributed application ([DistributedApplication](https://learn.microsoft.com/dotnet/api/aspire.hosting.distributedapplication)). For a more formal definition, see [Define the app model](https://learn.microsoft.com/dotnet/aspire/fundamentals/app-host-overview?tabs=docker#define-the-app-model).
+* *App host/Orchestrator project*: The .NET project that orchestrates the *app model*, named with the **.AppHost* suffix (by convention).
+* *Resource*: A [resource](https://learn.microsoft.com/dotnet/aspire/fundamentals/app-host-overview?tabs=docker#built-in-resource-types) represents a part of an application whether it be a .NET project, container, or executable, or some other resource like a database, cache, or cloud service (such as a storage service).
+* *Reference*: A reference defines a connection between resources, expressed as a dependency using the `WithReference` API. For more information, see [Reference resources](https://learn.microsoft.com/dotnet/aspire/fundamentals/app-host-overview?tabs=docker#reference-resources).
 
 
 ## Create App Host Project
