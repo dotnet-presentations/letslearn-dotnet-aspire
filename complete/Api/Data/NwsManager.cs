@@ -15,18 +15,24 @@ namespace Api
 
 		public async Task<Zone[]?> GetZonesAsync()
 		{
-			// To get the live zone data from NWS, uncomment the following code and comment out the return statement below
-			//var response = await httpClient.GetAsync("https://api.weather.gov/zones?type=forecast");
-			//response.EnsureSuccessStatusCode();
-			//var content = await response.Content.ReadAsStringAsync();
-			//return JsonSerializer.Deserialize<ZonesResponse>(content, options);
-
 			return await cache.GetOrCreateAsync("zones", async entry =>
 			{
 				if (entry is null)
 					return [];
 
 				entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
+
+				// To get the live zone data from NWS, uncomment the following code and comment out the return statement below. This is required if you are deploying to ACA
+				//var response = await httpClient.GetAsync("https://api.weather.gov/zones?type=forecast");
+				//response.EnsureSuccessStatusCode();
+				//var content = await response.Content.ReadAsStringAsync();
+				//var zones = JsonSerializer.Deserialize<ZonesResponse>(content, options);
+				//return zones?.Features
+				//				?.Where(f => f.Properties?.ObservationStations?.Count > 0)
+				//				.Select(f => (Zone)f)
+				//				.Distinct()
+				//				.ToArray() ?? [];
+
 
 				// Deserialize the zones.json file from the wwwroot folder
 				var zonesJson = File.Open("wwwroot/zones.json", FileMode.Open);
