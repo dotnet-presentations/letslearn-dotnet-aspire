@@ -41,8 +41,8 @@
 
    - Faites un clic droit sur le projet `Api` et sélectionnez `Add` > `Reference`.
      - Vérifiez le projet `ServiceDefaults` et cliquez sur `OK`.
-   - Faites un clic droit sur le projet `Api` et sélectionnez `Add` > `Reference`.
-     - Vérifiez le projet `MyWeatherHub` et cliquez sur `OK`.
+   - Faites un clic droit sur le projet `MyWeatherHub` et sélectionnez `Add` > `Reference`.
+     - Vérifiez le projet `ServiceDefaults` et cliquez sur `OK`.
 
 	> Conseil de pro: dans Visual Studio 2022, vous pouvez faire glisser et déposer le projet sur un autre projet pour ajouter une référence.
 

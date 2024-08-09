@@ -39,8 +39,8 @@
 
 	- Clique com o botão direito no projeto `Api` e selecione `Add` > `Reference`.
 		- Selecione o projeto `ServiceDefaults` e clique em `OK`.
-	- Clique com o botão direito no projeto `Api` e selecione `Add` > `Reference`.
-		- Selecione o projeto `MyWeatherHub` e clique em `OK`.
+	- Clique com o botão direito no projeto `MyWeatherHub` e selecione `Add` > `Reference`.
+		- Selecione o projeto `ServiceDefaults` e clique em `OK`.
 
 	> Dica: No Visual Studio 2022, você pode arrastar e soltar o projeto em outro projeto para adicionar uma referência.
 1. Nos projetos `Api` e `MyWeatherHub`, atualize seus arquivos `Program.cs`, adicionando a seguinte linha imediatamente após a linha `var builder = WebApplication.CreateBuilder(args);`:
