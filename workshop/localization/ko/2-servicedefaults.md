@@ -42,8 +42,8 @@
 
     - `Api` 프로젝트를 마우스 오른쪽 버튼으로 클릭하고 `Add` > `Reference`를 선택합니다.
         - `ServiceDefaults` 프로젝트를 선택하고 `OK`를 클릭합니다.
-    - `Api` 프로젝트를 마우스 오른쪽 버튼으로 클릭하고 `Add` > `Reference`를 선택합니다.
-        - `MyWeatherHub` 프로젝트를 선택하고 `OK`를 클릭합니다.
+    - `MyWeatherHub` 프로젝트를 마우스 오른쪽 버튼으로 클릭하고 `Add` > `Reference`를 선택합니다.
+        - `ServiceDefaults` 프로젝트를 선택하고 `OK`를 클릭합니다.
 
     > Pro Tip: 비주얼 스튜디오 2022에서는 프로젝트를 다른 프로젝트로 끌어다 놓아 참조를 추가할 수 있습니다.
 
