@@ -33,3 +33,7 @@ dotnet workload install aspire
 
 ## Test Installation
 To test your installation, see the [Build your first .NET Aspire project](https://learn.microsoft.com/dotnet/aspire/get-started/build-your-first-aspire-app) for more information.
+
+## Open Workshop Start Solution
+
+To start the workshop open `start-with-api/MyWeatherHub.sln` in Visual Studio 2022. If you are using Visual Studio code open the `start-with-api` folder and when prompted by the C# Dev Kit which solution to open, select **MyWeatherHub.snl**.
