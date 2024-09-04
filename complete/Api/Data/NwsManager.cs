@@ -50,7 +50,7 @@ namespace Api
 
         public async Task<Forecast[]> GetForecastByZoneAsync(string zoneId)
         {
-            // Create an exception every 5 calls to simulate and error for testing
+            // Create an exception every 5 calls to simulate an error for testing
             forecastCount++;
 
             if (forecastCount % 5 == 0)

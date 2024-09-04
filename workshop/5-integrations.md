@@ -10,9 +10,9 @@ Let's improve our application by adding an integration to it. We will add a inte
 
 ## Add Redis Integration to App Host
 
-To add the Redis hosting integration to our App Host, we need to install the `Aspire.Hosting.Redis` NuGet package. This package provides the necessary pirces to configure the service in the App Host. Redis is provided through a container image in this workshop, and when we start the .NET Aspire App Host, it will automatically download the Redis container image and start the Redis server.
+To add the Redis hosting integration to our App Host, we need to install the `Aspire.Hosting.Redis` NuGet package. This package provides the necessary pieces to configure the service in the App Host. Redis is provided through a container image in this workshop, and when we start the .NET Aspire App Host, it will automatically download the Redis container image and start the Redis server.
 
-With the NuGet installed we can configure it.
+With the NuGet package installed, we can add Redis to our App Host:
 
 1. Open the `Program.cs` file in the `AppHost` project.
 1. Add the following code under `var builder = DistributedApplication.CreateBuilder(args);`
