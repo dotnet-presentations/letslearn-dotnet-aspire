@@ -1,31 +1,25 @@
 using System.Text.Json;
+using System.Web;
 
 namespace MyWeatherHub;
 
 public class NwsManager(HttpClient client)
 {
-	readonly JsonSerializerOptions options = new()
+	static readonly JsonSerializerOptions options = new()
 	{
 		PropertyNameCaseInsensitive = true
 	};
 
 	public async Task<Zone[]> GetZonesAsync()
     {
-        var response = await client.GetAsync("zones");
-        response.EnsureSuccessStatusCode();
-
-        var content = await response.Content.ReadAsStringAsync();
-        var zones = JsonSerializer.Deserialize<Zone[]>(content, options);
+        var zones = await client.GetFromJsonAsync<Zone[]>("zones", options);
 
         return zones ?? [];
     }
 
     public async Task<Forecast[]> GetForecastByZoneAsync(string zoneId)
     {
-        var response = await client.GetAsync($"forecast/{zoneId}");
-        response.EnsureSuccessStatusCode();
-        var content = await response.Content.ReadAsStringAsync();
-        var forecast = JsonSerializer.Deserialize<Forecast[]>(content, options);
+        var forecast = await client.GetFromJsonAsync<Forecast[]>($"forecast/{HttpUtility.UrlEncode(zoneId)}", options);
 
         return forecast ?? [];
     }

@@ -5,7 +5,6 @@ using System.Text.Json;
 
 namespace Api
 {
-
 	public class NwsManager(HttpClient httpClient, IMemoryCache cache)
 	{
 		JsonSerializerOptions options = new()
@@ -13,13 +12,14 @@ namespace Api
 			PropertyNameCaseInsensitive = true
 		};
 
-
 		public async Task<Zone[]?> GetZonesAsync()
 		{
 			return await cache.GetOrCreateAsync("zones", async entry =>
 			{
 				if (entry is null)
+				{
 					return [];
+				}
 
 				entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
 
@@ -38,7 +38,9 @@ namespace Api
 				// Deserialize the zones.json file from the wwwroot folder
 				var zonesJson = File.Open("wwwroot/zones.json", FileMode.Open);
 				if (zonesJson is null)
+				{
 					return [];
+				}
 
 				var zones = await JsonSerializer.DeserializeAsync<ZonesResponse>(zonesJson, options);
 
@@ -48,7 +50,6 @@ namespace Api
 							.Distinct()
 							.ToArray() ?? [];
 			});
-
 		}
 
 		static int forecastCount = 0;
@@ -56,6 +57,7 @@ namespace Api
 		{
 			// create an exception every 5 calls to simulate and error for testing
 			forecastCount++;
+
 			if (forecastCount % 5 == 0)
 			{
 				throw new Exception("Random exception thrown by NwsManager.GetForecastAsync");
@@ -66,18 +68,13 @@ namespace Api
 			var forecasts = await response.Content.ReadFromJsonAsync<ForecastResponse>(options);
 			return forecasts?.Properties?.Periods?.Select(p => (Forecast)p).ToArray() ?? [];
 		}
-
 	}
-
 }
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-
-
 	public static class NwsManagerExtensions
 	{
-
 		public static IServiceCollection AddNwsManager(this IServiceCollection services)
 		{
 			services.AddHttpClient<Api.NwsManager>(client =>
@@ -99,8 +96,10 @@ namespace Microsoft.Extensions.DependencyInjection
 
 		public static WebApplication? MapApiEndpoints(this WebApplication? app)
 		{
-			if(app is null)
+			if (app is null)
+			{
 				return null;
+			}
 
 			app.UseOutputCache();
 
@@ -123,7 +122,7 @@ namespace Microsoft.Extensions.DependencyInjection
 					var forecasts = await manager.GetForecastByZoneAsync(zoneId);
 					return TypedResults.Ok(forecasts);
 				}
-				catch (HttpRequestException ex)
+				catch (HttpRequestException)
 				{
 					return TypedResults.NotFound();
 				}
@@ -136,10 +135,6 @@ namespace Microsoft.Extensions.DependencyInjection
 			.WithOpenApi();
 
 			return app;
-
 		}
-
 	}
-
-
 }
