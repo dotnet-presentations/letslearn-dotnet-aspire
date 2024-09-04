@@ -6,7 +6,7 @@ Come learn all about [.NET Aspire](https://learn.microsoft.com/dotnet/aspire/), 
 
 - **Orchestration**: Built-in orchestration with a simple, yet powerful, workflow engine.Use C# and familiar APIs without a line of YAML. Easily add popular cloud services, connect them to your projects, and run locally with a single click. 
 - **Service Discovery**: Automatic injection the right connection strings or network configurations and service discovery information to simplify the developer experience.
-- **Components**: Built-in components for common cloud services like databases, queues, and storage. Integrated with logging, health checks, telemetry, and more.
+- **Integrations**: Built-in integrations for common cloud services like databases, queues, and storage. Configured for logging, health checks, telemetry, and more.
 - **Dashboard**: See live OpenTelemetry data with no configuration required. Launched by default on run, .NET Aspire's developer dashboard shows logs, environment variables, distributed traces, metrics and more to quickly verify app behavior.
 - **Deployment**: manages injecting the right connection strings or network configurations and service discovery information to simplify the developer experience.
 - **So Much More**: .NET Aspire is packed full of features that developers will love and help you be more productive.
@@ -48,7 +48,7 @@ This .NET Aspire workshop is part of the [Let's Learn .NET](https://aka.ms/letsl
 1. [Service Defaults](./workshop/2-servicedefaults.md)
 1. [Developer Dashboard & Orchestration](./workshop/3-dashboard-apphost.md)
 1. [Service Discovery](./workshop/4-servicediscovery.md)
-1. [Components](./workshop/5-components.md)
+1. [Integrations](./workshop/5-integrations.md)
 1. [Deployment](./workshop/6-deployment.md)
 
 A full slide deck is available for this workshop [here](./workshop/AspireWorkshop.pptx).
