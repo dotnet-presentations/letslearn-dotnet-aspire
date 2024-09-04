@@ -5,12 +5,12 @@ namespace MyWeatherHub;
 
 public class NwsManager(HttpClient client)
 {
-	static readonly JsonSerializerOptions options = new()
-	{
-		PropertyNameCaseInsensitive = true
-	};
+    private static readonly JsonSerializerOptions options = new()
+    {
+        PropertyNameCaseInsensitive = true
+    };
 
-	public async Task<Zone[]> GetZonesAsync()
+    public async Task<Zone[]> GetZonesAsync()
     {
         var zones = await client.GetFromJsonAsync<Zone[]>("zones", options);
 
