@@ -8,10 +8,7 @@ namespace Api
 {
     public class NwsManager(HttpClient httpClient, IMemoryCache cache, IWebHostEnvironment webHostEnvironment)
     {
-        private static readonly JsonSerializerOptions options = new()
-        {
-            PropertyNameCaseInsensitive = true
-        };
+        private static readonly JsonSerializerOptions options = new(JsonSerializerDefaults.Web);
 
         public async Task<Zone[]?> GetZonesAsync()
         {
