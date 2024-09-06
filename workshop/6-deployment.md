@@ -1,18 +1,20 @@
 # Deploy a .NET Aspire app to Azure Container Apps
 
-.NET Aspire apps are designed to run in containerized environments. Azure Container Apps is a fully managed environment that enables you to run microservices and containerized applications on a serverless platform. This article will walk you through creating a new .NET Aspire solution and deploying it to Microsoft Azure Container Apps using Visual Studio and the Azure Developer CLI (`azd`).
+.NET Aspire is optimized for apps that are destined to run in containerized environments. [Azure Container Apps](https://learn.microsoft.com/azure/container-apps/overview) is a fully managed environment that enables you to run microservices and containerized applications on a serverless platform. This article will walk you through creating a new .NET Aspire solution and deploying it to Microsoft Azure Container Apps using Visual Studio and the Azure Developer CLI (`azd`).
 
-In this example, we'll assume you're deploying the MyWeatherHub app from the previous sections. You can use the code you've built, or you can use the code in the **complete** directory. However, the steps are the same for any .NET Aspire app.
+In this example, we'll assume you're deploying the MyWeatherHub app from the previous sections. You can use the code you've built, or you can use the code in the **complete** directory. However, the general steps are the same for any .NET Aspire app.
 
 ## Deploy the app with Visual Studio
 
-1. In the solution explorer, right-click on the **AppHost** project and select **Publish** to open the **Publish** dialog.
+1. In the Solution Explorer, right-click on the **AppHost** project and select **Publish** to open the **Publish** dialog.
 
   > [!TIP]
   > Publishing .NET Aspire requires the current version of the `azd` CLI. This should be installed with the .NET Aspire workload, but if you get a notification that the CLI is not installed or up to date, you can follow the directions in the next part of this tutorial to install it.
 
 1. Select **Azure Container Apps for .NET Aspire** as the publishing target.
+
     ![A screenshot of the publishing dialog workflow.](media/vs-deploy.png)
+
 1. On the **AzDev Environment** step, select your desired **Subscription** and **Location** values and then enter an **Environment name** such as _aspire-weather_. The environment name determines the naming of Azure Container Apps environment resources.
 1. Select **Finish** to create the environment, then **Close** to exit the dialog workflow and view the deployment environment summary.
 1. Select **Publish** to provision and deploy the resources on Azure.
@@ -21,9 +23,12 @@ In this example, we'll assume you're deploying the MyWeatherHub app from the pre
     > This process may take several minutes to complete. Visual Studio provides status updates on the deployment progress in the output logs and you can learn a lot about how publishing works by watching these updates! You'll see that the process involves creating a resource group, an Azure Container Registry, a Log Analytics workspace, and an Azure Container Apps environment. The app is then deployed to the Azure Container Apps environment.
 
 1. When the publish completes, Visual Studio displays the resource URLs at the bottom of the environment screen. Use these links to view the various deployed resources. Select the **webfrontend** URL to open a browser to the deployed app.
+
     ![A screenshot of the completed publishing process and deployed resources.](media/vs-publish-complete.png)
 
-## Install the Azure Developer CLI
+## Deploy the app with the Azure Developer CLI (azd)
+
+### Install the Azure Developer CLI
 
 The process for installing `azd` varies based on your operating system, but it is widely available via `winget`, `brew`, `apt`, or directly via `curl`. To install `azd`, see [Install Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd).
 
@@ -105,7 +110,6 @@ The process for installing `azd` varies based on your operating system, but it i
 Once `azd` is initialized, the provisioning and deployment process can be executed as a single command, [azd up](https://learn.microsoft.com/azure/developer/azure-developer-cli/reference#azd-up).
 
 ```console
-
 By default, a service can only be reached from inside the Azure Container Apps environment it is running in. Selecting a service here will also allow it to be reached from the Internet.
 ? Select which services to expose to the Internet webfrontend
 ? Select an Azure Subscription to use:  1. <YOUR SUBSCRIPTION>
