@@ -9,7 +9,6 @@ builder.Services.AddNwsManager();
 
 var app = builder.Build();
 
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

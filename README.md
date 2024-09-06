@@ -4,16 +4,16 @@ Come learn all about [.NET Aspire](https://learn.microsoft.com/dotnet/aspire/), 
 
 .NET Aspire streamlines app development with:
 
-- **Orchestration**: Built-in orchestration with a simple, yet powerful, workflow engine.Use C# and familiar APIs without a line of YAML. Easily add popular cloud services, connect them to your projects, and run locally with a single click. 
-- **Service Discovery**: Automatic injection the right connection strings or network configurations and service discovery information to simplify the developer experience.
-- **Components**: Built-in components for common cloud services like databases, queues, and storage. Integrated with logging, health checks, telemetry, and more.
+- **Orchestration**: Use C# and familiar APIs to model your distributed application without a line of YAML. Easily add popular databases, messaging systems, and cloud services, connect them to your projects, and run locally with a single click. 
+- **Service Discovery**: Automatic injection of the right connection strings or network configurations and service discovery information to simplify the developer experience.
+- **Integrations**: Built-in integrations for common cloud services like databases, queues, and storage. Configured for logging, health checks, telemetry, and more.
 - **Dashboard**: See live OpenTelemetry data with no configuration required. Launched by default on run, .NET Aspire's developer dashboard shows logs, environment variables, distributed traces, metrics and more to quickly verify app behavior.
-- **Deployment**: manages injecting the right connection strings or network configurations and service discovery information to simplify the developer experience.
+- **Deployment**: Easily produce a manifest of all the configuration your application resources require to run in production. Optionally, quickly and easily deploy to Azure Container Apps or Kubernetes using Aspire-aware tools.
 - **So Much More**: .NET Aspire is packed full of features that developers will love and help you be more productive.
 
 Learn more about .NET Aspire with the following resources:
 - [Documentation](https://learn.microsoft.com/dotnet/aspire)
-- [Microsoft Learn Training Path](https://learn.microsoft.com/en-us/training/paths/dotnet-aspire/)
+- [Microsoft Learn Training Path](https://learn.microsoft.com/training/paths/dotnet-aspire/)
 - [.NET Aspire Videos](https://aka.ms/aspire/videos)
 - [eShop Reference Sample App](https://github.com/dotnet/eshop)
 - [.NET Aspire Samples](https://learn.microsoft.com/samples/browse/?expanded=dotnet&products=dotnet-aspire)
@@ -48,7 +48,7 @@ This .NET Aspire workshop is part of the [Let's Learn .NET](https://aka.ms/letsl
 1. [Service Defaults](./workshop/2-servicedefaults.md)
 1. [Developer Dashboard & Orchestration](./workshop/3-dashboard-apphost.md)
 1. [Service Discovery](./workshop/4-servicediscovery.md)
-1. [Components](./workshop/5-components.md)
+1. [Integrations](./workshop/5-integrations.md)
 1. [Deployment](./workshop/6-deployment.md)
 
 A full slide deck is available for this workshop [here](./workshop/AspireWorkshop.pptx).

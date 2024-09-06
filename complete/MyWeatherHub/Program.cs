@@ -4,14 +4,14 @@ using MyWeatherHub.Components;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
-builder.Services.AddHttpClient<NwsManager>(client => {
-	client.BaseAddress = new("https+http://api");
+builder.Services.AddHttpClient<NwsManager>(client =>
+{
+    client.BaseAddress = new("https+http://api");
 });
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
-
 
 builder.Services.AddMemoryCache();
 
