@@ -107,6 +107,8 @@ var cache = builder.AddRedis("cache")
     .WithImageTag("latest");
 ```
 
+> Note: there is a new [Garnet integration](https://learn.microsoft.com/dotnet/aspire/caching/stackexchange-redis-integration?pivots=garnet&tabs=dotnet-cli) that simplifies this integration, but the above highlights the flexibility of the integrations.
+
 1. Run the application and you will now see Garnet running in the dashboard and in Docker Desktop.
 
     ![Garnet running in dashboard and desktop](./media/garnet-started.png)
