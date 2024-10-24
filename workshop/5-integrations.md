@@ -102,9 +102,9 @@ We will add the _Output caching_ Redis client integration to our `Api` project. 
 
 ```csharp
 var cache = builder.AddRedis("cache")
-    .WithImage("ghcr.io/microsoft/garnet")
-    .WithImageTag("latest")
-    .WithRedisCommander();
+		.WithImageRegistry("ghcr.io")
+    .WithImage("microsoft/garnet")
+    .WithImageTag("latest");
 ```
 
 1. Run the application and you will now see Garnet running in the dashboard and in Docker Desktop.
