@@ -82,7 +82,7 @@ Before continuing, consider some common terminology used in .NET Aspire:
 1. Back on the Aspire Dashboard, click on the `View Logs` button to see the console logs from the `Api` and `MyWeatherHub` projects.
 1. Select the `Traces` tab and select `View` on a trace where the API is being called.
 
-    ![.NET Aspire Dashboard](./media/dashboard-trace.png)]
+    ![.NET Aspire Dashboard](./media/dashboard-trace.png)
 
 1. Explore the `Metrics` tab to see the metrics for the `Api` and `MyWeatherHub` projects.
 
