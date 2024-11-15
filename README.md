@@ -1,4 +1,4 @@
-﻿# Let's Learn .NET Aspire
+﻿# .NET Aspire Workshop
 
 Come learn all about [.NET Aspire](https://learn.microsoft.com/dotnet/aspire/), a new cloud ready stack for building observable, production ready, distributed applications.​ .NET Aspire can be added to any application regardless of the size and scale to help you build better applications faster.​
 
