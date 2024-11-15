@@ -11,23 +11,15 @@ For the best experience, we recommend using Visual Studio 2022 with the .NET Asp
 
 ## Windows with Visual Studio
 
-- Install [Visual Studio 2022 version 17.11 or newer](https://visualstudio.microsoft.com/vs/).
+- Install [Visual Studio 2022 version 17.12 or newer](https://visualstudio.microsoft.com/vs/).
   - Any edition will work including the [free to use Visual Studio Community](https://visualstudio.microsoft.com/free-developer-offers/)
-  - Select the following workloads:
-    - `ASP.NET and web development` workload.
-    - `.NET Aspire SDK` component in `Individual components`.
+  - Select the following `ASP.NET and web development` workload.
+
+> Note: .NET Aspire 8.0 required installing a separate .NET Aspire workload. [In .NET 9, this workload is no longer required](https://learn.microsoft.com/en-us/dotnet/aspire/get-started/upgrade-to-aspire-9?pivots=visual-studio) and can be uninstalled.
 
 ## Mac, Linux, & Windows without Visual Studio
 
-- Install the latest [.NET 8 SDK](https://dot.net/download?cid=eshop)
-- Install the [.NET Aspire workload](https://learn.microsoft.com/dotnet/aspire/fundamentals/setup-tooling?tabs=dotnet-cli%2Cunix#install-net-aspire) with the following commands:
-
-```powershell
-dotnet workload update
-dotnet workload install aspire
-```
-
-> Note: These commands may require `sudo`
+- Install the latest [.NET 9 SDK](https://get.dot.net/9?cid=eshop)
 
 - Install [Visual Studio Code with C# Dev Kit](https://code.visualstudio.com/docs/csharp/get-started)
 

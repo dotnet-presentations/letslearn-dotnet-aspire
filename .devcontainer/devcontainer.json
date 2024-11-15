@@ -1,6 +1,6 @@
 {
     "name": ".NET with Aspire",
-    "image": "mcr.microsoft.com/devcontainers/dotnet:8.0",
+    "image": "mcr.microsoft.com/devcontainers/dotnet:9.0",
     "features": {
         "ghcr.io/devcontainers/features/docker-in-docker:2": {
             "version": "latest"
