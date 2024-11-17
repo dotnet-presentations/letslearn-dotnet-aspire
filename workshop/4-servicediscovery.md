@@ -84,3 +84,5 @@ This was just the start of what we can do with service discovery and .NET Aspire
 ## Learn More
 
 You can learn more about advanced usage and configuration of service discovery in the [.NET Aspire Service Discovery](https://learn.microsoft.com/dotnet/aspire/service-discovery/overview) documentation.
+
+**Next**: [Module #5: Integrations](./5-integrations.md)

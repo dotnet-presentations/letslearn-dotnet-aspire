@@ -124,3 +124,5 @@ In this section, we added a Redis hosting integration to the App Host and Redis 
 There are many more Aspire integrations available that you can use to integrate with your services. You can find the list of available integrations [in the .NET Aspire documentation](https://learn.microsoft.com/dotnet/aspire/fundamentals/integrations-overview?tabs=dotnet-cli#available-integrations).
 
 A natural next step would be to integrate a database or leverage Azure Redis Cache as a hosted solution. Integrations for these and more are [available on NuGet](https://www.nuget.org/packages?q=owner%3Aaspire+tags%3Aintegration).
+
+**Next**: [Module #6: Deployment](6-deployment.md)

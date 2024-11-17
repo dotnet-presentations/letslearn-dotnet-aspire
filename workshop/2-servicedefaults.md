@@ -81,3 +81,5 @@
    Polly: Warning: Resilience event occurred. EventName: 'OnRetry', Source: '-standard//Standard-Retry', Operation Key: '', Result: '500'
    System.Net.Http.HttpClient.NwsManager.ClientHandler: Information: Sending HTTP request GET http://localhost:5271/forecast/AKZ318
    ```
+
+**Next**: [Module #3 - Dashboard & App Host](3-dashboard-apphost.md)
