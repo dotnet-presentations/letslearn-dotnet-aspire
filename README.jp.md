@@ -1,4 +1,4 @@
-# Let's Learn .NET Aspire
+# .NET Aspire Workshop
 
 [.NET Aspire](https://learn.microsoft.com/dotnet/aspire/) について学びましょう。.NET Aspire はサイズやスケールに関係なく、あらゆるアプリケーションに追加でき、より優れたアプリケーションを迅速に構築出来ます。
 

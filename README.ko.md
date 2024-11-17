@@ -1,6 +1,6 @@
 ﻿> 이 문서는 [Azure OpenAI](https://learn.microsoft.com/azure/ai-services/openai/overview)를 이용해 초벌 번역 후 검수를 진행했습니다. 따라서 번역 품질이 기대와 다를 수 있습니다. 문서 번역에 대해 제안할 내용이 있을 경우, [이슈](./issue)에 남겨주시면 확인후 반영하겠습니다.
 
-# Let's Learn .NET Aspire
+# .NET Aspire Workshop
 
 [.NET Aspire](https://learn.microsoft.com/dotnet/aspire/)는 관측이 용이하고, 프로덕션에 배포할 준비가 된 분산형 애플리케이션을 구축하기 위한 새로운 클라우드 네이티브 스택입니다. .NET Aspire는 애플리케이션의 크기와 규모에 관계없이 추가하여 더 나은 애플리케이션을 더 빠르게 구축할 수 있도록 도와줍니다.
 
