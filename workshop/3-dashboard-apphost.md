@@ -98,3 +98,5 @@ Before continuing, consider some common terminology used in .NET Aspire:
     ![.NET Aspire Dashboard](./media/dashboard-error.png)
 
 1. Click on the `Trace` or the `Details` to see the error message and stack trace.
+
+**Next**: [Module #4: Service Discovery](./4-servicediscovery.md)
