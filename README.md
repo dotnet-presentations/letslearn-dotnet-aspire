@@ -24,6 +24,7 @@ Learn more about .NET Aspire with the following resources:
 This workshop materials are available in the following languages:
 
 - [English](./README.md)
+- [简体中文](./README.zh-cn.md)
 - [한국어](./README.ko.md)
 - [日本語](./README.jp.md)
 - [Español](./README.es.md)
